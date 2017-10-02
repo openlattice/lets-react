@@ -1,0 +1,10 @@
+[ignore]
+.*/build/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/lattice/.*
+.*/node_modules/stylelint/.*
+.*/node_modules/styled-components/.*
+
+[libs]
+./flow-typed
+./node_modules/immutable/dist/immutable.js.flow
