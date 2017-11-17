@@ -4,8 +4,10 @@
 
 import Auth0Lock from 'auth0-lock';
 
-import * as RoutePaths from '../router/RoutePaths';
 import * as AuthUtils from './AuthUtils';
+import * as Routes from '../router/Routes';
+
+import OpenLatticeLogo from '../../assets/images/logo.png';
 
 // injected by Webpack.DefinePlugin
 declare var __AUTH0_CLIENT_ID__;
@@ -29,7 +31,10 @@ const auth0Lock :Auth0Lock = new Auth0Lock(__AUTH0_CLIENT_ID__, __AUTH0_DOMAIN__
   closable: false,
   hashCleanup: false,
   languageDictionary: {
-    title: 'Lattice'
+    title: 'OpenLattice'
+  },
+  theme: {
+    logo: OpenLatticeLogo
   }
 });
 
@@ -63,16 +68,20 @@ export function parseHashPath() {
   if (hashPath.indexOf('access_token') !== -1 && hashPath.indexOf('id_token') !== -1) {
 
     const urlBeforeHash :string = href.slice(0, hashIndex >= 0 ? hashIndex : 0);
-    window.location.replace(`${urlBeforeHash}#${RoutePaths.LOGIN}`);
+    window.location.replace(`${urlBeforeHash}#${Routes.LOGIN}`);
     return hashPath;
   }
 
-  return '';
+  return null;
 }
 
 export function initialize() {
 
   auth0HashPath = parseHashPath();
+
+  if (AuthUtils.hasAuthTokenExpired(AuthUtils.getAuthToken())) {
+    AuthUtils.clearAuthInfo();
+  }
 }
 
 export function authenticate() :Promise<*> {
@@ -100,7 +109,7 @@ export function authenticate() :Promise<*> {
       }
       else {
         auth0HashPath = null;
-        resolve(authInfo.idToken);
+        resolve(authInfo);
       }
     });
 
