@@ -8,52 +8,36 @@ import { connect } from 'react-redux';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import * as RoutePaths from '../../core/router/RoutePaths';
-
 import * as Auth0 from './Auth0';
-import * as AuthActionFactory from './AuthActionFactory';
 import * as AuthUtils from './AuthUtils';
+import * as Routes from '../../core/router/Routes';
+import {
+  authAttempt,
+  authExpired,
+  authSuccess
+} from './AuthActionFactory';
 
-function mapStateToProps(state :Map<*, *>) :Object {
+/*
+ * constants
+ */
 
-  let authTokenExpiration :number = state.getIn(['auth', 'authTokenExpiration'], -1);
-  if (AuthUtils.hasAuthTokenExpired(authTokenExpiration)) {
-    authTokenExpiration = -1;
-  }
+const EXPIRED :number = -1;
 
-  return {
-    authTokenExpiration
-  };
-}
-
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  const actions :{ [string] :Function } = {};
-
-  Object.keys(AuthActionFactory).forEach((action :string) => {
-    actions[action] = AuthActionFactory[action];
-  });
-
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
+/*
+ * types
+ */
 
 type Props = {
   actions :{
-    authAttempt :Function,
-    authExpired :Function,
-    authSuccess :Function,
-    hideLock :Function,
-    showLock :Function
-  },
-  authTokenExpiration :number,
-  component :Function
+    authAttempt :Function;
+    authExpired :Function;
+    authSuccess :Function;
+  };
+  authTokenExpiration :number;
+  component :Function;
 };
 
 class AuthRoute extends React.Component<Props> {
-
-  props :Props;
 
   componentWillMount() {
 
@@ -73,11 +57,11 @@ class AuthRoute extends React.Component<Props> {
     Auth0.getAuth0LockInstance().hide();
   }
 
-  componentWillReceiveProps(nextProps :Object) {
+  componentWillReceiveProps(nextProps :Props) {
 
     if (AuthUtils.hasAuthTokenExpired(nextProps.authTokenExpiration)) {
       // if nextProps.authTokenExpiration === -1, we've already dispatched AUTH_EXPIRED
-      if (nextProps.authTokenExpiration !== -1) {
+      if (nextProps.authTokenExpiration !== EXPIRED) {
         this.props.actions.authExpired();
       }
       Auth0.getAuth0LockInstance().show();
@@ -95,21 +79,51 @@ class AuthRoute extends React.Component<Props> {
     } = this.props;
 
     if (!AuthUtils.hasAuthTokenExpired(this.props.authTokenExpiration)) {
+      // TODO: is there a way to definitively check if a prop is a Component?
+      if (WrappedComponent !== null && WrappedComponent !== undefined && typeof WrappedComponent === 'function') {
+        return (
+          <WrappedComponent {...wrappedComponentProps} />
+        );
+      }
+      // TODO: is the right action to take?
       return (
-        <WrappedComponent {...wrappedComponentProps} />
+        <Redirect to={Routes.ROOT} />
       );
     }
 
     // TODO: perhpas render something at "/login" instead of an empty page
     return (
       <Switch>
-        <Route exact strict path={RoutePaths.LOGIN} />
-        <Redirect to={RoutePaths.LOGIN} />
+        <Route exact strict path={Routes.LOGIN} />
+        <Redirect to={Routes.LOGIN} />
       </Switch>
     );
   }
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(AuthRoute)
-);
+function mapStateToProps(state :Map<*, *>) :Object {
+
+  let authTokenExpiration :number = state.getIn(['auth', 'authTokenExpiration'], EXPIRED);
+  if (AuthUtils.hasAuthTokenExpired(authTokenExpiration)) {
+    authTokenExpiration = EXPIRED;
+  }
+
+  return {
+    authTokenExpiration
+  };
+}
+
+function mapDispatchToProps(dispatch :Function) :Object {
+
+  const actions = {
+    authAttempt,
+    authExpired,
+    authSuccess
+  };
+
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthRoute));

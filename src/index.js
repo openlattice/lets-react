@@ -12,13 +12,14 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { injectGlobal } from 'styled-components';
 
+import AppContainer from './containers/app/AppContainer';
 import AuthRoute from './core/auth/AuthRoute';
 import initializeReduxStore from './core/redux/ReduxStore';
 import initializeRouterHistory from './core/router/RouterHistory';
 import * as Auth0 from './core/auth/Auth0';
-import * as RoutePaths from './core/router/RoutePaths';
-
-import AppContainer from './containers/app/AppContainer';
+import * as AuthUtils from './core/auth/AuthUtils';
+import * as Routes from './core/router/Routes';
+import * as Utils from './utils/Utils';
 
 /* eslint-disable */
 injectGlobal`${normalize()}`;
@@ -26,12 +27,28 @@ injectGlobal`${normalize()}`;
 injectGlobal`
   html,
   body {
+    background-color: #f9fcff;
+    color: #113355;
+    font-family: 'Open Sans', sans-serif;
     height: 100%;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+  }
+
+  * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   #app {
+    display: block;
     height: 100%;
     width: 100%;
   }
@@ -42,6 +59,7 @@ injectGlobal`
  * // !!! MUST HAPPEN FIRST !!!
  */
 Auth0.initialize();
+Utils.configureLattice(AuthUtils.getAuthToken());
 /*
  * // !!! MUST HAPPEN FIRST !!!
  */
@@ -52,7 +70,7 @@ const reduxStore = initializeReduxStore(routerHistory);
 ReactDOM.render(
   <Provider store={reduxStore}>
     <ConnectedRouter history={routerHistory}>
-      <AuthRoute path={RoutePaths.ROOT} component={AppContainer} />
+      <AuthRoute path={Routes.ROOT} component={AppContainer} />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('app')

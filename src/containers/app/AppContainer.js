@@ -6,46 +6,67 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router';
 import { bindActionCreators } from 'redux';
 
-import StyledFlexComponent from '../../components/flex/StyledFlexComponent';
-import StyledFlexComponentStacked from '../../components/flex/StyledFlexComponentStacked';
+import StyledButton from '../../components/buttons/StyledButton';
+import * as Routes from '../../core/router/Routes';
 import { logout } from '../../core/auth/AuthActionFactory';
 
-const StyledFlexHeaderComponent = StyledFlexComponent.withComponent('header');
+import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 
-const AppWrapper = StyledFlexComponentStacked.extend`
-  background-color: #f7f8f9;
-  color: #455a64;
+/*
+ * styled components
+ */
+
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  width: 100%;
-`;
-
-const AppHeaderWrapper = StyledFlexHeaderComponent.extend`
-  align-items: center;
-  background-color: #fefefe;
-  border-bottom: 1px solid rgba(84, 110, 122, 0.2);
-  justify-content: center;
-  padding: 20px 50px;
+  min-width: 800px;
   position: relative;
 `;
 
-const AppBodyWrapper = StyledFlexComponentStacked.extend`
-  flex: 1 0 auto;
-  padding: 50px;
+const AppHeaderOuterWrapper = styled.header`
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  min-width: 800px;
+  position: relative;
 `;
 
-const StyledLogoutButton = styled.button`
+const AppHeaderInnerWrapper = styled.div`
+  align-items: center;
+  background-color: #fefefe;
+  border-bottom: 1px solid #c5d5e5;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: row;
+  height: 100px;
+  justify-content: center;
+  position: relative;
+`;
+
+const Title = styled.h1`
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0;
+`;
+
+const StyledActionButton = StyledButton.extend`
   position: absolute;
   right: 50px;
 `;
 
-function mapDispatchToProps(dispatch :Function) {
+const Logo = styled.img`
+  position: absolute;
+  left: 50px;
+`;
 
-  return {
-    actions: bindActionCreators({ logout }, dispatch)
-  };
-}
+/*
+ * types
+ */
+
 
 type Props = {
   actions :{
@@ -53,19 +74,36 @@ type Props = {
   }
 };
 
+const HelloWorldComponent = () => {
+  return (
+    <div>Hello, World!</div>
+  );
+};
+
 const AppContainer = (props :Props) => {
 
   return (
     <AppWrapper>
-      <AppHeaderWrapper>
-        <h1>Lattice</h1>
-        <StyledLogoutButton onClick={props.actions.logout}>Logout</StyledLogoutButton>
-      </AppHeaderWrapper>
-      <AppBodyWrapper>
-        <h1>Hello, World!</h1>
-      </AppBodyWrapper>
+      <AppHeaderOuterWrapper>
+        <AppHeaderInnerWrapper>
+          <Logo src={OpenLatticeLogo} height="50" />
+          <Title>OpenLattice React App</Title>
+          <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+        </AppHeaderInnerWrapper>
+      </AppHeaderOuterWrapper>
+      <Switch>
+        <Route path={Routes.ROOT} component={HelloWorldComponent} />
+        <Redirect to={Routes.ROOT} />
+      </Switch>
     </AppWrapper>
   );
 };
+
+function mapDispatchToProps(dispatch :Function) :Object {
+
+  return {
+    actions: bindActionCreators({ logout }, dispatch)
+  };
+}
 
 export default connect(null, mapDispatchToProps)(AppContainer);
