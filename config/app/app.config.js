@@ -1,7 +1,3 @@
-/*
- * @flow
- */
-
 import PACKAGE from '../../package.json';
 
 const BANNER = `

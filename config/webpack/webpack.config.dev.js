@@ -1,7 +1,3 @@
-/*
- * @flow
- */
-
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
 
 import webpack from 'webpack';
@@ -13,9 +9,9 @@ import APP_PATHS from '../app/paths.config.js';
 
 import baseWebpackConfig from './webpack.config.base.js';
 
-export default function devWebpackConfig(env :Object) {
+export default function devWebpackConfig(env) {
 
-  const baseConfig :Object = baseWebpackConfig(env);
+  const baseConfig = baseWebpackConfig(env);
 
   const DEV_SERVER_PORT = 9000;
 
@@ -31,7 +27,7 @@ export default function devWebpackConfig(env :Object) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      favicon: `${APP_PATHS.ABS.SOURCE}/assets/images/favicon.png`,
+      favicon: `${APP_PATHS.ABS.SOURCE_ASSETS_IMAGES}/favicon.png`,
       inject: true,
       template: `${APP_PATHS.ABS.SOURCE}/${APP_CONFIG.APP_INDEX_HTML}`
     }),

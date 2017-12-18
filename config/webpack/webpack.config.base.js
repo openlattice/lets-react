@@ -1,10 +1,6 @@
-/*
- * @flow
- */
-
 /* eslint-disable no-underscore-dangle, import/no-extraneous-dependencies, import/extensions */
 
-import webpack from 'webpack';
+import Webpack from 'webpack';
 
 import PACKAGE from '../../package.json';
 
@@ -14,13 +10,13 @@ import APP_PATHS from '../app/paths.config.js';
 import { isDev, isProd } from '../app/env.config.js';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../auth/auth0.config.js';
 
-export default function baseWebpackConfig(env :Object) {
+export default function baseWebpackConfig(env) {
 
   /*
    * constants
    */
 
-  const BASE_PATH :string = `/${env.basePath || 'app'}/`;
+  const BASE_PATH = `/${env.basePath || 'app'}/`;
 
   /*
    * loaders
@@ -51,12 +47,12 @@ export default function baseWebpackConfig(env :Object) {
    * plugins
    */
 
-  const BANNER_PLUGIN = new webpack.BannerPlugin({
+  const BANNER_PLUGIN = new Webpack.BannerPlugin({
     banner: APP_CONFIG.BANNER,
     entryOnly: true
   });
 
-  const DEFINE_PLUGIN = new webpack.DefinePlugin({
+  const DEFINE_PLUGIN = new Webpack.DefinePlugin({
     __DEV__: JSON.stringify(isDev),
     __PROD__: JSON.stringify(isProd),
     __VERSION__: JSON.stringify(`v${PACKAGE.version}`),
