@@ -67,11 +67,11 @@ const Logo = styled.img`
  * types
  */
 
-
 type Props = {
   actions :{
-    logout :Function
-  }
+    login :() => void;
+    logout :() => void;
+  };
 };
 
 const HelloWorldComponent = () => {
