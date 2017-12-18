@@ -2,10 +2,12 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "plugins": [
     "flowtype",
+    "jest",
     "react"
   ],
   "settings": {
@@ -23,13 +25,14 @@
     "arrow-body-style": ["error", "always"],
     "brace-style": ["error", "stroustrup"],
     "comma-dangle": ["error", "never"],
+    "function-paren-newline": ["error", "consistent"],
     "indent": [
       "error",
       2,
       {
         "FunctionDeclaration": {
           "body": 1,
-          "parameters": 2
+          "parameters": 1
         },
         "SwitchCase": 1,
         "ignoredNodes": ["JSXAttribute"]
@@ -72,6 +75,12 @@
       }
     ],
     "import/prefer-default-export": "warn",
+
+    "jest/no-disabled-tests": "error",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
 
     "jsx-a11y/href-no-hash": "off",
 
