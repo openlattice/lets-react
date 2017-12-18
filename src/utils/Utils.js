@@ -3,7 +3,6 @@
  */
 
 import Lattice from 'lattice';
-import isUUID from 'validator/lib/isUUID';
 
 // injected by Webpack.DefinePlugin
 declare var __DEV__;
@@ -15,11 +14,6 @@ export function configureLattice(authToken :?string) :void {
   const baseUrl :string = (__DEV__) ? 'http://localhost:8080' : `https://api.${hostName}`;
 
   Lattice.configure({ authToken, baseUrl });
-}
-
-export function isValidUuid(value :any) :boolean {
-
-  return isUUID(value);
 }
 
 export function randomId() :string {
