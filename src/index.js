@@ -28,23 +28,19 @@ injectGlobal`
   html,
   body {
     background-color: #f9fcff;
-    color: #113355;
+    color: #135;
     font-family: 'Open Sans', sans-serif;
     height: 100%;
     width: 100%;
   }
 
   * {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  *:before,
-  *:after {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   #app {
