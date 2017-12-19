@@ -5,6 +5,7 @@
 # https://docs.travis-ci.com/
 # https://docs.travis-ci.com/user/getting-started
 # https://docs.travis-ci.com/user/customizing-the-build
+# https://docs.travis-ci.com/user/environment-variables
 # https://docs.travis-ci.com/user/languages/javascript-with-nodejs
 #
 sudo: false
@@ -15,6 +16,9 @@ node_js:
 cache:
   directories:
     - node_modules
+
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 before_script:
   - npm run lint
