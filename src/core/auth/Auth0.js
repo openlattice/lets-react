@@ -60,7 +60,7 @@ export function getAuth0LockInstance() :Auth0Lock {
  */
 export function parseHashPath() {
 
-  const href :string = window.location.href;
+  const { href } = window.location;
   const hashIndex :number = href.indexOf('#');
   const hashPath :string = hashIndex === -1 ? '' : href.substring(hashIndex + 1);
 
@@ -87,7 +87,7 @@ export function initialize() {
 export function authenticate() :Promise<*> {
 
   if (!auth0HashPath) {
-    return Promise.reject('Auth0Lock authenticate() - cannot authenticate');
+    return Promise.reject(new Error('Auth0Lock authenticate() - cannot authenticate'));
   }
 
   return new Promise((resolve :Function, reject :Function) => {
@@ -102,10 +102,10 @@ export function authenticate() :Promise<*> {
 
     auth0Lock.on('authenticated', (authInfo :Object) => {
       if (!authInfo || !authInfo.accessToken || !authInfo.idToken) {
-        reject('Auth0Lock onAuthenticated() - missing auth info');
+        reject(new Error('Auth0Lock onAuthenticated() - missing auth info'));
       }
       else if (AuthUtils.hasAuthTokenExpired(authInfo.idToken)) {
-        reject('Auth0Lock onAuthenticated() - id token expired');
+        reject(new Error('Auth0Lock onAuthenticated() - id token expired'));
       }
       else {
         auth0HashPath = null;
@@ -115,10 +115,10 @@ export function authenticate() :Promise<*> {
 
     auth0Lock.on('hash_parsed', (authInfo :Object) => {
       if (!authInfo || !authInfo.accessToken || !authInfo.idToken) {
-        reject('Auth0Lock onHashParsed() - missing auth info');
+        reject(new Error('Auth0Lock onHashParsed() - missing auth info'));
       }
       else if (AuthUtils.hasAuthTokenExpired(authInfo.idToken)) {
-        reject('Auth0Lock onHashParsed() - id token expired');
+        reject(new Error('Auth0Lock onHashParsed() - id token expired'));
       }
     });
 
