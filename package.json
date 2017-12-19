@@ -22,7 +22,7 @@
     "@fortawesome/fontawesome-pro-light": "^5.0.0",
     "@fortawesome/fontawesome-pro-regular": "^5.0.0",
     "@fortawesome/fontawesome-pro-solid": "^5.0.0",
-    "@fortawesome/react-fontawesome": "0.0.16",
+    "@fortawesome/react-fontawesome": "0.0.17",
     "auth0-lock": "^10.24.0",
     "babel-polyfill": "^6.26.0",
     "history": "^4.7.2",
