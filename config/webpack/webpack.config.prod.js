@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
 
-import Webpack from 'webpack';
-
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import Webpack from 'webpack';
 
 import APP_CONFIG from '../app/app.config.js';
 import APP_PATHS from '../app/paths.config.js';

@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "homepage": "https://github.com/openlattice/lets-react",
   "description": "a bootstrapped project to serve as a starting point for a new ReactJS app",
+  "author": {
+    "name": "OpenLattice, Inc.",
+    "email": "support@openlattice.com",
+    "url": "https://openlattice.com"
+  },
   "contributors": [
     {
       "name": "Hristo Oskov",
@@ -23,7 +28,7 @@
     "@fortawesome/fontawesome-pro-regular": "^5.0.0",
     "@fortawesome/fontawesome-pro-solid": "^5.0.0",
     "@fortawesome/react-fontawesome": "0.0.17",
-    "auth0-lock": "^11.0.0",
+    "auth0-lock": "^10.24.0",
     "babel-polyfill": "^6.26.0",
     "history": "^4.7.2",
     "immutable": "4.0.0-rc.9",
