@@ -74,30 +74,25 @@ type Props = {
   };
 };
 
-const HelloWorldComponent = () => {
-  return (
-    <div>Hello, World!</div>
-  );
-};
+const HelloWorldComponent = () => (
+  <div>Hello, World!</div>
+);
 
-const AppContainer = (props :Props) => {
-
-  return (
-    <AppWrapper>
-      <AppHeaderOuterWrapper>
-        <AppHeaderInnerWrapper>
-          <Logo src={OpenLatticeLogo} height="50" />
-          <Title>OpenLattice React App</Title>
-          <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
-        </AppHeaderInnerWrapper>
-      </AppHeaderOuterWrapper>
-      <Switch>
-        <Route path={Routes.ROOT} component={HelloWorldComponent} />
-        <Redirect to={Routes.ROOT} />
-      </Switch>
-    </AppWrapper>
-  );
-};
+const AppContainer = (props :Props) => (
+  <AppWrapper>
+    <AppHeaderOuterWrapper>
+      <AppHeaderInnerWrapper>
+        <Logo src={OpenLatticeLogo} height="50" />
+        <Title>OpenLattice React App</Title>
+        <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+      </AppHeaderInnerWrapper>
+    </AppHeaderOuterWrapper>
+    <Switch>
+      <Route path={Routes.ROOT} component={HelloWorldComponent} />
+      <Redirect to={Routes.ROOT} />
+    </Switch>
+  </AppWrapper>
+);
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
