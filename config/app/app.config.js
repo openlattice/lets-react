@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PACKAGE from '../../package.json';
 
 const BANNER = `
@@ -5,7 +6,7 @@ ${PACKAGE.name} - v${PACKAGE.version}
 ${PACKAGE.description}
 ${PACKAGE.homepage}
 
-Copyright (c) 2017, OpenLattice, Inc. All rights reserved.
+Copyright (c) 2017-${moment().year()}, OpenLattice, Inc. All rights reserved.
 `;
 
 const APP_INDEX_HTML = 'index.html';

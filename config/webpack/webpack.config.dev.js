@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
 
-import webpack from 'webpack';
-
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import Webpack from 'webpack';
 
 import APP_CONFIG from '../app/app.config.js';
 import APP_PATHS from '../app/paths.config.js';
@@ -24,8 +23,8 @@ export default function devWebpackConfig(env) {
   });
 
   const plugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
+    new Webpack.HotModuleReplacementPlugin(),
+    new Webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       favicon: `${APP_PATHS.ABS.SOURCE_ASSETS_IMAGES}/favicon.png`,
       inject: true,
