@@ -96,8 +96,8 @@
     "lint": "npm-run-all lint:css lint:js",
     "lint:css": "stylelint './src/**/*.js'",
     "lint:js": "eslint --config .eslintrc src",
-    "test": "jest --config config/test/jest.config.js",
-    "test:watch": "jest --config config/test/jest.config.js --watch"
+    "test": "jest --config config/jest/jest.config.js",
+    "test:watch": "jest --config config/jest/jest.config.js --watch"
   },
   "betterScripts": {
     "build:prod": {
