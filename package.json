@@ -23,7 +23,7 @@
   },
   "license": "GPLv3",
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.0.0",
+    "@fortawesome/fontawesome": "^1.1.2",
     "@fortawesome/fontawesome-pro-light": "^5.0.0",
     "@fortawesome/fontawesome-pro-regular": "^5.0.0",
     "@fortawesome/fontawesome-pro-solid": "^5.0.0",
