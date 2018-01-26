@@ -7,19 +7,26 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import LatticeAuth from 'lattice-auth';
 import { normalize } from 'polished';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { injectGlobal } from 'styled-components';
 
 import AppContainer from './containers/app/AppContainer';
-import AuthRoute from './core/auth/AuthRoute';
 import initializeReduxStore from './core/redux/ReduxStore';
 import initializeRouterHistory from './core/router/RouterHistory';
-import * as Auth0 from './core/auth/Auth0';
-import * as AuthUtils from './core/auth/AuthUtils';
 import * as Routes from './core/router/Routes';
-import * as Utils from './utils/Utils';
+
+// injected by Webpack.DefinePlugin
+declare var __AUTH0_CLIENT_ID__ :string;
+declare var __AUTH0_DOMAIN__ :string;
+declare var __ENV_DEV__ :boolean;
+
+const {
+  AuthRoute,
+  AuthUtils
+} = LatticeAuth;
 
 /* eslint-disable */
 injectGlobal`${normalize()}`;
@@ -54,8 +61,14 @@ injectGlobal`
 /*
  * // !!! MUST HAPPEN FIRST !!!
  */
-Auth0.initialize();
-Utils.configureLattice(AuthUtils.getAuthToken());
+
+LatticeAuth.configure({
+  auth0ClientId: __AUTH0_CLIENT_ID__,
+  auth0Domain: __AUTH0_DOMAIN__,
+  authToken: AuthUtils.getAuthToken(),
+  baseUrl: (__ENV_DEV__) ? 'localhost' : 'production'
+});
+
 /*
  * // !!! MUST HAPPEN FIRST !!!
  */
