@@ -5,15 +5,16 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { AuthActionFactory } from 'lattice-auth';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
 import { bindActionCreators } from 'redux';
 
+import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
 import * as Routes from '../../core/router/Routes';
-import { logout } from '../../core/auth/AuthActionFactory';
 
-import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
+const { logout } = AuthActionFactory;
 
 /*
  * styled components
