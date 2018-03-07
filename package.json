@@ -32,9 +32,9 @@
     "history": "^4.7.2",
     "immutable": "4.0.0-rc.9",
     "jwt-decode": "^2.2.0",
-    "lattice": "^0.32.0",
+    "lattice": "^0.33.1",
     "lattice-auth": "^0.6.0",
-    "lattice-sagas": "^0.0.19",
+    "lattice-sagas": "^0.0.24",
     "lodash": "^4.17.4",
     "loglevel": "^1.6.1",
     "moment": "^2.20.0",
@@ -68,7 +68,7 @@
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
-    "eslint-loader": "^1.9.0",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-flowtype": "^2.39.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.7.0",
@@ -85,7 +85,7 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.2.2",
     "webpack": "^4.1.0",
-    "webpack-dev-server": "^2.11.0"
+    "webpack-dev-server": "^3.1.0"
   },
   "scripts": {
     "app": "better-npm-run webpack-dev-server",
