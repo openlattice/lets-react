@@ -27,7 +27,7 @@
     "@fortawesome/fontawesome-pro-light": "^5.0.4",
     "@fortawesome/fontawesome-pro-regular": "^5.0.4",
     "@fortawesome/fontawesome-pro-solid": "^5.0.4",
-    "@fortawesome/react-fontawesome": "0.0.17",
+    "@fortawesome/react-fontawesome": "0.0.18",
     "babel-polyfill": "^6.26.0",
     "history": "^4.7.2",
     "immutable": "4.0.0-rc.9",
