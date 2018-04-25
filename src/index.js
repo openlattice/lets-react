@@ -59,7 +59,7 @@ injectGlobal`
 /* eslint-enable */
 
 /*
- * // !!! MUST HAPPEN FIRST !!!
+ * !!! MUST HAPPEN FIRST !!!
  */
 
 LatticeAuth.configure({
@@ -70,7 +70,7 @@ LatticeAuth.configure({
 });
 
 /*
- * // !!! MUST HAPPEN FIRST !!!
+ * !!! MUST HAPPEN FIRST !!!
  */
 
 const routerHistory = initializeRouterHistory();
