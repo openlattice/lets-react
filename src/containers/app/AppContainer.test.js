@@ -1,36 +1,52 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme';
-import {AppContainer} from './AppContainer';
+import { mount } from 'enzyme';
+// import 'jest-styled-components';
 import renderer from 'react-test-renderer';
-import 'jest-styled-components';
+
+import { MemoryRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import { AppContainer, HelloWorldComponent } from './AppContainer';
+import * as Routes from '../../core/router/Routes';
 
 describe('AppContainer', () => {
 
   let props;
-  let mountedAppContainer;
+  let mountAppContainer;
 
-  const appContainer = () => {
-    if (!mountedAppContainer) {
-      mountedAppContainer = mount(
-        <AppContainer {...props} />
+  const appContainer = (location = '/') => {
+    if (!mountAppContainer) {
+      mountAppContainer = mount(
+        <MemoryRouter initialEntries={[location]}>
+          <AppContainer {...props} />
+        </MemoryRouter>
       )
     }
-    return mountedAppContainer;
+    return mountAppContainer;
   }
 
   beforeEach(() => {
     props = {
       actions: {
+        login: () => {},
         logout: () => {}
       }
     };
-    mountedAppContainer = undefined;
+    mountAppContainer = undefined;
   });
 
-  it('always renders a div', () => {
-    const divs = appContainer().find('div');
-    console.log(divs);
-    expect(divs.length).toBeGreaterThan(0);
+  it('always renders when mounted', () => {
+    const wrapper = appContainer().find(AppContainer);
+    expect(wrapper).toHaveLength(1);
   });
+
+  it('renders Hello World upon root path', () => {
+    const helloWorld = appContainer(Routes.ROOT).find(HelloWorldComponent)
+    expect(helloWorld).toHaveLength(1);
+  })
+
+  it('renders Hello World upon random path', () => {
+    const helloWorld = appContainer('/random').find(HelloWorldComponent)
+    expect(helloWorld).toHaveLength(1);
+  })
 
 });

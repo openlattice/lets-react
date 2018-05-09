@@ -75,7 +75,7 @@ type Props = {
   };
 };
 
-const HelloWorldComponent = () => (
+export const HelloWorldComponent = () => (
   <div>Hello, World!</div>
 );
 
