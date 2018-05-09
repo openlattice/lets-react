@@ -79,7 +79,7 @@ const HelloWorldComponent = () => (
   <div>Hello, World!</div>
 );
 
-const AppContainer = (props :Props) => (
+export const AppContainer = (props :Props) => (
   <AppWrapper>
     <AppHeaderOuterWrapper>
       <AppHeaderInnerWrapper>
