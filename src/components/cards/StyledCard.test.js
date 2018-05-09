@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { mount } from 'enzyme';
-import StyledCard from './StyledCard';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
+import StyledCard from './StyledCard';
 
 describe('StyledCard', () => {
 
@@ -13,10 +13,10 @@ describe('StyledCard', () => {
     if (!mountedStyledCard) {
       mountedStyledCard = mount(
         <StyledCard {...props} />
-      )
+      );
     }
     return mountedStyledCard;
-  }
+  };
 
   beforeEach(() => {
     props = {
@@ -26,9 +26,9 @@ describe('StyledCard', () => {
   });
 
   it('renders without throwing an error', () => {
-    const tree = renderer.create(<StyledCard/>).toJSON();
+    const tree = renderer.create(<StyledCard />).toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 
   it('always renders a div', () => {
     const divs = styledCard().find('div');

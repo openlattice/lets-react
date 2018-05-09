@@ -1,10 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { mount } from 'enzyme';
-// import 'jest-styled-components';
-import renderer from 'react-test-renderer';
-
 import { MemoryRouter } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
 import { AppContainer, HelloWorldComponent } from './AppContainer';
 import * as Routes from '../../core/router/Routes';
 
@@ -19,10 +15,10 @@ describe('AppContainer', () => {
         <MemoryRouter initialEntries={[location]}>
           <AppContainer {...props} />
         </MemoryRouter>
-      )
+      );
     }
     return mountAppContainer;
-  }
+  };
 
   beforeEach(() => {
     props = {
@@ -40,13 +36,13 @@ describe('AppContainer', () => {
   });
 
   it('renders Hello World upon root path', () => {
-    const helloWorld = appContainer(Routes.ROOT).find(HelloWorldComponent)
+    const helloWorld = appContainer(Routes.ROOT).find(HelloWorldComponent);
     expect(helloWorld).toHaveLength(1);
-  })
+  });
 
   it('renders Hello World upon random path', () => {
-    const helloWorld = appContainer('/random').find(HelloWorldComponent)
+    const helloWorld = appContainer('/random').find(HelloWorldComponent);
     expect(helloWorld).toHaveLength(1);
-  })
+  });
 
 });
