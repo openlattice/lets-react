@@ -32,7 +32,7 @@ describe('StyledCard', () => {
 
   it('always renders a div', () => {
     const divs = styledCard().find('div');
-    expect(divs.length).toBeGreaterThan(0);
+    expect(divs).toHaveLength(1);
   });
 
 });

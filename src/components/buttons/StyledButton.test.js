@@ -32,7 +32,7 @@ describe('StyledButton', () => {
 
   it('always renders a button', () => {
     const buttons = styledButton().find('button');
-    expect(buttons.length).toBeGreaterThan(0);
+    expect(buttons).toHaveLength(1);
   });
 
 });
