@@ -4,11 +4,13 @@
 
 import React from 'react';
 
+
 import styled from 'styled-components';
 import { AuthActionFactory } from 'lattice-auth';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
 import { bindActionCreators } from 'redux';
+import MainBody from '../../containers/tables/MainBody';
 
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
@@ -76,7 +78,9 @@ type Props = {
 };
 
 const HelloWorldComponent = () => (
-  <div>Hello, World!</div>
+  <div>
+    <MainBody />
+  </div>
 );
 
 const AppContainer = (props :Props) => (

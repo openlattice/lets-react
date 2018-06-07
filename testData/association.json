@@ -1,0 +1,2247 @@
+[
+    {
+        "entityType": {
+            "id": "09e3ab1f-fa13-4371-93d7-e7adf61c7876",
+            "type": {
+                "namespace": "general",
+                "name": "DiagnosedWith"
+            },
+            "title": "DiagnosedWith",
+            "description": "An association between a diagnosis and patient. NOTE this will eventually be renamed \"general.assessedwith\"",
+            "schemas": [],
+            "key": [
+                "0ee66bf8-7158-4b33-9cbf-63682291536c",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "0ee66bf8-7158-4b33-9cbf-63682291536c",
+                "4cc82f90-fb84-426d-acb0-530c96008b1d"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "7958998f-cc0c-4e09-ad4c-ad725e7ef1a9"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "184f05d9-8fd3-45c8-94e0-d959b0262f12",
+            "type": {
+                "namespace": "general",
+                "name": "InsuredBy"
+            },
+            "title": "Insured By (deprecated)",
+            "description": "Insured By",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "adf443f7-eae6-4276-8f4b-55cc5b705880",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "14acfc18-6d46-4ba2-a09d-3dc38c4c202b"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "c5825d85-c832-4363-8259-9bad7135db34",
+            "type": {
+                "namespace": "general",
+                "name": "Used"
+            },
+            "title": "Used_deprecated",
+            "description": "An association describe that location at which an entity mails",
+            "schemas": [],
+            "key": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "d5b0adba-b10c-415e-b11b-06dd4cbfe273"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "d5b0adba-b10c-415e-b11b-06dd4cbfe273",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "23c2552f-8cf1-4a3e-8a5e-4832061bfa4c"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "60555acd-8e50-41f9-ac95-630e8ea3ff8b",
+            "type": {
+                "namespace": "general",
+                "name": "AssessedBy"
+            },
+            "title": "Assessed By (old)",
+            "description": "Assessed By",
+            "schemas": [],
+            "key": [
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "3e11f6cc-c8f5-4d3d-aea7-76a8e5269300",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6"
+            ],
+            "properties": [
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "3e11f6cc-c8f5-4d3d-aea7-76a8e5269300",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6",
+                "adf443f7-eae6-4276-8f4b-55cc5b705880",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219",
+            "9bdfb9cd-a5ae-475d-a295-938888ced614",
+            "b46056ce-067a-48ae-b492-f9fb3f76288c"
+        ],
+        "dst": [
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "06eb9cfc-8f72-4bb1-aaac-8fe336891e45",
+            "type": {
+                "namespace": "justice",
+                "name": "booked"
+            },
+            "title": "was booked_deprecated",
+            "description": "Links together a person with a booking",
+            "schemas": [],
+            "key": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "cec17b62-2821-4701-ab0b-1bae728d52de"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "cec17b62-2821-4701-ab0b-1bae728d52de"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "161ca75e-8a16-41c1-8b02-7b1649c3a2d7"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "dde3b0ff-74ec-4aa3-bfc7-1fb1f4d20473",
+            "type": {
+                "namespace": "medical",
+                "name": "reported_deprecated"
+            },
+            "title": "Reported (old)",
+            "description": "An association which describes a person's and medical history",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "df6071bd-a585-47bb-8536-2a6fd5cb7adf"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "eb528589-882c-462a-b057-45f58d7565fc",
+            "type": {
+                "namespace": "general",
+                "name": "Taking_deprecated"
+            },
+            "title": "Taking_deprecated",
+            "description": "An association describe that location at which an entity mails",
+            "schemas": [],
+            "key": [
+                "14395b33-f0b3-4d1c-a415-cbcfb2ce3965",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "14395b33-f0b3-4d1c-a415-cbcfb2ce3965",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "7c3bf67e-888f-472c-9555-119d7d91828e"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "a2d61543-99ea-4d83-a746-098f6dea7757",
+            "type": {
+                "namespace": "medical",
+                "name": "Ordered"
+            },
+            "title": "Ordered",
+            "description": "Ordered",
+            "schemas": [],
+            "key": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "5c96b76d-1a75-4d74-958b-3feccb75b17a"
+            ],
+            "properties": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "5c96b76d-1a75-4d74-958b-3feccb75b17a"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "dst": [
+            "6defb169-7056-486f-abd1-e528a720ab8c"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "12d1ef04-d6c5-45a7-bb56-f667e88ba165",
+            "type": {
+                "namespace": "location",
+                "name": "livesat"
+            },
+            "title": "Lives at",
+            "description": "An association describe that location at which an entity lives",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "21aa7d22-17a6-4380-99cb-bbecb08bd196",
+            "type": {
+                "namespace": "general",
+                "name": "ReferredBy_deprecated"
+            },
+            "title": "ReferredBy_deprecated",
+            "description": "An association linking patients and referral information.",
+            "schemas": [],
+            "key": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "4b98be11-03e3-4924-a983-474e8898e56c",
+            "type": {
+                "namespace": "justice",
+                "name": "interactedwith"
+            },
+            "title": "Interacted With",
+            "description": "An association which describes that one entity interacted with another",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "594bafb7-58c4-4722-bcf5-f3f87c884dea"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "629691c7-7385-4f10-87d2-3d0cc1068350",
+            "type": {
+                "namespace": "general",
+                "name": "assignto"
+            },
+            "title": "Assign To",
+            "description": "An association which describes that one entity was assigned to another",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "352f83ba-55bd-4a45-becc-e302667ab865"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "28941f24-f621-4e25-b373-40a50703d71b",
+            "type": {
+                "namespace": "general",
+                "name": "Has"
+            },
+            "title": "Has (deprecated)",
+            "description": "Links together 2 entities",
+            "schemas": [],
+            "key": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "2cc4a88c-86f0-404c-b328-caf3ec7b9c66",
+                "3a886c9a-87d7-4d29-816e-72811bf420d9",
+                "51374bce-3c0d-4222-a057-000f670294e7",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "a00e630f-86e5-4754-b35e-ffd413781b58",
+                "ff7c3f66-1904-481b-b7d7-56d8b331be00"
+            ],
+            "properties": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "2cc4a88c-86f0-404c-b328-caf3ec7b9c66",
+                "3a886c9a-87d7-4d29-816e-72811bf420d9",
+                "51374bce-3c0d-4222-a057-000f670294e7",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "a00e630f-86e5-4754-b35e-ffd413781b58",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "ff7c3f66-1904-481b-b7d7-56d8b331be00"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "04db765f-7c68-409d-83ac-530aac1736a2",
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "dst": [
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60",
+            "14acfc18-6d46-4ba2-a09d-3dc38c4c202b",
+            "16bc7a2a-0c8c-4c54-af73-41585c49a224",
+            "5b16b066-99a7-4dbc-81c3-2b10ea12929c"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "4dc7e153-a383-4059-99d0-4d0a6caeb5f8",
+            "type": {
+                "namespace": "general",
+                "name": "ReviewedBy"
+            },
+            "title": "Reviewed By",
+            "description": "An association between a provider",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219"
+        ],
+        "dst": [
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "36888d01-c1af-405b-8846-d03835a40cf2",
+            "type": {
+                "namespace": "general",
+                "name": "registeredfor"
+            },
+            "title": "Registered For",
+            "description": "An association describing that one entity was registered for another.",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "f6526a96-37c1-49e5-a362-3f33105ea6d8",
+            "0f79443c-5ed8-4b1e-8e5f-61dee705e309",
+            "a150f42d-801d-4d5d-bec1-50f46fa58a58"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "5386b226-1544-455f-b330-1107399b1ed2",
+            "9c3153bb-e5e2-495c-88c4-fa4185cca7f8"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "92b91274-6ff6-4a06-bee0-10a1b7b0f056",
+            "type": {
+                "namespace": "general",
+                "name": "participatedin_v1"
+            },
+            "title": "Participated In_deprecated",
+            "description": "Participated in",
+            "schemas": [],
+            "key": [
+                "e4c4cac8-aa44-4b99-9c6d-d3b3c6ef0734"
+            ],
+            "properties": [
+                "e4c4cac8-aa44-4b99-9c6d-d3b3c6ef0734"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "250c6bb5-d43d-4516-849b-56e47246d95b"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "25969640-655a-4484-9f66-4d919b1403e8",
+            "type": {
+                "namespace": "medical",
+                "name": "taking"
+            },
+            "title": "Taking",
+            "description": "Association linking a patient and medication.",
+            "schemas": [],
+            "key": [
+                "14395b33-f0b3-4d1c-a415-cbcfb2ce3965",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "419348da-1353-47e6-921a-e5f92a71b18d",
+                "18d5e463-4421-45cc-b499-2603596b079e",
+                "6b947ce1-fc08-4534-8189-1034f39ec2ac",
+                "e439e1bd-16fd-4029-bc86-3d9776d6c70a",
+                "42e4ac4e-4634-45fa-a6d6-806d48b041be",
+                "14395b33-f0b3-4d1c-a415-cbcfb2ce3965",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "7c3bf67e-888f-472c-9555-119d7d91828e"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "0da18c64-1fe3-43a7-aca3-d8ebf01ddbde",
+            "type": {
+                "namespace": "publicsafety",
+                "name": "transportedtohospital"
+            },
+            "title": "Transported to (hosp.)",
+            "description": "Association linking a hospital with the entity (i.e., police dept.) transporting someone there.",
+            "schemas": [],
+            "key": [
+                "4c4ebaa2-f15a-49a2-ad60-c9e67d00a4fb",
+                "25431c60-6c26-4210-a422-569c5226ba7e"
+            ],
+            "properties": [
+                "4c4ebaa2-f15a-49a2-ad60-c9e67d00a4fb",
+                "25431c60-6c26-4210-a422-569c5226ba7e"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "69bd68de-7baa-4a9c-bd50-ed3d1e4047ae"
+        ],
+        "dst": [
+            "1a024fe2-693a-4cf2-95e9-7a18735ca3f2"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "44740981-b05c-43a1-91a7-e62e4737fe52",
+            "type": {
+                "namespace": "criminaljustice",
+                "name": "arrestedin"
+            },
+            "title": "Arrested In",
+            "description": "An arrest (associated with an incident, case, or booking)",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "c9309ba8-a674-48c5-bfee-8bb797f9fe31",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "c9309ba8-a674-48c5-bfee-8bb797f9fe31",
+                "c16ab352-3099-4579-b900-40d54fec44c6",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "1fe28610-d4f6-4608-99d4-0c2b6e805703",
+                "d673e32c-6e67-4885-8e30-47e98f6229f2",
+                "c228a9c8-e0f3-4bb0-8b09-78b2c6162caa",
+                "c97555a0-ed79-4944-a000-ab961da3ab48",
+                "4d5db4fe-a0c8-45f8-af6d-cd7cd4cab86c",
+                "7c0f56bb-e77c-4a2a-8e17-4542849aeeda",
+                "8ab6e5e1-9ef7-4e83-94f1-2ad685c75915",
+                "80c3ffc7-5a8a-4547-8d60-dfb0b06e92b4",
+                "30273603-b5be-4277-8ef3-a5540447ca5f",
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "8388b7cc-19eb-411f-9af1-57999eeb27e0",
+                "5d37978a-b658-462a-8903-4a9a2d2d69e3",
+                "88f6294a-8b73-45e3-a0ec-8ebfb75a930e",
+                "57d24585-7aec-43b7-b0f9-4162321366de",
+                "e6eafc89-f9e7-436b-b267-054854c4d564",
+                "4cc82f90-fb84-426d-acb0-530c96008b1d",
+                "1956bf5b-a597-4ba4-bcef-5b286ac83339"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "4c21bcc3-0d4c-40ba-95cd-275a763f94ef"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "a8611fa4-64cc-469f-a7ea-b6bcf4daf28c",
+            "type": {
+                "namespace": "health",
+                "name": "reported"
+            },
+            "title": "Reported (health)",
+            "description": "Linking a person/patient with various things they reported (medical history, allergies, etc.)",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "8e38aace-12f1-41fb-861d-f3af2d08df39",
+            "df6071bd-a585-47bb-8536-2a6fd5cb7adf",
+            "5b16b066-99a7-4dbc-81c3-2b10ea12929c"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "9ac9f941-6ba5-42ce-884c-a405d232bc3a",
+            "type": {
+                "namespace": "geo",
+                "name": "zonedwithin"
+            },
+            "title": "Zoned within",
+            "description": "Links together a call for service and a dispatch zone.",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "dst": [
+            "20ae81b5-7574-460f-89be-a66e10ffa67e"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "1f4bb5db-61a8-4ab3-b69b-eb783e038848",
+            "type": {
+                "namespace": "geo",
+                "name": "contactinfogiven"
+            },
+            "title": "Contact Information Given",
+            "description": "Contact information other than address, given to an entity such as a dispatcher.",
+            "schemas": [],
+            "key": [
+                "ff7c3f66-1904-481b-b7d7-56d8b331be00"
+            ],
+            "properties": [
+                "ff7c3f66-1904-481b-b7d7-56d8b331be00",
+                "ee34032c-9082-4535-af42-8d568683324f"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "16bc7a2a-0c8c-4c54-af73-41585c49a224"
+        ],
+        "dst": [
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "21a97a1d-3652-48f4-9176-a501e0f821e5",
+            "type": {
+                "namespace": "housing",
+                "name": "worksas"
+            },
+            "title": "Works as (is employee or personnel of)_deprecated",
+            "description": "Association between person and personnel/employee entity, noting when the person first started working with the agency or organization.",
+            "schemas": [],
+            "key": [
+                "e4c4cac8-aa44-4b99-9c6d-d3b3c6ef0734"
+            ],
+            "properties": [
+                "13925c02-f0ff-4052-9c09-161f39ea5ec2",
+                "e4c4cac8-aa44-4b99-9c6d-d3b3c6ef0734"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "57d33e0a-6c84-4447-9d36-d39fb19efa6f"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "0aab8372-2c95-4f8c-b67a-79066371365e",
+            "type": {
+                "namespace": "geo",
+                "name": "contactedat"
+            },
+            "title": "Contacted At",
+            "description": "Association linking person and contact info (excluding address).",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "620b3e07-7f85-4629-a075-7e8c6f7eb3cb",
+                "ee34032c-9082-4535-af42-8d568683324f",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "dst": [
+            "16bc7a2a-0c8c-4c54-af73-41585c49a224",
+            "a905d042-bea2-4e20-9959-c8eb3d096c70"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "afe9d19d-99c5-481c-867d-42f01ce8143b",
+            "type": {
+                "namespace": "criminaljustice",
+                "name": "bookedin"
+            },
+            "title": "Booking (assn.)",
+            "description": "A booking (associated with an incident, case, or jail stay).",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "c228a9c8-e0f3-4bb0-8b09-78b2c6162caa",
+                "c97555a0-ed79-4944-a000-ab961da3ab48",
+                "d673e32c-6e67-4885-8e30-47e98f6229f2",
+                "c16ab352-3099-4579-b900-40d54fec44c6",
+                "e7ea04e3-5047-4d9c-9bbe-b0bffe2c9cd1",
+                "5ef69814-cd40-4209-ba7a-04f966c2fd00",
+                "57d24585-7aec-43b7-b0f9-4162321366de",
+                "8ce79ba8-b498-460a-a1b3-325954bb6d4f",
+                "f7f01aa6-159a-435f-901b-44e62679bc51"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "415d008f-4310-4477-b333-404e6b11e537",
+            "e13743e7-babd-49a0-93e5-f93c8b7502cc"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "713885e6-566c-478c-a1c3-bc8a6d5e149e",
+            "type": {
+                "namespace": "economy",
+                "name": "worksas"
+            },
+            "title": "Works as (person to employment)",
+            "description": "Association between person and personnel/employee entity, noting when the person first started working with the agency or organization.",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "13925c02-f0ff-4052-9c09-161f39ea5ec2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867",
+            "57d33e0a-6c84-4447-9d36-d39fb19efa6f"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "85bf7f0d-40e5-40d4-a403-60557afeff1f",
+            "type": {
+                "namespace": "health",
+                "name": "assessedwith"
+            },
+            "title": "Assessed with (health)",
+            "description": "An assessment given to a person, including medical, health, and housing. NOTE this FQN will be changed to general.assessedwith later.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "0110384a-f7ff-4e81-bb17-ec761ef8cdd5",
+            "08f9f560-98b9-4804-a7b8-f286f4b144fb",
+            "22e9e2e6-59bb-449a-8ca3-e0123e8c1e6c",
+            "36121030-3743-4d73-9b53-300c179152d5",
+            "3c61180e-0371-4db8-a3b0-2fa9c284bff4",
+            "4d7ac46b-16d8-4ec1-ad7d-e4a83205674b",
+            "66f2624c-4e5a-4a9a-bcc5-882c93d9d05b",
+            "71cf1bcd-c011-48be-8bcd-687d35333faa",
+            "7229eb9e-f1bd-4bc9-b0aa-8de827ca968a",
+            "8333b42a-5a17-4e7c-a4c1-a02a2cf14969",
+            "8a52735a-bb15-42e2-95e3-c96076d03a44",
+            "9b09efad-9fa2-4841-8748-a2a7b09f4f23",
+            "dbd01c6f-42bb-46b1-9401-ac92c0592498",
+            "eeee9f35-ad1f-469e-ab0f-722edbe92256",
+            "00a44d15-3d6d-4695-84cc-c16da39666a8",
+            "b46056ce-067a-48ae-b492-f9fb3f76288c",
+            "0fd30ad2-caf7-434e-b60f-80cea7eb1a3b",
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219",
+            "8d713e79-21ff-41c3-9bcb-6d460f02a845",
+            "0d02fc2b-561d-4de9-ac14-611b54a99eb9",
+            "2150bad7-7c4f-47fc-9f9c-db6cbed102df",
+            "23c2552f-8cf1-4a3e-8a5e-4832061bfa4c"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "d7d4cff2-5b0d-4200-a35b-786fcdfe3bf5",
+            "type": {
+                "namespace": "general",
+                "name": "oversaw"
+            },
+            "title": "Oversaw",
+            "description": "Oversaw",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "aedf54dc-ba03-47b2-a010-91b17dee362a"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "ef0c2517-0ab1-48e4-a247-ef9812c4980c",
+            "type": {
+                "namespace": "lawenforcement",
+                "name": "arrestedin"
+            },
+            "title": "Arrested In (v1)",
+            "description": "Links together a person with an event they were arrested in.",
+            "schemas": [],
+            "key": [
+                "3b5c462d-af10-498f-bd12-5a9913754f29",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "2c030baf-6624-413a-b971-5dc8f6329108",
+                "3b5c462d-af10-498f-bd12-5a9913754f29",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "b3fbdeaa-b5c9-49fc-944c-67915a148905"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "6f440883-660f-41e7-95f3-d923361e2b21",
+            "type": {
+                "namespace": "justice",
+                "name": "chargedwith"
+            },
+            "title": "Charged With",
+            "description": "The law enforcement charges that were laid upon a person (association).",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5ba4ac95-8532-4c2c-8747-71268f7c5898",
+                "11ba7bf9-200e-4b04-b1e7-80b54359143f",
+                "1956bf5b-a597-4ba4-bcef-5b286ac83339",
+                "b916c940-9e7f-434d-b502-05fbdc2845b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "5386b226-1544-455f-b330-1107399b1ed2",
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "5386b226-1544-455f-b330-1107399b1ed2",
+            "c1d76f87-b32b-4b7f-b24f-5c4b1f30aa78"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "9b44a35d-d414-4f7e-929a-92175017b809",
+            "type": {
+                "namespace": "ol",
+                "name": "recordedby"
+            },
+            "title": "Recorded By",
+            "description": "Association linking data and the data collection tool, device, or collector. AKA logged by, collected by, etc.",
+            "schemas": [],
+            "key": [
+                "e90a306c-ee37-4cd1-8a0e-71ad5a180340",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "929bf616-8189-4550-9a41-6b1ba3c1ed50",
+                "1624fc2d-d221-48d2-a7b4-ee94f80a515b",
+                "e90a306c-ee37-4cd1-8a0e-71ad5a180340",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "06083695-aebe-4a56-9b98-da6013e93a5e",
+                "e8f9026a-2494-4749-84bb-1499cb7f215c"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "14923c22-ac79-4efb-b298-c54c698b84de"
+        ],
+        "dst": [
+            "58b3a5cd-8806-400e-b91d-5ae314063378"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "7d289eb5-44f7-4cf5-8c3d-ac7a1799b21a",
+            "type": {
+                "namespace": "ol",
+                "name": "enrolled"
+            },
+            "title": "Enrolled",
+            "description": "",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "70d2ff1c-2450-4a47-a954-a7641b7399ae",
+                "0011bbfe-d5d4-4f88-97a8-cdeb821deb6f",
+                "54f64f11-9c4d-4701-897b-630ffeb94a21",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "c2845f96-e252-491c-b49c-da0810d3deaa",
+            "type": {
+                "namespace": "general",
+                "name": "appearsin"
+            },
+            "title": "Appears In",
+            "description": "An association wherein one entity appears in another entity or event.",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5ef69814-cd40-4209-ba7a-04f966c2fd00",
+                "915df70e-ebe3-4b59-9d4e-59c0609a5577",
+                "f7af5fb1-92de-495d-ac01-d3ab82081eb8",
+                "39dc4d54-8fac-46ad-ae3d-e538123a9b30",
+                "15092289-b597-403a-b238-325ecdeb1974",
+                "c16ab352-3099-4579-b900-40d54fec44c6",
+                "919bfdc2-5da7-4e73-8418-081504e14309",
+                "21c3cfd0-db1c-4641-b248-b3fbd7142658",
+                "cdad2fdb-5696-4676-8afa-144f09aa011e",
+                "88626667-643d-4735-a2de-6471444f9b55",
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "736818e8-0ad9-4c83-8b53-3e00005fed2b",
+                "0b68c2cd-4c03-43e6-b1c8-fe6187b0eae3",
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "1256d3f4-2a83-44d0-8b1d-389803b28314"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "5386b226-1544-455f-b330-1107399b1ed2",
+            "7de3bc94-4571-4a3a-871f-3822e98ab60d",
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867",
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60",
+            "352f83ba-55bd-4a45-becc-e302667ab865"
+        ],
+        "dst": [
+            "161ca75e-8a16-41c1-8b02-7b1649c3a2d7",
+            "352f83ba-55bd-4a45-becc-e302667ab865",
+            "415d008f-4310-4477-b333-404e6b11e537",
+            "69bd68de-7baa-4a9c-bd50-ed3d1e4047ae",
+            "9c3153bb-e5e2-495c-88c4-fa4185cca7f8",
+            "4c21bcc3-0d4c-40ba-95cd-275a763f94ef",
+            "963b597b-b28d-4f59-b2e6-4d443499e464",
+            "c2bd25ed-cdec-41be-bf5d-a700902f84db"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "16c6c1f7-0428-4205-90f9-6d6c15ab4961",
+            "type": {
+                "namespace": "ol",
+                "name": "usedby"
+            },
+            "title": "Used By",
+            "description": "Association between an entity (AKAa device, data collection tool, object or other entity) and the person using it.",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "58b3a5cd-8806-400e-b91d-5ae314063378"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "80c86a96-0e3f-46eb-9fbb-60d9174566a5"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "96a79f1d-f70d-41e5-a0ee-a60cef3ad3c7",
+            "type": {
+                "namespace": "location",
+                "name": "MailsAt"
+            },
+            "title": "Mails At",
+            "description": "An association describe that location at which an entity mails",
+            "schemas": [],
+            "key": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "167c2511-b07f-416b-8e34-62b2a546d0e7",
+            "type": {
+                "namespace": "general",
+                "name": "occurredat"
+            },
+            "title": "Occurred At",
+            "description": "Links together a event with a location where it occurred.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "5386b226-1544-455f-b330-1107399b1ed2",
+            "7de3bc94-4571-4a3a-871f-3822e98ab60d",
+            "b3fbdeaa-b5c9-49fc-944c-67915a148905",
+            "963b597b-b28d-4f59-b2e6-4d443499e464",
+            "4c21bcc3-0d4c-40ba-95cd-275a763f94ef",
+            "352f83ba-55bd-4a45-becc-e302667ab865",
+            "e13743e7-babd-49a0-93e5-f93c8b7502cc"
+        ],
+        "dst": [
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60",
+            "e0aba7dd-8033-48d8-8336-89e942102709"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "1f9fdbe6-982f-48b1-a4f3-af1a75614fe3",
+            "type": {
+                "namespace": "justice",
+                "name": "resultsin"
+            },
+            "title": "Results In",
+            "description": "An association which describes that one entity results in another",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "dfc59ce4-576b-4d61-9515-dba20e0dca5c"
+        ],
+        "dst": [
+            "7de3bc94-4571-4a3a-871f-3822e98ab60d"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "558ecd39-ae52-4ab3-ba28-74d93e5ade6a",
+            "type": {
+                "namespace": "geo",
+                "name": "getsmailat"
+            },
+            "title": "Gets Mail At",
+            "description": "An association that describes a mailing address.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "8a9e7698-a16e-4134-b63b-b3a379d0290b",
+            "type": {
+                "namespace": "health",
+                "name": "assessedby"
+            },
+            "title": "Assessed By",
+            "description": "Association linking a patient and the medical staff who assessed them. NOTE this FQN will be changed to general.assessedby later.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "e9a0b4dc-5298-47c1-8837-20af172379a5",
+                "7b038634-a0b4-4ce1-a04f-85d1775937aa",
+                "e729bfaf-929e-498e-b953-d24656a168f6"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "c11a8547-1a2f-41d8-b983-cc568f0f83ac",
+            "type": {
+                "namespace": "geo",
+                "name": "locatedat"
+            },
+            "title": "Located At",
+            "description": "Links together a person with a location.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "f5628aca-71b2-40fe-ad66-374cb1f4d506"
+            ],
+            "properties": [
+                "25431c60-6c26-4210-a422-569c5226ba7e",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "f5628aca-71b2-40fe-ad66-374cb1f4d506"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "04db765f-7c68-409d-83ac-530aac1736a2",
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "0257769a-7b29-4ee3-9d64-dc2e7fcbab60"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "59268706-36ea-4ad1-99e2-7ad36dbf0345",
+            "type": {
+                "namespace": "general",
+                "name": "ScreenedBy"
+            },
+            "title": "Screened By",
+            "description": "Screened By",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219"
+        ],
+        "dst": [
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "31ac0fbf-ae3b-446f-a624-fdad9c9bf71a",
+            "type": {
+                "namespace": "general",
+                "name": "Screened"
+            },
+            "title": "Screened",
+            "description": "An association describe that location at which an entity mails",
+            "schemas": [],
+            "key": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "47fd73fe-d66e-4d12-8703-7b9fcba1ba3c",
+            "type": {
+                "namespace": "medical",
+                "name": "ReviewedBy"
+            },
+            "title": "Reviewed By",
+            "description": "Reviewed By",
+            "schemas": [],
+            "key": [
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6"
+            ],
+            "properties": [
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219",
+            "9bdfb9cd-a5ae-475d-a295-938888ced614"
+        ],
+        "dst": [
+            "e597fb05-7e70-438e-9026-bd5a93074a58"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "3841c20f-cfa9-4dd8-b75d-a33649afbceb",
+            "type": {
+                "namespace": "medical",
+                "name": "assessedwith_deprecated"
+            },
+            "title": "Assessed with (old)",
+            "description": "Medical assessments that a patient has been assessed with.",
+            "schemas": [],
+            "key": [
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "3e11f6cc-c8f5-4d3d-aea7-76a8e5269300",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "3e11f6cc-c8f5-4d3d-aea7-76a8e5269300",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "9bdfb9cd-a5ae-475d-a295-938888ced614",
+            "b46056ce-067a-48ae-b492-f9fb3f76288c"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "536f93ba-efd4-47b7-8b7c-51612cafd8c5",
+            "type": {
+                "namespace": "justice",
+                "name": "detailsof"
+            },
+            "title": "Details Of",
+            "description": "An association which describes that one entity provides details of another",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "2dbf1e58-e218-4211-965c-070b6c4388c9"
+        ],
+        "dst": [
+            "415d008f-4310-4477-b333-404e6b11e537"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "be4d46af-b5b6-468e-8c76-d3d897de4dd5",
+            "type": {
+                "namespace": "health",
+                "name": "insuredby"
+            },
+            "title": "Insured By",
+            "description": "Association linking a patient with insurance.",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "14acfc18-6d46-4ba2-a09d-3dc38c4c202b"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "3cc9e141-df51-4d12-aebf-716ebc613b65",
+            "type": {
+                "namespace": "criminaljustice",
+                "name": "initiated"
+            },
+            "title": "Initiated (cj)",
+            "description": "Association between a call for service (CFS) and a CFS origin.",
+            "schemas": [],
+            "key": [
+                "0d240f48-9347-46f7-a79e-b11ffdece2a8"
+            ],
+            "properties": [
+                "0d240f48-9347-46f7-a79e-b11ffdece2a8"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "461c2d06-d7d6-4b5d-aa9e-3d0a4f9a6b6d"
+        ],
+        "dst": [
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "fc310cd1-7ba8-462a-961e-b0d1070fff43",
+            "type": {
+                "namespace": "general",
+                "name": "employedby"
+            },
+            "title": "employedby",
+            "description": "An association linking person and employer",
+            "schemas": [],
+            "key": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "2cc4a88c-86f0-404c-b328-caf3ec7b9c66",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "20b7d73c-f569-4663-89fd-6b46699425e4",
+                "2cc4a88c-86f0-404c-b328-caf3ec7b9c66",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "04db765f-7c68-409d-83ac-530aac1736a2"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "eb5c2845-6089-4d31-a5bd-f83371444154",
+            "type": {
+                "namespace": "geo",
+                "name": "contactedat_deprecated"
+            },
+            "title": "Contacted at_deprecated",
+            "description": "Association linking person and contact info (excluding address).",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "620b3e07-7f85-4629-a075-7e8c6f7eb3cb",
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "ee34032c-9082-4535-af42-8d568683324f"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "dst": [
+            "16bc7a2a-0c8c-4c54-af73-41585c49a224",
+            "a905d042-bea2-4e20-9959-c8eb3d096c70"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "311a1e88-e1e2-4166-819d-52aa00f9e3d1",
+            "type": {
+                "namespace": "health",
+                "name": "referredby"
+            },
+            "title": "Referred by (health)",
+            "description": "An association linking a patient and referral information.",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "23f20ed7-e7b6-487d-8876-cbb552c2f62d",
+            "8f0eb3df-1a35-42a6-92f1-84474d9e118b"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "96b06ed5-98b0-42d0-964e-824953bc904f",
+            "type": {
+                "namespace": "general",
+                "name": "callreceivedby"
+            },
+            "title": "Call Received By (CFS to operator)",
+            "description": "\"Received by\" association connecting a call for service to an operator",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "0d240f48-9347-46f7-a79e-b11ffdece2a8"
+            ],
+            "properties": [
+                "0d240f48-9347-46f7-a79e-b11ffdece2a8"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "dst": [
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867",
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "533c7b58-116a-400f-a2df-08abbaa7eceb",
+            "type": {
+                "namespace": "justice",
+                "name": "TransportedBy"
+            },
+            "title": "Transported By",
+            "description": "Links together an officer with someone they are transporting",
+            "schemas": [],
+            "key": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "properties": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "594bafb7-58c4-4722-bcf5-f3f87c884dea",
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "23ab47df-b236-4188-ab93-a99e5e1ef69f",
+            "type": {
+                "namespace": "justice",
+                "name": "SearchedBy"
+            },
+            "title": "Searched By",
+            "description": "Links together an officer with someone they are searching",
+            "schemas": [],
+            "key": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "properties": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "594bafb7-58c4-4722-bcf5-f3f87c884dea",
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "19d53b9f-7f5a-4ad8-8f8c-8548032af2b3",
+            "type": {
+                "namespace": "publicsafety",
+                "name": "involvedin"
+            },
+            "title": "Involved in (cj)",
+            "description": "\"Involved in\" association. Links together a call for service and a vehicle.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "2080c6bb-5c37-4eb2-b629-3fe09b665d42"
+            ],
+            "properties": [
+                "2080c6bb-5c37-4eb2-b629-3fe09b665d42"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "03d89674-3a5f-4e3e-b619-2dd110022348"
+        ],
+        "dst": [
+            "963b597b-b28d-4f59-b2e6-4d443499e464"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "014aa343-58e4-4b7b-93e2-ae4c9035f6a0",
+            "type": {
+                "namespace": "demographics",
+                "name": "haskinties"
+            },
+            "title": "Has kin ties to",
+            "description": "Association linking an individual to a household.",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "6606dbf5-3823-457e-a0bd-adad141e46e0",
+                "c22b7629-4323-4d69-94fd-dae4d64df69c",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "ee29fb9e-dad9-4b9a-a93a-e30d0c488266"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "d0742bcc-2155-4b9e-824f-1d9fbda46bc8",
+            "type": {
+                "namespace": "person",
+                "name": "becomes"
+            },
+            "title": "Becomes (person to patient, suspect etc.)",
+            "description": "\"Becomes\" association connecting the general and more specific person-types (excluding employees).",
+            "schemas": [],
+            "key": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "481f59e4-e146-4963-a837-4f4e514df8b7"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "461c2d06-d7d6-4b5d-aa9e-3d0a4f9a6b6d",
+            "31814e3c-ef0b-437f-8b53-79ad5486c189"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "639269b8-95c2-420d-85e0-21121e51c85d",
+            "type": {
+                "namespace": "general",
+                "name": "Includes_deprecated"
+            },
+            "title": "Includes_deprecated",
+            "description": "An association where an entity includes another entity",
+            "schemas": [],
+            "key": [
+                "14395b33-f0b3-4d1c-a415-cbcfb2ce3965",
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "2b3c3c14-9e9f-4f0d-a6a6-72e0cb61e33b",
+                "3149240c-7b95-4bbb-81ae-53b8c741cc2a",
+                "3e11f6cc-c8f5-4d3d-aea7-76a8e5269300",
+                "4086d111-ab50-4da9-ac5a-a68b660548a4",
+                "51374bce-3c0d-4222-a057-000f670294e7",
+                "54c6076e-bac4-47fe-a19e-3ebd9da28519",
+                "59666069-adae-4974-b328-c96340c4af75",
+                "5c480eb6-f799-46d0-98ef-c5f43678a616",
+                "60067ff0-31bb-47d9-97f1-fd3b89e36045",
+                "60bcb7e1-297a-4631-bb69-11d54362fa6a",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6",
+                "937cad34-5c38-44bd-9a12-e5237fd57a21",
+                "aff55df1-9a46-4229-b17c-25e56c5ec3bc",
+                "d5b0adba-b10c-415e-b11b-06dd4cbfe273",
+                "dc583559-550f-40a3-8c89-81a6170ab636",
+                "e4460db5-2d4d-435d-a03b-30a5276088a3"
+            ],
+            "properties": [
+                "14395b33-f0b3-4d1c-a415-cbcfb2ce3965",
+                "1c92fc4e-942a-4e1e-8373-7350dcda0344",
+                "2b3c3c14-9e9f-4f0d-a6a6-72e0cb61e33b",
+                "3149240c-7b95-4bbb-81ae-53b8c741cc2a",
+                "3e11f6cc-c8f5-4d3d-aea7-76a8e5269300",
+                "4086d111-ab50-4da9-ac5a-a68b660548a4",
+                "51374bce-3c0d-4222-a057-000f670294e7",
+                "54c6076e-bac4-47fe-a19e-3ebd9da28519",
+                "59666069-adae-4974-b328-c96340c4af75",
+                "5c480eb6-f799-46d0-98ef-c5f43678a616",
+                "60067ff0-31bb-47d9-97f1-fd3b89e36045",
+                "60bcb7e1-297a-4631-bb69-11d54362fa6a",
+                "879f46a2-e432-4808-8829-98eeb2f9dcf6",
+                "937cad34-5c38-44bd-9a12-e5237fd57a21",
+                "aff55df1-9a46-4229-b17c-25e56c5ec3bc",
+                "d5b0adba-b10c-415e-b11b-06dd4cbfe273",
+                "dc583559-550f-40a3-8c89-81a6170ab636",
+                "e4460db5-2d4d-435d-a03b-30a5276088a3",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "78c7c6a0-b961-4f9e-9bb6-a508d6cee219",
+            "9bdfb9cd-a5ae-475d-a295-938888ced614",
+            "b46056ce-067a-48ae-b492-f9fb3f76288c",
+            "8d713e79-21ff-41c3-9bcb-6d460f02a845"
+        ],
+        "dst": [
+            "0110384a-f7ff-4e81-bb17-ec761ef8cdd5",
+            "08f9f560-98b9-4804-a7b8-f286f4b144fb",
+            "22e9e2e6-59bb-449a-8ca3-e0123e8c1e6c",
+            "23c2552f-8cf1-4a3e-8a5e-4832061bfa4c",
+            "36121030-3743-4d73-9b53-300c179152d5",
+            "4d7ac46b-16d8-4ec1-ad7d-e4a83205674b",
+            "5b16b066-99a7-4dbc-81c3-2b10ea12929c",
+            "66f2624c-4e5a-4a9a-bcc5-882c93d9d05b",
+            "71cf1bcd-c011-48be-8bcd-687d35333faa",
+            "7229eb9e-f1bd-4bc9-b0aa-8de827ca968a",
+            "7c3bf67e-888f-472c-9555-119d7d91828e",
+            "8333b42a-5a17-4e7c-a4c1-a02a2cf14969",
+            "8a52735a-bb15-42e2-95e3-c96076d03a44",
+            "9b09efad-9fa2-4841-8748-a2a7b09f4f23",
+            "dbd01c6f-42bb-46b1-9401-ac92c0592498",
+            "2150bad7-7c4f-47fc-9f9c-db6cbed102df",
+            "0d02fc2b-561d-4de9-ac14-611b54a99eb9"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "49ab0eb9-1129-4ea9-a987-868d5ad7255a",
+            "type": {
+                "namespace": "general",
+                "name": "consentedto"
+            },
+            "title": "Consented To",
+            "description": "Consented to",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "aedf54dc-ba03-47b2-a010-91b17dee362a"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "78b5c431-8533-4dde-931f-50489496989f",
+            "type": {
+                "namespace": "general",
+                "name": "called"
+            },
+            "title": "Called",
+            "description": "Association in which one entity called another.",
+            "schemas": [],
+            "key": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "cebc61bf-9052-4e11-99af-3aa3113688a8"
+            ],
+            "properties": [
+                "6675a7e8-2159-41b1-9431-4053690fa3c9",
+                "cebc61bf-9052-4e11-99af-3aa3113688a8"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "ed89706e-a4e4-44e4-983e-56035e2fd160"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "ba032771-413f-4d07-9730-a8f8d2fb06e2",
+            "type": {
+                "namespace": "justice",
+                "name": "leadsto"
+            },
+            "title": "Leads To",
+            "description": "An association linking an offense to eventual court case, sentencing, or conviction outcomes.",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "21f5b00c-284a-4b45-bc37-355649bbb4f0"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "5386b226-1544-455f-b330-1107399b1ed2",
+            "7de3bc94-4571-4a3a-871f-3822e98ab60d",
+            "c1d76f87-b32b-4b7f-b24f-5c4b1f30aa78"
+        ],
+        "dst": [
+            "ef890efc-3cfd-4de9-8788-aa2ec695235b",
+            "352f83ba-55bd-4a45-becc-e302667ab865"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "3c3d0caa-5311-4423-bcb1-62df8eaacee5",
+            "type": {
+                "namespace": "justice",
+                "name": "sentencedwith"
+            },
+            "title": "Sentenced With",
+            "description": "Association indicating that one entity was sentenced with another",
+            "schemas": [],
+            "key": [
+                "e4c4cac8-aa44-4b99-9c6d-d3b3c6ef0734"
+            ],
+            "properties": [
+                "e4c4cac8-aa44-4b99-9c6d-d3b3c6ef0734"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "e2de2838-5eb4-4ed9-9c08-52b51db712cd"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "e16171ac-26b6-4e85-8437-c6d65ca5f2d1",
+            "type": {
+                "namespace": "ol",
+                "name": "workson"
+            },
+            "title": "Works On / With",
+            "description": "",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "92a6a5c5-b4f1-40ce-ace9-be232acdce2a"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "80c86a96-0e3f-46eb-9fbb-60d9174566a5"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "34836b35-76b1-4ecf-b588-c22ad19e2378",
+            "type": {
+                "namespace": "general",
+                "name": "participatedin"
+            },
+            "title": "Participated in",
+            "description": "Association 'participated in'",
+            "schemas": [
+                {
+                    "namespace": "v2",
+                    "name": "v2"
+                }
+            ],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5260cfbd-bfa4-40c1-ade5-cd83cc9f99b2",
+                "92a6a5c5-b4f1-40ce-ace9-be232acdce2a"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "0d02fc2b-561d-4de9-ac14-611b54a99eb9",
+            "80c86a96-0e3f-46eb-9fbb-60d9174566a5"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "14c4ec7c-af16-4a55-991c-46d574f0ff6c",
+            "type": {
+                "namespace": "ol",
+                "name": "is"
+            },
+            "title": "Is (person to patient, suspect, employee etc.)",
+            "description": "\"Is\" association connecting the general and more specific person-types (including employees).",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "481f59e4-e146-4963-a837-4f4e514df8b7",
+                "bf828c73-2ea9-4d4e-be40-ae9702e64b21",
+                "92a6a5c5-b4f1-40ce-ace9-be232acdce2a",
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "5f122ec5-f8cd-4618-8bfa-3f387141616c"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867",
+            "31814e3c-ef0b-437f-8b53-79ad5486c189"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "777d2d40-4c67-4fe0-8954-08383bd4f02a",
+            "type": {
+                "namespace": "ol",
+                "name": "associatedwith"
+            },
+            "title": "Associated with",
+            "description": "An association linking a person and a vehicle.",
+            "schemas": [],
+            "key": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988"
+            ],
+            "properties": [
+                "ee3a7573-aa70-4afb-814d-3fad27cda988",
+                "43a6df96-1cb8-4daa-9a82-f9361b8777c7",
+                "5ea6e8d5-93bb-47cf-b054-9faaeb05fb27"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "03d89674-3a5f-4e3e-b619-2dd110022348"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "de895175-c50c-43e5-928b-284563335662",
+            "type": {
+                "namespace": "justice",
+                "name": "ArrestedBy"
+            },
+            "title": "Arrested By",
+            "description": "Links together an officer with the act of conducting an arrest",
+            "schemas": [],
+            "key": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "properties": [
+                "73224904-f769-47c6-85f0-d70c519b54cd",
+                "88f6294a-8b73-45e3-a0ec-8ebfb75a930e",
+                "474f6088-49b2-478a-93ef-2d9541858701"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "594bafb7-58c4-4722-bcf5-f3f87c884dea",
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "46eeda56-f986-4da2-9584-23512aa2fb41",
+            "type": {
+                "namespace": "justice",
+                "name": "ReleasedBy"
+            },
+            "title": "Released By",
+            "description": "Links together an officer with someone they are releasing",
+            "schemas": [],
+            "key": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "properties": [
+                "73224904-f769-47c6-85f0-d70c519b54cd"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "dst": [
+            "594bafb7-58c4-4722-bcf5-f3f87c884dea",
+            "1bbc14f8-06cf-4cb0-a103-68ba9df08867"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "7a4d2b22-7f39-4a54-986a-54abcb86f374",
+            "type": {
+                "namespace": "general",
+                "name": "calculatedfor"
+            },
+            "title": "Calculated For",
+            "description": "An association which describes that one entity was calculated for another",
+            "schemas": [],
+            "key": [
+                "6fbe7a73-c7c1-43d7-af64-28f2c1d53725"
+            ],
+            "properties": [
+                "6fbe7a73-c7c1-43d7-af64-28f2c1d53725"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "26e338e2-670f-4770-a1de-d6038a53957a",
+            "395da81a-0bf5-473d-92b3-11f47fdd5d9f",
+            "19bf1241-e6c0-4eee-af3d-9ef92756546c",
+            "35ba83eb-678e-422e-b4ca-2c51e28e713d",
+            "464c494d-e90b-4518-9733-d713f950fa6f"
+        ],
+        "dst": [
+            "26e338e2-670f-4770-a1de-d6038a53957a",
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab",
+            "9c3153bb-e5e2-495c-88c4-fa4185cca7f8",
+            "395da81a-0bf5-473d-92b3-11f47fdd5d9f",
+            "464c494d-e90b-4518-9733-d713f950fa6f"
+        ],
+        "bidirectional": false
+    },
+    {
+        "entityType": {
+            "id": "1c9601f9-7b37-44ae-a7a1-5b546952a08a",
+            "type": {
+                "namespace": "general",
+                "name": "editedby"
+            },
+            "title": "Edited By",
+            "description": "Association describing that one entity was edited by another.",
+            "schemas": [],
+            "key": [
+                "5ef69814-cd40-4209-ba7a-04f966c2fd00"
+            ],
+            "properties": [
+                "5ef69814-cd40-4209-ba7a-04f966c2fd00"
+            ],
+            "baseType": null,
+            "category": "AssociationType"
+        },
+        "src": [
+            "395da81a-0bf5-473d-92b3-11f47fdd5d9f",
+            "26e338e2-670f-4770-a1de-d6038a53957a",
+            "35ba83eb-678e-422e-b4ca-2c51e28e713d",
+            "464c494d-e90b-4518-9733-d713f950fa6f"
+        ],
+        "dst": [
+            "31cf5595-3fe9-4d3e-a9cf-39355a4b8cab"
+        ],
+        "bidirectional": false
+    }
+]
