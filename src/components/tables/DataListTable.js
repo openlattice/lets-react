@@ -35,27 +35,29 @@ type Props = {
 };
 
 export default function DataListTable(props :Props) {
-  console.log('DataListTable props', props);
   return (
     <div>
-      {props.listItems.map((item, index) => (
-        <ListItem
-            key={item.id}
-            onClick={() => {
-              props.setActiveItem(item.id, index);
-            }}>
-          <TitleLeft>
-            <section>
-              {item.title}
-            </section>
-          </TitleLeft>
-          <DescribeRight>
-            <section>
-              test
-            </section>
-          </DescribeRight>
-        </ListItem>
-      ))}
+      {props.listItems.map((item, index) => {
+        const data = item.entityType ? item.entityType : item;
+        return (
+          <ListItem
+              key={data.id}
+              onClick={() => {
+                props.setActiveItem(data.id, index);
+              }}>
+            <TitleLeft>
+              <section>
+                {data.title}
+              </section>
+            </TitleLeft>
+            <DescribeRight>
+              <section>
+                test
+              </section>
+            </DescribeRight>
+          </ListItem>
+        );
+      })}
     </div>
   );
 }
