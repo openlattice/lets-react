@@ -18,14 +18,6 @@ const TableHeader = styled.div`
     height: 30px;
     background: grey;
 `;
-type Props = {
-  actions :{
-    clickItem :() => void;
-    setActiveItem :() => void;
-  };
-  item :object;
-  listItems :object;
-};
 
 const Content = styled.div`
     height: 600px;
@@ -35,6 +27,15 @@ const Content = styled.div`
     bottom: 0px;
     overflow-y: scroll;
 `;
+
+type Props = {
+  actions :{
+    clickItem :() => void;
+    setActiveItem :() => void;
+  };
+  item :object;
+  listItems :object;
+};
 
 const EDMcontainer = (props :Props) => (
   <StyledCard>

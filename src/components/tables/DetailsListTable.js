@@ -13,8 +13,7 @@ type Props = {
 };
 
 export default function DetailsListTable(props :Props) {
-  // console.log('item props', props);
-  const { item } = props;
+  const item = props.item.entityType ? props.item.entityType : props.item;
   return (
     <div>
       <h1>

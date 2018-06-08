@@ -14,6 +14,8 @@ import EDMcontainer from './DataListTableContainer';
 import StyledButton from '../../components/buttons/StyledButton';
 import DetailsContainer from './DetailsListTableContainer';
 
+import { actionType } from '../../core/Constants/index';
+
 // const AppWrapper = styled.div`
 //   display: flex;
 //   flex-direction: column;
@@ -64,12 +66,18 @@ const TableHeader = styled.div`
     background: grey;
 `;
 
-const MainBody = () => (
+type Props = {
+    actions :{
+        setListItems :() => void;
+    };
+};
+
+const MainBody = (props :Props) => (
   <BodyWrapper>
     <NavBarWarp>
-      <StyledButton>PropertyTypes</StyledButton>
-      <StyledButton>EntityTypes</StyledButton>
-      <StyledButton>AssociationTypes</StyledButton>
+      <StyledButton onClick={props.actions.setListItems}>PropertyTypes</StyledButton>
+      <StyledButton onClick={props.actions.setListItems}>EntityTypes</StyledButton>
+      <StyledButton onClick={props.actions.setListItems}>AssociationTypes</StyledButton>
     </NavBarWarp>
     <TableContainer>
       <TableDiv>
@@ -82,10 +90,12 @@ const MainBody = () => (
   </BodyWrapper>
 );
 
+const setListItems = e => ({ type: actionType.UPDATE_LIST, value: e.target.innerText });
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
+    setListItems
     // getAllAssociationTypes,
     // getAllEntityTypes,
     // getAllPropertyTypes,
