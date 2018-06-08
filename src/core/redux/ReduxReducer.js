@@ -4,24 +4,13 @@
 
 // import { AuthReducer } from 'lattice-auth';
 import { combineReducers } from 'redux-immutable';
-
-// console.log(AuthReducer);
-
-// const INITIAL_STATE = { activeItem: 0 };
-
-// const activeItem = () => {
-//   console.log('not sure whats going on');
-//   // var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
-//   // var action = arguments[1];
-
-
-//   // switch (action.type) {
-
-//   // }
-// };
+import { actionType } from '../Constants/index';
 
 const activeItem = (state = [], action) => {
   switch (action.type) {
+    case actionType.UPDATE_ACTIVE_ITEM:
+      console.log('requested action', action);
+      return action.itemIndex;
     // case 'ADD_TODO':
     //   return [
     //     ...state,

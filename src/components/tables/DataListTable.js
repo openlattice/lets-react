@@ -5,8 +5,6 @@
 import React from 'react';
 import styled from 'styled-components';
 // import lattice from 'lattice';
-// import StyledCard from '../cards/StyledCard';
-// import property from '../../../testData/property.json';
 
 const ListItem = styled.div`
     display: flex;
@@ -32,7 +30,6 @@ const DescribeRight = styled.div`
 `;
 
 type Props = {
-  clickItem :() => void;
   listItems :object;
   setActiveItem :() => void;
 };
@@ -45,8 +42,7 @@ export default function DataListTable(props :Props) {
         <ListItem
             key={item.id}
             onClick={() => {
-              // props.clickItem(item.id, index);
-              props.setActiveItem();
+              props.setActiveItem(item.id, index);
             }}>
           <TitleLeft>
             <section>

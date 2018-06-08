@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
+import { actionType } from '../../core/Constants/index';
+
 import StyledCard from '../../components/cards/StyledCard';
 import DataListTable from '../../components/tables/DataListTable';
 
@@ -39,37 +41,17 @@ const EDMcontainer = (props :Props) => (
     <TableHeader />
     <Content>
       <DataListTable
-          clickItem={props.actions.clickItem}
           listItems={props.listItems}
           setActiveItem={props.actions.setActiveItem} />
     </Content>
   </StyledCard>
 );
 
-const clickItem = (id, index) => {
-  console.log('hi', id, index);
-};
-
-const setActiveItem = (a, b, c, d) => {
-  console.log('my setActiveItem action is triggered');
-  console.log('perams', arguments);
-  return { type: '', text: 'thing test' };
-  // arguments[1]({ type: '', text: 'hello' });
-  // arguments[3]
-  // if (getState().products.byId[productId].inventory > 0) {
-  //   dispatch(addToCartUnsafe(productId))
-  // }
-};
-
-const addTodo = text => ({
-  type: '',
-  text
-});
+const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
-    clickItem,
     setActiveItem
     // getAllAssociationTypes,
     // getAllEntityTypes,
