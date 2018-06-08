@@ -12,11 +12,6 @@ import { bindActionCreators } from 'redux';
 import StyledCard from '../../components/cards/StyledCard';
 import DetailsListTable from '../../components/tables/DetailsListTable';
 
-const TableHeader = styled.div`
-    height: 30px;
-    background: grey;
-`;
-
 const Content = styled.div`
     top: 50px;
     left: 0px;
@@ -63,7 +58,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
 }
 
 const mapStateToProps = (state :object, ownProps) => ({
-  item: state.get('property')[state.get('activeItem')]
+  item: state.get('listItems')[state.get('activeItem')]
 });
 
 export default withRouter(

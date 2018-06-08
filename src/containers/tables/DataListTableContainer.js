@@ -19,8 +19,10 @@ const TableHeader = styled.div`
 type Props = {
   actions :{
     clickItem :() => void;
+    setActiveItem :() => void;
   };
   item :object;
+  listItems :object;
 };
 
 const Content = styled.div`
@@ -37,7 +39,9 @@ const EDMcontainer = (props :Props) => (
     <TableHeader />
     <Content>
       <DataListTable
-          clickItem={props.actions.clickItem} />
+          clickItem={props.actions.clickItem}
+          listItems={props.listItems}
+          setActiveItem={props.actions.setActiveItem} />
     </Content>
   </StyledCard>
 );
@@ -46,10 +50,27 @@ const clickItem = (id, index) => {
   console.log('hi', id, index);
 };
 
+const setActiveItem = (a, b, c, d) => {
+  console.log('my setActiveItem action is triggered');
+  console.log('perams', arguments);
+  return { type: '', text: 'thing test' };
+  // arguments[1]({ type: '', text: 'hello' });
+  // arguments[3]
+  // if (getState().products.byId[productId].inventory > 0) {
+  //   dispatch(addToCartUnsafe(productId))
+  // }
+};
+
+const addTodo = text => ({
+  type: '',
+  text
+});
+
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
-    clickItem
+    clickItem,
+    setActiveItem
     // getAllAssociationTypes,
     // getAllEntityTypes,
     // getAllPropertyTypes,
@@ -62,7 +83,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
 }
 
 const mapStateToProps = (state :object, ownProps) => ({
-  item: { thing: 'yes' }
+  listItems: state.get('listItems')
 });
 
 export default withRouter(
