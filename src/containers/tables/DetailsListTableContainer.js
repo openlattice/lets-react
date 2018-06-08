@@ -12,11 +12,6 @@ import { bindActionCreators } from 'redux';
 import StyledCard from '../../components/cards/StyledCard';
 import DetailsListTable from '../../components/tables/DetailsListTable';
 
-const TableHeader = styled.div`
-    height: 30px;
-    background: grey;
-`;
-
 const Content = styled.div`
     top: 50px;
     left: 0px;
@@ -24,17 +19,33 @@ const Content = styled.div`
     bottom: 0px;
 `;
 
-const DetailsContainer = () => (
+type Props = {
+  actions :{
+    login :() => void;
+    logout :() => void;
+    clickItem :() => void;
+  };
+  item :object;
+};
+
+const DetailsContainer = (props :Props) => (
   <StyledCard>
     <Content>
-      <DetailsListTable />
+      <DetailsListTable
+          item={props.item}
+          clickItem={props.actions.clickItem} />
     </Content>
   </StyledCard>
 );
 
+const clickItem = () => {
+  console.log('hi');
+};
+
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
+    clickItem
     // getAllAssociationTypes,
     // getAllEntityTypes,
     // getAllPropertyTypes,
@@ -46,7 +57,11 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
+const mapStateToProps = (state :object, ownProps) => ({
+  item: state.get('listItems')[state.get('activeItem')]
+});
+
 export default withRouter(
-  connect(null, mapDispatchToProps)(DetailsContainer)
+  connect(mapStateToProps, mapDispatchToProps)(DetailsContainer)
 );
 

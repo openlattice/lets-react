@@ -5,10 +5,6 @@
 import React from 'react';
 import styled from 'styled-components';
 // import lattice from 'lattice';
-// import StyledCard from '../cards/StyledCard';
-import property from '../../../testData/property.json';
-
-console.log(property);
 
 const ListItem = styled.div`
     display: flex;
@@ -33,11 +29,21 @@ const DescribeRight = styled.div`
     overflow: hidden;
 `;
 
-export default function DataListTable() {
+type Props = {
+  listItems :object;
+  setActiveItem :() => void;
+};
+
+export default function DataListTable(props :Props) {
+  console.log('DataListTable props', props);
   return (
     <div>
-      {property.map(item => (
-        <ListItem key={item.id}>
+      {props.listItems.map((item, index) => (
+        <ListItem
+            key={item.id}
+            onClick={() => {
+              props.setActiveItem(item.id, index);
+            }}>
           <TitleLeft>
             <section>
               {item.title}

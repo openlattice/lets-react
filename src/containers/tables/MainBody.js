@@ -30,7 +30,7 @@ import DetailsContainer from './DetailsListTableContainer';
 //   position: relative;
 // `;
 
-const AppHeaderInnerWrapper = styled.div`
+const NavBarWarp = styled.div`
   align-items: center;
   background-color: #fefefe;
   border-bottom: 1px solid #c5d5e5;
@@ -41,22 +41,6 @@ const AppHeaderInnerWrapper = styled.div`
   justify-content: center;
   position: relative;
 `;
-
-// const Title = styled.h1`
-//   font-size: 28px;
-//   font-weight: normal;
-//   margin: 0;
-// `;
-
-// const StyledActionButton = StyledButton.extend`
-//   position: absolute;
-//   right: 50px;
-// `;
-
-// const Logo = styled.img`
-//   position: absolute;
-//   left: 50px;
-// `;
 
 const TableContainer = styled.div`
     max-width: 100%;
@@ -82,11 +66,11 @@ const TableHeader = styled.div`
 
 const MainBody = () => (
   <BodyWrapper>
-    <AppHeaderInnerWrapper>
-      <StyledButton />
-      <StyledButton />
-      <StyledButton />
-    </AppHeaderInnerWrapper>
+    <NavBarWarp>
+      <StyledButton>PropertyTypes</StyledButton>
+      <StyledButton>EntityTypes</StyledButton>
+      <StyledButton>AssociationTypes</StyledButton>
+    </NavBarWarp>
     <TableContainer>
       <TableDiv>
         <EDMcontainer />
@@ -97,6 +81,7 @@ const MainBody = () => (
     </TableContainer>
   </BodyWrapper>
 );
+
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
