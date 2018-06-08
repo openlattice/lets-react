@@ -24,17 +24,33 @@ const Content = styled.div`
     bottom: 0px;
 `;
 
-const DetailsContainer = () => (
+type Props = {
+  actions :{
+    login :() => void;
+    logout :() => void;
+    clickItem :() => void;
+  };
+  item :object;
+};
+
+const DetailsContainer = (props :Props) => (
   <StyledCard>
     <Content>
-      <DetailsListTable />
+      <DetailsListTable
+          item={props.item}
+          clickItem={props.actions.clickItem} />
     </Content>
   </StyledCard>
 );
 
+const clickItem = () => {
+  console.log('hi');
+};
+
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
+    clickItem
     // getAllAssociationTypes,
     // getAllEntityTypes,
     // getAllPropertyTypes,
@@ -46,7 +62,11 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
+const mapStateToProps = (state :object, ownProps) => ({
+  item: { thing: 'yes' }
+});
+
 export default withRouter(
-  connect(null, mapDispatchToProps)(DetailsContainer)
+  connect(mapStateToProps, mapDispatchToProps)(DetailsContainer)
 );
 

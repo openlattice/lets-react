@@ -16,6 +16,12 @@ const TableHeader = styled.div`
     height: 30px;
     background: grey;
 `;
+type Props = {
+  actions :{
+    clickItem :() => void;
+  };
+  item :object;
+};
 
 const Content = styled.div`
     height: 600px;
@@ -26,18 +32,24 @@ const Content = styled.div`
     overflow-y: scroll;
 `;
 
-const EDMcontainer = () => (
+const EDMcontainer = (props :Props) => (
   <StyledCard>
     <TableHeader />
     <Content>
-      <DataListTable />
+      <DataListTable
+          clickItem={props.actions.clickItem} />
     </Content>
   </StyledCard>
 );
 
+const clickItem = (id, index) => {
+  console.log('hi', id, index);
+};
+
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
+    clickItem
     // getAllAssociationTypes,
     // getAllEntityTypes,
     // getAllPropertyTypes,
@@ -49,7 +61,11 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
+const mapStateToProps = (state :object, ownProps) => ({
+  item: { thing: 'yes' }
+});
+
 export default withRouter(
-  connect(null, mapDispatchToProps)(EDMcontainer)
+  connect(mapStateToProps, mapDispatchToProps)(EDMcontainer)
 );
 

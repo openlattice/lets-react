@@ -33,11 +33,21 @@ const DescribeRight = styled.div`
     overflow: hidden;
 `;
 
-export default function DataListTable() {
+type Props = {
+  clickItem :() => void;
+  item :object;
+};
+
+export default function DataListTable(props :Props) {
+  console.log('props', props);
   return (
     <div>
-      {property.map(item => (
-        <ListItem key={item.id}>
+      {property.map((item, index) => (
+        <ListItem
+            key={item.id}
+            onClick={() => {
+              props.clickItem(item.id, index);
+            }}>
           <TitleLeft>
             <section>
               {item.title}
