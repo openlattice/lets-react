@@ -6,7 +6,6 @@ import React from 'react';
 // import styled from 'styled-components';
 // import lattice from 'lattice';
 // import StyledCard from '../cards/StyledCard';
-import property from '../../../testData/property.json';
 
 type Props = {
   clickItem :() => void;
@@ -14,8 +13,8 @@ type Props = {
 };
 
 export default function DetailsListTable(props :Props) {
-  console.log(props);
-  const item = property[0];
+  // console.log('item props', props);
+  const { item } = props;
   return (
     <div>
       <h1>

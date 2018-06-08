@@ -8,8 +8,6 @@ import styled from 'styled-components';
 // import StyledCard from '../cards/StyledCard';
 import property from '../../../testData/property.json';
 
-console.log(property);
-
 const ListItem = styled.div`
     display: flex;
     flex-direction: row;

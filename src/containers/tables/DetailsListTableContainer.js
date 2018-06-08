@@ -63,7 +63,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
 }
 
 const mapStateToProps = (state :object, ownProps) => ({
-  item: { thing: 'yes' }
+  item: state.get('property')[state.get('activeItem')]
 });
 
 export default withRouter(
