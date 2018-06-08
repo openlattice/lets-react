@@ -55,11 +55,14 @@ type Props = {
     actions :{
         setListItems :() => void;
     };
+    location :() => void;
 };
 
 const MainBody = (props :Props) => {
+
   const renderHelper = () => {
-    console.log('hi');
+    console.log('routing...');
+    props.actions.setListItems(props.location.pathname.slice(1));
     return (
       <TableContainer>
         <TableDiv>
@@ -71,17 +74,18 @@ const MainBody = (props :Props) => {
       </TableContainer>
     );
   };
+
   return (
     <BodyWrapper>
       <NavBarWarp>
         <Link to={Routes.PROPERTY}>
-          <StyledButton onClick={props.actions.setListItems}>PropertyTypes</StyledButton>
+          <StyledButton>PropertyTypes</StyledButton>
         </Link>
         <Link to={Routes.ENTITY}>
-          <StyledButton onClick={props.actions.setListItems}>EntityTypes</StyledButton>
+          <StyledButton>EntityTypes</StyledButton>
         </Link>
         <Link to={Routes.ASSOCIATION}>
-          <StyledButton onClick={props.actions.setListItems}>AssociationTypes</StyledButton>
+          <StyledButton>AssociationTypes</StyledButton>
         </Link>
       </NavBarWarp>
       <Switch>
@@ -93,16 +97,12 @@ const MainBody = (props :Props) => {
   );
 };
 
-const setListItems = e => ({ type: actionType.UPDATE_LIST, value: e.target.innerText });
+const setListItems = value => ({ type: actionType.UPDATE_LIST, value });
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
     setListItems
-    // getAllAssociationTypes,
-    // getAllEntityTypes,
-    // getAllPropertyTypes,
-    // getAllSchemas
   };
 
   return {

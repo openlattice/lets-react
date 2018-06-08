@@ -5,16 +5,14 @@
 // import { AuthReducer } from 'lattice-auth';
 import { combineReducers } from 'redux-immutable';
 import { actionType } from '../Constants/index';
-import PropertyTypes from '../../../testData/property.json';
-import EntityTypes from '../../../testData/entity.json';
-import AssociationTypes from '../../../testData/association.json';
-
-console.log(AssociationTypes);
+import property from '../../../testData/property.json';
+import entity from '../../../testData/entity.json';
+import association from '../../../testData/association.json';
 
 const types = {
-  PropertyTypes,
-  EntityTypes,
-  AssociationTypes
+  property,
+  entity,
+  association
 };
 
 const activeItem = (state = 0, action) => {
