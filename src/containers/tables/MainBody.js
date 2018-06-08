@@ -6,31 +6,16 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { NavLink, Redirect, Route, Switch, withRouter, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import StyledCard from '../../components/cards/StyledCard';
 import EDMcontainer from './DataListTableContainer';
 import StyledButton from '../../components/buttons/StyledButton';
 import DetailsContainer from './DetailsListTableContainer';
+import * as Routes from '../../core/router/Routes';
 
 import { actionType } from '../../core/Constants/index';
-
-// const AppWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   min-width: 800px;
-//   position: relative;
-// `;
-
-// const AppHeaderOuterWrapper = styled.header`
-//   display: flex;
-//   flex: 0 0 auto;
-//   flex-direction: row;
-//   min-width: 800px;
-//   position: relative;
-// `;
 
 const NavBarWarp = styled.div`
   align-items: center;
@@ -72,23 +57,41 @@ type Props = {
     };
 };
 
-const MainBody = (props :Props) => (
-  <BodyWrapper>
-    <NavBarWarp>
-      <StyledButton onClick={props.actions.setListItems}>PropertyTypes</StyledButton>
-      <StyledButton onClick={props.actions.setListItems}>EntityTypes</StyledButton>
-      <StyledButton onClick={props.actions.setListItems}>AssociationTypes</StyledButton>
-    </NavBarWarp>
-    <TableContainer>
-      <TableDiv>
-        <EDMcontainer />
-      </TableDiv>
-      <TableDiv>
-        <DetailsContainer />
-      </TableDiv>
-    </TableContainer>
-  </BodyWrapper>
-);
+const MainBody = (props :Props) => {
+  const renderHelper = () => {
+    console.log('hi');
+    return (
+      <TableContainer>
+        <TableDiv>
+          <EDMcontainer />
+        </TableDiv>
+        <TableDiv>
+          <DetailsContainer />
+        </TableDiv>
+      </TableContainer>
+    );
+  };
+  return (
+    <BodyWrapper>
+      <NavBarWarp>
+        <Link to={Routes.PROPERTY}>
+          <StyledButton onClick={props.actions.setListItems}>PropertyTypes</StyledButton>
+        </Link>
+        <Link to={Routes.ENTITY}>
+          <StyledButton onClick={props.actions.setListItems}>EntityTypes</StyledButton>
+        </Link>
+        <Link to={Routes.ASSOCIATION}>
+          <StyledButton onClick={props.actions.setListItems}>AssociationTypes</StyledButton>
+        </Link>
+      </NavBarWarp>
+      <Switch>
+        <Route path={Routes.PROPERTY} render={renderHelper} />
+        <Route path={Routes.ENTITY} render={renderHelper} />
+        <Route path={Routes.ASSOCIATION} render={renderHelper} />
+      </Switch>
+    </BodyWrapper>
+  );
+};
 
 const setListItems = e => ({ type: actionType.UPDATE_LIST, value: e.target.innerText });
 

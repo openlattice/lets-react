@@ -7,7 +7,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router';
+import { Redirect, Route, Switch, withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import MainBody from '../../containers/tables/MainBody';
 
@@ -104,4 +104,4 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default withRouter(connect(null, mapDispatchToProps)(AppContainer));
