@@ -6,7 +6,6 @@ import React from 'react';
 
 
 import styled from 'styled-components';
-import { AuthActionFactory } from 'lattice-auth';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -15,8 +14,6 @@ import MainBody from '../../containers/tables/MainBody';
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
 import * as Routes from '../../core/router/Routes';
-
-const { logout } = AuthActionFactory;
 
 /*
  * styled components
@@ -71,10 +68,7 @@ const Logo = styled.img`
  */
 
 type Props = {
-  actions :{
-    login :() => void;
-    logout :() => void;
-  };
+  clickLogoutMock :() => void;
 };
 
 const HelloWorldComponent = () => (
@@ -89,7 +83,7 @@ const AppContainer = (props :Props) => (
       <AppHeaderInnerWrapper>
         <Logo src={OpenLatticeLogo} height="50" />
         <Title>OpenLattice React App</Title>
-        <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+        <StyledActionButton onClick={props.clickLogoutMock}>Logout</StyledActionButton>
       </AppHeaderInnerWrapper>
     </AppHeaderOuterWrapper>
     <Switch>
@@ -99,10 +93,14 @@ const AppContainer = (props :Props) => (
   </AppWrapper>
 );
 
+const clickLogoutMock = () => {
+  alert('Why would you want to do that?');
+};
+
 function mapDispatchToProps(dispatch :Function) :Object {
 
   return {
-    actions: bindActionCreators({ logout }, dispatch)
+    clickLogoutMock
   };
 }
 
