@@ -33,7 +33,7 @@ type Props = {
     clickItem :() => void;
     setActiveItem :() => void;
   };
-  item :object;
+  activeItem :number;
   listItems :object;
 };
 
@@ -43,7 +43,8 @@ const EDMcontainer = (props :Props) => (
     <Content>
       <DataListTable
           listItems={props.listItems}
-          setActiveItem={props.actions.setActiveItem} />
+          setActiveItem={props.actions.setActiveItem}
+          activeItem={props.activeItem} />
     </Content>
   </StyledCard>
 );
@@ -54,10 +55,6 @@ function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
     setActiveItem
-    // getAllAssociationTypes,
-    // getAllEntityTypes,
-    // getAllPropertyTypes,
-    // getAllSchemas
   };
 
   return {
@@ -66,7 +63,8 @@ function mapDispatchToProps(dispatch :Function) :Object {
 }
 
 const mapStateToProps = (state :object, ownProps) => ({
-  listItems: state.get('listItems')
+  listItems: state.get('listItems'),
+  activeItem: state.get('activeItem')
 });
 
 export default withRouter(

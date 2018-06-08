@@ -3,9 +3,6 @@
  */
 
 import React from 'react';
-// import styled from 'styled-components';
-// import lattice from 'lattice';
-// import StyledCard from '../cards/StyledCard';
 
 type Props = {
   clickItem :() => void;

@@ -61,7 +61,6 @@ type Props = {
 const MainBody = (props :Props) => {
 
   const renderHelper = () => {
-    console.log('routing...');
     props.actions.setListItems(props.location.pathname.slice(1));
     return (
       <TableContainer>

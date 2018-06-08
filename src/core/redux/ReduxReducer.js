@@ -2,7 +2,6 @@
  * @flow
  */
 
-// import { AuthReducer } from 'lattice-auth';
 import { combineReducers } from 'redux-immutable';
 import { actionType } from '../Constants/index';
 import property from '../../../testData/property.json';
