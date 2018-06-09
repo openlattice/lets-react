@@ -39,11 +39,17 @@ const DetailsContainer = (props :Props) => (
 );
 const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
-const mapStateToProps = (state :object, ownProps) => ({
-  item: state.get('listItems')[state.get('activeItem')],
-  getDetails,
-  setActiveItem
-});
+const mapStateToProps = (state :object, ownProps) => {
+  const getThisList = state.get('listItems');
+  const fromState = state.get(getThisList);
+  const activeIndex = state.get('activeItem');
+  const item = fromState.length > activeIndex ? fromState[activeIndex] : [];
+  return ({
+    item,
+    getDetails,
+    setActiveItem
+  });
+};
 
 export default withRouter(
   connect(mapStateToProps, null)(DetailsContainer)
