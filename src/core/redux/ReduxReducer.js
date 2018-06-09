@@ -20,7 +20,7 @@ const activeItem = (state = 0, action) => {
       console.log('requested action', action);
       return action.itemIndex;
     default:
-      return 0;
+      return state;
   }
 };
 
@@ -29,7 +29,6 @@ const listItems = (state = [], action) => {
     case actionType.UPDATE_LIST:
       console.log('UPDATE_LIST', action);
       return types[action.value];
-      break;
     default:
       return state;
   }

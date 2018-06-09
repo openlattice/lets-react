@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 
 import StyledCard from '../../components/cards/StyledCard';
 import DetailsListTable from '../../components/tables/DetailsListTable';
+import { getDetails } from '../../utils/helperFunctions';
 
 const Content = styled.div`
     top: 50px;
@@ -20,11 +21,7 @@ const Content = styled.div`
 `;
 
 type Props = {
-  actions :{
-    login :() => void;
-    logout :() => void;
-    clickItem :() => void;
-  };
+  getDetails :() => void;
   item :object;
 };
 
@@ -33,23 +30,17 @@ const DetailsContainer = (props :Props) => (
     <Content>
       <DetailsListTable
           item={props.item}
-          clickItem={props.actions.clickItem} />
+          getDetails={props.getDetails} />
     </Content>
   </StyledCard>
 );
 
-const clickItem = () => {
-  console.log('hi');
-};
+// const fetchDetails = (text) => ({type: 'test', text})
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
-    clickItem
-    // getAllAssociationTypes,
-    // getAllEntityTypes,
-    // getAllPropertyTypes,
-    // getAllSchemas
+    getDetails
   };
 
   return {
@@ -58,7 +49,8 @@ function mapDispatchToProps(dispatch :Function) :Object {
 }
 
 const mapStateToProps = (state :object, ownProps) => ({
-  item: state.get('listItems')[state.get('activeItem')]
+  item: state.get('listItems')[state.get('activeItem')],
+  getDetails
 });
 
 export default withRouter(

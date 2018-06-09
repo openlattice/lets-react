@@ -4,30 +4,21 @@
 
 import React from 'react';
 import styled from 'styled-components';
-// import lattice from 'lattice';
-// ${props => props.small ? '0.25em 1em' : '0.5em 2em'}
-// ${this.props.active ? 'lightblue' : ''}
+
 const ListItem = styled.div`
     background: ${props => (props.active ? 'lightblue' : 'transparent')};
     display: flex;
     flex-direction: row;
-    font-size: 14px;
-    padding: 10px;
-    border-top: 1px solid rgb(197, 213, 229);
+    font-size: .9rem;
+    padding: .6rem;
+    border-top: 1px solid grey;
     &:hover {
       background: ${props => (props.active ? 'lightblue' : 'lightgrey')};
     }
 `;
 
-const TitleLeft = styled.div`
-  width: 70%;
-  text-overflow: clip;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-const DescribeRight = styled.div`
-  width: 30%;
+const Split = styled.div`
+  width: 50%;
   text-overflow: clip;
   white-space: nowrap;
   overflow: hidden;
@@ -40,6 +31,7 @@ type Props = {
 };
 
 export default function DataListTable(props :Props) {
+  console.log(props);
   return (
     <div>
       {props.listItems.map((item, index) => {
@@ -51,16 +43,16 @@ export default function DataListTable(props :Props) {
               onClick={() => {
                 props.setActiveItem(data.id, index);
               }}>
-            <TitleLeft>
+            <Split>
               <section>
                 {data.title}
               </section>
-            </TitleLeft>
-            <DescribeRight>
+            </Split>
+            <Split>
               <section>
-                  test
+                {`${data.type.namespace}.${data.type.name}`}
               </section>
-            </DescribeRight>
+            </Split>
           </ListItem>
         );
       })}
