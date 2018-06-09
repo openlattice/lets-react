@@ -8,8 +8,6 @@ import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 
-// import listItems from '../../../testData/property.json';
-
 import sagas from '../sagas/Sagas';
 import reduxReducer from './ReduxReducer';
 

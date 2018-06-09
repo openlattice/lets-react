@@ -2,43 +2,36 @@
  * @flow
  */
 
-import { fork, put, takeEvery, all, take, call } from 'redux-saga/effects';
+import { fork, put, call } from 'redux-saga/effects';
 import { actionType } from '../Constants';
-import { fetchData } from '../../api';
+import fetchData from '../../api';
 
 function* loadEntitySaga() {
-  console.log('starting: loadEntitySaga');
-  let data = yield call(fetchData.property);
-  data = data.slice(data.length - 5);
-  console.log('finished loading data:', data);
-  yield put({ type: actionType.LOADED_FETCH_ENTITY_DATA, data });
+  const data = yield call(fetchData('entity'));
+  // data = data.slice(data.length - 5);
+  // console.log('finished loading data:', data);
+  yield put({ type: actionType.FINISHED_FETCH_ENTITY_DATA, data });
 }
 
-function* loadEntitySaga() {
-  console.log('starting: loadEntitySaga');
-  let data = yield call(fetchData.property);
-  data = data.slice(data.length - 5);
-  console.log('finished loading data:', data);
-  yield put({ type: actionType.LOADED_FETCH_ENTITY_DATA, data });
+function* loadPropertySaga() {
+  const data = yield call(fetchData('property'));
+  // data = data.slice(data.length - 5);
+  // console.log('finished loading data property:', data);
+  yield put({ type: actionType.FINISHED_FETCH_PROPERTY_DATA, data });
+  yield put({ type: actionType.UPDATE_LIST, value: 'property' });
 }
 
-function* loadEntitySaga() {
-  console.log('starting: loadEntitySaga');
-  let data = yield call(fetchData.property);
-  data = data.slice(data.length - 5);
-  console.log('finished loading data:', data);
-  yield put({ type: actionType.LOADED_FETCH_ENTITY_DATA, data });
+function* loadAssociationSaga() {
+  const data = yield call(fetchData('association'));
+  // data = data.slice(data.length - 5);
+  // console.log('finished loading data:', data);
+  yield put({ type: actionType.FINISHED_FETCH_ASSOCIATION_DATA, data });
 }
-
-
-function* initialStateSaga() {
-  yield fork(loadEntitySaga);
-}
-
 
 export default function* sagas() :Generator<*, *, *> {
-
-  yield all([
-    initialStateSaga()
-  ]);
+  yield [
+    fork(loadEntitySaga),
+    fork(loadPropertySaga),
+    fork(loadAssociationSaga)
+  ];
 }

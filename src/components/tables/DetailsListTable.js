@@ -38,7 +38,7 @@ export default function DetailsListTable(props :Props) {
   // console.log('DetailsListTable has props:', props);
   const item = props.item.entityType ? props.item.entityType : props.item;
   const details = props.item.entityType ? props.getDetails(props.item) : null;
-
+  if (props.item.length < 1) return <div>waiting</div>;
   return (
     <div>
       <h1>

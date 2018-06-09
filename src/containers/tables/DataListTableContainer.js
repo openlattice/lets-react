@@ -63,7 +63,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
 }
 
 const mapStateToProps = (state :object, ownProps) => ({
-  listItems: state.get('listItems'),
+  listItems: state.get(state.get('listItems')),
   activeItem: state.get('activeItem')
 });
 

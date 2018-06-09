@@ -4,20 +4,11 @@
 
 import { combineReducers } from 'redux-immutable';
 import { actionType } from '../Constants/index';
-import property from '../../../testData/property.json';
-import entity from '../../../testData/entity.json';
-import association from '../../../testData/association.json';
-
-const types = {
-  property,
-  entity,
-  association
-};
 
 const activeItem = (state = 0, action) => {
   switch (action.type) {
     case actionType.UPDATE_ACTIVE_ITEM:
-      // console.log('requested action', action);
+      // console.log(actionType.UPDATE_ACTIVE_ITEM, action);
       return action.itemIndex;
     default:
       return state;
@@ -25,14 +16,10 @@ const activeItem = (state = 0, action) => {
 };
 
 const listItems = (state = [], action) => {
-  // return entity;
   switch (action.type) {
     case actionType.UPDATE_LIST:
-      console.log('UPDATE_LIST', action);
-      return types[action.value];
-    case actionType.LOADED_FETCH_ENTITY_DATA:
-      console.log('LOADED_FETCH_DATA', action);
-      return action.data;
+      // console.log(actionType.UPDATE_LIST, action);
+      return `${action.value}Data`;
     default:
       return state;
   }
@@ -40,20 +27,29 @@ const listItems = (state = [], action) => {
 
 const entityData = (state = [], action) => {
   switch (action.type) {
-    case actionType.LOADED_FETCH_ENTITY_DATA:
+    case actionType.FINISHED_FETCH_ENTITY_DATA:
+      // console.log(actionType.FINISHED_FETCH_ENTITY_DATA, action);
       return action.data;
+    default:
+      return state;
   }
 };
 const propertyData = (state = [], action) => {
   switch (action.type) {
-    case actionType.LOADED_FETCH_PROPERTY_DATA:
+    case actionType.FINISHED_FETCH_PROPERTY_DATA:
+      // console.log(actionType.FINISHED_FETCH_PROPERTY_DATA, action);
       return action.data;
+    default:
+      return state;
   }
 };
 const associationData = (state = [], action) => {
   switch (action.type) {
-    case actionType.LOADED_FETCH_ASSOCIATION_DATA:
+    case actionType.FINISHED_FETCH_ASSOCIATION_DATA:
+      // console.log(actionType.FINISHED_FETCH_ASSOCIATION_DATA, action);
       return action.data;
+    default:
+      return state;
   }
 };
 
