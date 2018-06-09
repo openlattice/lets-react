@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { NavLink, Redirect, Route, Switch, withRouter, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import StyledCard from '../../components/cards/StyledCard';
 import EDMcontainer from './DataListTableContainer';
 import StyledButton from '../../components/buttons/StyledButton';
 import DetailsContainer from './DetailsListTableContainer';
@@ -54,6 +53,7 @@ const TableHeader = styled.div`
 type Props = {
     actions :{
         setListItems :() => void;
+        setActiveItem :() => void;
     };
     location :() => void;
 };
@@ -62,6 +62,8 @@ const MainBody = (props :Props) => {
 
   const renderHelper = () => {
     props.actions.setListItems(props.location.pathname.slice(1));
+    props.actions.setActiveItem('', 0);
+
     return (
       <TableContainer>
         <TableDiv>
@@ -97,11 +99,13 @@ const MainBody = (props :Props) => {
 };
 
 const setListItems = value => ({ type: actionType.UPDATE_LIST, value });
+const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
-    setListItems
+    setListItems,
+    setActiveItem
   };
 
   return {

@@ -3,26 +3,7 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
-
-const ListItem = styled.div`
-    background: ${props => (props.active ? 'lightblue' : 'transparent')};
-    display: flex;
-    flex-direction: row;
-    font-size: .9rem;
-    padding: .6rem;
-    border-top: 1px solid grey;
-    &:hover {
-      background: ${props => (props.active ? 'lightblue' : 'lightgrey')};
-    }
-`;
-
-const Split = styled.div`
-  width: 50%;
-  text-overflow: clip;
-  white-space: nowrap;
-  overflow: hidden;
-`;
+import { ListItem, Split } from './BasicTable';
 
 type Props = {
   activeItem :number;
@@ -31,7 +12,6 @@ type Props = {
 };
 
 export default function DataListTable(props :Props) {
-  console.log(props);
   return (
     <div>
       {props.listItems.map((item, index) => {

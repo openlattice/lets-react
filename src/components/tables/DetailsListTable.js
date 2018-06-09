@@ -3,27 +3,42 @@
  */
 
 import React from 'react';
+// import { ListItem, Split } from './BasicTable';
+import styled from 'styled-components';
+import DataListTable from './DataListTable';
+
+const ExpandedDetailsWrapper = styled.div`
+  height: 20px;
+  width: 20px;
+  background: blue;
+`;
+
+const expandDetails = () => {
+  console.log('expandingDetails');
+  return <ExpandedDetailsWrapper />;
+};
+
+const makeTable = (title :string, section :object) => (
+  <div key={title}>
+    <h2>{title}</h2>
+    <DataListTable
+        listItems={section}
+        setActiveItem={expandDetails}
+        activeItem={NaN} />
+  </div>
+);
 
 type Props = {
-  clickItem :() => void;
   getDetails :() => void;
+  setActiveItem :() => void;
   item :object;
 };
 
-const tables = (item) => {
-  console.log('make');
-  return (
-    <div>
-      temp
-    </div>
-  );
-};
-
 export default function DetailsListTable(props :Props) {
-  console.log('DetailsListTable', props);
+  // console.log('DetailsListTable has props:', props);
   const item = props.item.entityType ? props.item.entityType : props.item;
   const details = props.item.entityType ? props.getDetails(props.item) : null;
-  console.log('details', details);
+
   return (
     <div>
       <h1>
@@ -45,7 +60,9 @@ export default function DetailsListTable(props :Props) {
         Description
       </h2>
       {item.description.length > 0 ? item.description : 'None'}
-      {props.item.entityType ? '' : ''}
+      {details ?
+        <div>{Object.keys(details).map(section => makeTable(section, details[section]))}</div>
+        : null}
     </div>
   );
 }

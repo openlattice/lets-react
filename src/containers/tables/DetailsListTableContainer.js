@@ -7,7 +7,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
+
+import { actionType } from '../../core/Constants/index';
 
 import StyledCard from '../../components/cards/StyledCard';
 import DetailsListTable from '../../components/tables/DetailsListTable';
@@ -22,6 +23,7 @@ const Content = styled.div`
 
 type Props = {
   getDetails :() => void;
+  setActiveItem :() => void;
   item :object;
 };
 
@@ -30,30 +32,20 @@ const DetailsContainer = (props :Props) => (
     <Content>
       <DetailsListTable
           item={props.item}
-          getDetails={props.getDetails} />
+          getDetails={props.getDetails}
+          setActiveItem={props.setActiveItem} />
     </Content>
   </StyledCard>
 );
-
-// const fetchDetails = (text) => ({type: 'test', text})
-
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  const actions = {
-    getDetails
-  };
-
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
+const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
 const mapStateToProps = (state :object, ownProps) => ({
   item: state.get('listItems')[state.get('activeItem')],
-  getDetails
+  getDetails,
+  setActiveItem
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(DetailsContainer)
+  connect(mapStateToProps, null)(DetailsContainer)
 );
 

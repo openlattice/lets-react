@@ -17,7 +17,7 @@ const types = {
 const activeItem = (state = 0, action) => {
   switch (action.type) {
     case actionType.UPDATE_ACTIVE_ITEM:
-      console.log('requested action', action);
+      // console.log('requested action', action);
       return action.itemIndex;
     default:
       return state;
@@ -27,7 +27,7 @@ const activeItem = (state = 0, action) => {
 const listItems = (state = [], action) => {
   switch (action.type) {
     case actionType.UPDATE_LIST:
-      console.log('UPDATE_LIST', action);
+      // console.log('UPDATE_LIST', action);
       return types[action.value];
     default:
       return state;
