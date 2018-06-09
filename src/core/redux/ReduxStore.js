@@ -8,7 +8,7 @@ import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 
-import listItems from '../../../testData/property.json';
+// import listItems from '../../../testData/property.json';
 
 import sagas from '../sagas/Sagas';
 import reduxReducer from './ReduxReducer';
@@ -36,7 +36,7 @@ export default function initializeReduxStore(routerHistory :any) :Object {
 
   const reduxStore = createStore(
     reduxReducer,
-    Immutable.Map({ listItems, activeItem: 0 }),
+    Immutable.Map(),
     composeEnhancers(...reduxEnhancers)
   );
 

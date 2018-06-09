@@ -93,6 +93,7 @@ const MainBody = (props :Props) => {
         <Route path={Routes.PROPERTY} render={renderHelper} />
         <Route path={Routes.ENTITY} render={renderHelper} />
         <Route path={Routes.ASSOCIATION} render={renderHelper} />
+        <Redirect to={Routes.PROPERTY} />
       </Switch>
     </BodyWrapper>
   );

@@ -7,8 +7,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch, withRouter } from 'react-router';
-import MainBody from '../../containers/tables/MainBody';
 
+import MainBody from '../../containers/tables/MainBody';
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
 import * as Routes from '../../core/router/Routes';
