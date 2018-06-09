@@ -6,31 +6,15 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { NavLink, Redirect, Route, Switch, withRouter, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import StyledCard from '../../components/cards/StyledCard';
 import EDMcontainer from './DataListTableContainer';
 import StyledButton from '../../components/buttons/StyledButton';
 import DetailsContainer from './DetailsListTableContainer';
+import * as Routes from '../../core/router/Routes';
 
 import { actionType } from '../../core/Constants/index';
-
-// const AppWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   min-width: 800px;
-//   position: relative;
-// `;
-
-// const AppHeaderOuterWrapper = styled.header`
-//   display: flex;
-//   flex: 0 0 auto;
-//   flex-direction: row;
-//   min-width: 800px;
-//   position: relative;
-// `;
 
 const NavBarWarp = styled.div`
   align-items: center;
@@ -69,37 +53,59 @@ const TableHeader = styled.div`
 type Props = {
     actions :{
         setListItems :() => void;
+        setActiveItem :() => void;
     };
+    location :() => void;
 };
 
-const MainBody = (props :Props) => (
-  <BodyWrapper>
-    <NavBarWarp>
-      <StyledButton onClick={props.actions.setListItems}>PropertyTypes</StyledButton>
-      <StyledButton onClick={props.actions.setListItems}>EntityTypes</StyledButton>
-      <StyledButton onClick={props.actions.setListItems}>AssociationTypes</StyledButton>
-    </NavBarWarp>
-    <TableContainer>
-      <TableDiv>
-        <EDMcontainer />
-      </TableDiv>
-      <TableDiv>
-        <DetailsContainer />
-      </TableDiv>
-    </TableContainer>
-  </BodyWrapper>
-);
+const MainBody = (props :Props) => {
 
-const setListItems = e => ({ type: actionType.UPDATE_LIST, value: e.target.innerText });
+  const renderHelper = () => {
+    props.actions.setListItems(props.location.pathname.slice(1));
+    props.actions.setActiveItem('', 0);
+
+    return (
+      <TableContainer>
+        <TableDiv>
+          <EDMcontainer />
+        </TableDiv>
+        <TableDiv>
+          <DetailsContainer />
+        </TableDiv>
+      </TableContainer>
+    );
+  };
+
+  return (
+    <BodyWrapper>
+      <NavBarWarp>
+        <Link to={Routes.PROPERTY}>
+          <StyledButton>PropertyTypes</StyledButton>
+        </Link>
+        <Link to={Routes.ENTITY}>
+          <StyledButton>EntityTypes</StyledButton>
+        </Link>
+        <Link to={Routes.ASSOCIATION}>
+          <StyledButton>AssociationTypes</StyledButton>
+        </Link>
+      </NavBarWarp>
+      <Switch>
+        <Route path={Routes.PROPERTY} render={renderHelper} />
+        <Route path={Routes.ENTITY} render={renderHelper} />
+        <Route path={Routes.ASSOCIATION} render={renderHelper} />
+      </Switch>
+    </BodyWrapper>
+  );
+};
+
+const setListItems = value => ({ type: actionType.UPDATE_LIST, value });
+const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
-    setListItems
-    // getAllAssociationTypes,
-    // getAllEntityTypes,
-    // getAllPropertyTypes,
-    // getAllSchemas
+    setListItems,
+    setActiveItem
   };
 
   return {

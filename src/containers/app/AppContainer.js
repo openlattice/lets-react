@@ -4,11 +4,9 @@
 
 import React from 'react';
 
-
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router';
-import { bindActionCreators } from 'redux';
+import { Redirect, Route, Switch, withRouter } from 'react-router';
 import MainBody from '../../containers/tables/MainBody';
 
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
@@ -71,23 +69,19 @@ type Props = {
   clickLogoutMock :() => void;
 };
 
-const HelloWorldComponent = () => (
-  <div>
-    <MainBody />
-  </div>
-);
-
 const AppContainer = (props :Props) => (
   <AppWrapper>
     <AppHeaderOuterWrapper>
       <AppHeaderInnerWrapper>
         <Logo src={OpenLatticeLogo} height="50" />
         <Title>OpenLattice React App</Title>
-        <StyledActionButton onClick={props.clickLogoutMock}>Logout</StyledActionButton>
+        <StyledActionButton onClick={props.clickLogoutMock}>
+          Logout
+        </StyledActionButton>
       </AppHeaderInnerWrapper>
     </AppHeaderOuterWrapper>
     <Switch>
-      <Route path={Routes.ROOT} component={HelloWorldComponent} />
+      <Route path={Routes.ROOT} component={MainBody} />
       <Redirect to={Routes.ROOT} />
     </Switch>
   </AppWrapper>
@@ -97,11 +91,4 @@ const clickLogoutMock = () => {
   alert('Why would you want to do that?');
 };
 
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  return {
-    clickLogoutMock
-  };
-}
-
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default withRouter(connect(null, { clickLogoutMock })(AppContainer));

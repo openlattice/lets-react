@@ -34,10 +34,6 @@ export default function initializeReduxStore(routerHistory :any) :Object {
     : compose;
   /* eslint-enable */
 
-  // const updateStore = () => {
-  //   console.log('storeupdate in the place')
-  // }
-
   const reduxStore = createStore(
     reduxReducer,
     Immutable.Map({ listItems, activeItem: 0 }),

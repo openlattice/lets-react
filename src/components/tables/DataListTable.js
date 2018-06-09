@@ -3,33 +3,10 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
-// import lattice from 'lattice';
-
-const ListItem = styled.div`
-    display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    -webkit-box-pack: start;
-    padding: 10px;
-    border-top: 1px solid rgb(197, 213, 229);
-`;
-
-const TitleLeft = styled.div`
-  width: 70%;
-      text-overflow: clip;
-    white-space: nowrap;
-    overflow: hidden;
-`;
-
-const DescribeRight = styled.div`
-  width: 30%;
-      text-overflow: clip;
-    white-space: nowrap;
-    overflow: hidden;
-`;
+import { ListItem, Split } from './BasicTable';
 
 type Props = {
+  activeItem :number;
   listItems :object;
   setActiveItem :() => void;
 };
@@ -41,20 +18,21 @@ export default function DataListTable(props :Props) {
         const data = item.entityType ? item.entityType : item;
         return (
           <ListItem
+              active={index === props.activeItem}
               key={data.id}
               onClick={() => {
                 props.setActiveItem(data.id, index);
               }}>
-            <TitleLeft>
+            <Split>
               <section>
                 {data.title}
               </section>
-            </TitleLeft>
-            <DescribeRight>
+            </Split>
+            <Split>
               <section>
-                test
+                {`${data.type.namespace}.${data.type.name}`}
               </section>
-            </DescribeRight>
+            </Split>
           </ListItem>
         );
       })}

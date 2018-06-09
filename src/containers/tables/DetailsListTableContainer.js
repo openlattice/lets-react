@@ -7,10 +7,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
+
+import { actionType } from '../../core/Constants/index';
 
 import StyledCard from '../../components/cards/StyledCard';
 import DetailsListTable from '../../components/tables/DetailsListTable';
+import { getDetails } from '../../utils/helperFunctions';
 
 const Content = styled.div`
     top: 50px;
@@ -20,11 +22,8 @@ const Content = styled.div`
 `;
 
 type Props = {
-  actions :{
-    login :() => void;
-    logout :() => void;
-    clickItem :() => void;
-  };
+  getDetails :() => void;
+  setActiveItem :() => void;
   item :object;
 };
 
@@ -33,35 +32,20 @@ const DetailsContainer = (props :Props) => (
     <Content>
       <DetailsListTable
           item={props.item}
-          clickItem={props.actions.clickItem} />
+          getDetails={props.getDetails}
+          setActiveItem={props.setActiveItem} />
     </Content>
   </StyledCard>
 );
-
-const clickItem = () => {
-  console.log('hi');
-};
-
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  const actions = {
-    clickItem
-    // getAllAssociationTypes,
-    // getAllEntityTypes,
-    // getAllPropertyTypes,
-    // getAllSchemas
-  };
-
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
+const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
 const mapStateToProps = (state :object, ownProps) => ({
-  item: state.get('listItems')[state.get('activeItem')]
+  item: state.get('listItems')[state.get('activeItem')],
+  getDetails,
+  setActiveItem
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(DetailsContainer)
+  connect(mapStateToProps, null)(DetailsContainer)
 );
 
