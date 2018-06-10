@@ -2,9 +2,6 @@
  * @flow
  */
 
-import entity from '../../testData/entity.json';
-import property from '../../testData/property.json';
-
 export function getDetails(association :object) {
   const details = {};
 
