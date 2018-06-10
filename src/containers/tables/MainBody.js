@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import EDMcontainer from './DataListTableContainer';
 import DetailsContainer from './DetailsListTableContainer';
 import * as Routes from '../../core/router/Routes';
+import reduxActions from '../../core/redux/ReduxActions';
 import { actionType, colors } from '../../core/Constants/index';
 
 const NavBarWarp = styled.div`
@@ -69,8 +70,6 @@ type Props = {
 };
 
 const MainBody = (props :Props) => {
-
-  console.log('MainBody props:', props);
   const currentPage = props.location.pathname.slice(1);
 
   props.actions.setListItems(currentPage);
@@ -90,7 +89,7 @@ const MainBody = (props :Props) => {
   return (
     <BodyWrapper>
       <NavBarWarp>
-        <Link to={Routes.PROPERTY} >
+        <Link to={Routes.PROPERTY}>
           <Padding className={currentPage === 'property' ? 'active' : 'passive'}>
             <li>PropertyTypes</li>
           </Padding>
@@ -116,14 +115,17 @@ const MainBody = (props :Props) => {
   );
 };
 
-const setListItems = value => ({ type: actionType.UPDATE_LIST, value });
-const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
+const setListItems = (value) => {
+  console.log('setListItems in MainBody');
+  return ({ type: actionType.UPDATE_LIST, value });
+};
+// const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   const actions = {
     setListItems,
-    setActiveItem
+    setActiveItem: reduxActions.setActiveItem
   };
 
   return {
