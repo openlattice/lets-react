@@ -21,36 +21,3 @@ export const colors = {
   BAR: '#EEEEF8'
 };
 
-// gainsboro - lighter light grey
-// darksalmon - darker pink
-// floralwhite
-// darkseagreen
-// aliceblue
-// blanchedalmond - light salmon
-// powderblue
-// ghostwhite
-// honeydew
-// ivory
-// lavender
-// lavenderblush
-// lightgoldenrodyellow
-// #BA5F9E - logo red
-  // (186,95,158)
-// #F1DFEB - light version of logo red
-// #3B95D4 - logo blue
-  // (59,149,212)
-// #D7E9F6 - light version of logo blue
-
-// gradiant
-// linear-gradient(to right, red , yellow)
-
-// #ED66B1 - pink button
-// #FEF050 - yellow important
-// #3FA3F8 - blue outlines
-// #666A72 - grey font
-// #BBABA8 - off grey font
-// #DADADA - sub divider grey
-// #BD88F8 - light pink
-// #5537DA - purple
-// #EEEEF8 - box color pink grey
-
