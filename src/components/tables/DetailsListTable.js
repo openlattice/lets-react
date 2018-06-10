@@ -4,18 +4,18 @@
 
 import React from 'react';
 // import { ListItem, Split } from './BasicTable';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import DataListTable from './DataListTable';
 
-const ExpandedDetailsWrapper = styled.div`
-  height: 20px;
-  width: 20px;
-  background: blue;
-`;
+// const ExpandedDetailsWrapper = styled.div`
+//   height: 20px;
+//   width: 20px;
+//   background: blue;
+// `;
 
 const expandDetails = () => {
   console.log('expandingDetails');
-  return <ExpandedDetailsWrapper />;
+  // return <ExpandedDetailsWrapper />;
 };
 
 const makeTable = (title :string, section :object) => (
@@ -35,10 +35,11 @@ type Props = {
 };
 
 export default function DetailsListTable(props :Props) {
-  // console.log('DetailsListTable has props:', props);
   const item = props.item.entityType ? props.item.entityType : props.item;
   const details = props.item.entityType ? props.getDetails(props.item) : null;
-  if (props.item.length < 1) return <div>waiting</div>;
+
+  if (props.item.length < 1) return <div>...loading</div>;
+
   return (
     <div>
       <h1>

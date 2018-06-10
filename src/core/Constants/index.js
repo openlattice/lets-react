@@ -9,3 +9,10 @@ export const actionType = {
   FINISHED_FETCH_ASSOCIATION_DATA: 'FINISHED_FETCH_ASSOCIATION_DATA'
 };
 
+export const colors = {
+  SELECTED: 'aliceblue',
+  TRANSPARENT: 'transparent',
+  HOVER: 'floralwhite',
+  BACKGROUND: '#fefefe',
+  BORDERS: '1px solid #c5d5e5'
+};

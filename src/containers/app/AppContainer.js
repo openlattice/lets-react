@@ -12,6 +12,7 @@ import MainBody from '../../containers/tables/MainBody';
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
 import * as Routes from '../../core/router/Routes';
+import { colors } from '../../core/Constants/index';
 
 /*
  * styled components
@@ -35,8 +36,8 @@ const AppHeaderOuterWrapper = styled.header`
 
 const AppHeaderInnerWrapper = styled.div`
   align-items: center;
-  background-color: #fefefe;
-  border-bottom: 1px solid #c5d5e5;
+  background-color: ${colors.BACKGROUND};
+  border-bottom: ${colors.BORDERS};
   display: flex;
   flex: 1 0 auto;
   flex-direction: row;

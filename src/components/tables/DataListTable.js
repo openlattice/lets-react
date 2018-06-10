@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function DataListTable(props :Props) {
-  if (props.listItems.length < 1) return <div>waiting</div>;
+  if (props.listItems.length < 1) return <div>...loading</div>;
   return (
     <div>
       {props.listItems.map((item, index) => {

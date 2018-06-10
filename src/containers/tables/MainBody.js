@@ -6,26 +6,37 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { NavLink, Redirect, Route, Switch, withRouter, Link } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import EDMcontainer from './DataListTableContainer';
-import StyledButton from '../../components/buttons/StyledButton';
 import DetailsContainer from './DetailsListTableContainer';
 import * as Routes from '../../core/router/Routes';
-
-import { actionType } from '../../core/Constants/index';
+import { actionType, colors } from '../../core/Constants/index';
 
 const NavBarWarp = styled.div`
   align-items: center;
-  background-color: #fefefe;
-  border-bottom: 1px solid #c5d5e5;
+  background-color: ${colors.BACKGROUND};
+  border-bottom: ${colors.BORDERS};
   display: flex;
   flex: 1 0 auto;
   flex-direction: row;
   height: 70px;
   justify-content: center;
   position: relative;
+  list-style-type: none;
+  .active {
+      background: ${colors.SELECTED};
+  }
+  .passive {
+      &:hover {
+          background: ${colors.HOVER};
+      }
+  }
+  a {
+      text-decoration: none;
+      color: darkblue;
+  }
 `;
 
 const TableContainer = styled.div`
@@ -45,9 +56,8 @@ const BodyWrapper = styled.div`
     width: 100%
 `;
 
-const TableHeader = styled.div`
-    height: 30px;
-    background: grey;
+const Padding = styled.div`
+    padding: 10px;
 `;
 
 type Props = {
@@ -60,33 +70,40 @@ type Props = {
 
 const MainBody = (props :Props) => {
 
-  const renderHelper = () => {
-    props.actions.setListItems(props.location.pathname.slice(1));
-    props.actions.setActiveItem('', 0);
+  console.log('MainBody props:', props);
+  const currentPage = props.location.pathname.slice(1);
 
-    return (
-      <TableContainer>
-        <TableDiv>
-          <EDMcontainer />
-        </TableDiv>
-        <TableDiv>
-          <DetailsContainer />
-        </TableDiv>
-      </TableContainer>
-    );
-  };
+  props.actions.setListItems(currentPage);
+  props.actions.setActiveItem('', 0);
+
+  const renderHelper = () => (
+    <TableContainer>
+      <TableDiv>
+        <EDMcontainer />
+      </TableDiv>
+      <TableDiv>
+        <DetailsContainer />
+      </TableDiv>
+    </TableContainer>
+  );
 
   return (
     <BodyWrapper>
       <NavBarWarp>
-        <Link to={Routes.PROPERTY}>
-          <StyledButton>PropertyTypes</StyledButton>
+        <Link to={Routes.PROPERTY} >
+          <Padding className={currentPage === 'property' ? 'active' : 'passive'}>
+            <li>PropertyTypes</li>
+          </Padding>
         </Link>
         <Link to={Routes.ENTITY}>
-          <StyledButton>EntityTypes</StyledButton>
+          <Padding className={currentPage === 'entity' ? 'active' : 'passive'}>
+            <li>EntityTypes</li>
+          </Padding>
         </Link>
         <Link to={Routes.ASSOCIATION}>
-          <StyledButton>AssociationTypes</StyledButton>
+          <Padding className={currentPage === 'association' ? 'active' : 'passive'}>
+            <li>AssociationTypes</li>
+          </Padding>
         </Link>
       </NavBarWarp>
       <Switch>

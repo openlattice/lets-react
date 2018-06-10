@@ -6,11 +6,10 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { actionType } from '../../core/Constants/index';
-
+import reduxActions from '../../core/redux/ReduxActions';
 import StyledCard from '../../components/cards/StyledCard';
 import DataListTable from '../../components/tables/DataListTable';
 
@@ -49,12 +48,9 @@ const EDMcontainer = (props :Props) => (
   </StyledCard>
 );
 
-const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
-
 function mapDispatchToProps(dispatch :Function) :Object {
-
   const actions = {
-    setActiveItem
+    setActiveItem: reduxActions.setActiveItem
   };
 
   return {
@@ -62,7 +58,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
-const mapStateToProps = (state :object, ownProps) => ({
+const mapStateToProps = (state :object) => ({
   listItems: state.get(state.get('listItems')),
   activeItem: state.get('activeItem')
 });

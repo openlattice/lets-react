@@ -6,10 +6,9 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-import { actionType } from '../../core/Constants/index';
-
+import reduxActions from '../../core/redux/ReduxActions';
 import StyledCard from '../../components/cards/StyledCard';
 import DetailsListTable from '../../components/tables/DetailsListTable';
 import { getDetails } from '../../utils/helperFunctions';
@@ -37,9 +36,8 @@ const DetailsContainer = (props :Props) => (
     </Content>
   </StyledCard>
 );
-const setActiveItem = (id, itemIndex) => ({ type: actionType.UPDATE_ACTIVE_ITEM, itemIndex });
 
-const mapStateToProps = (state :object, ownProps) => {
+const mapStateToProps = (state :object) => {
   const getThisList = state.get('listItems');
   const fromState = state.get(getThisList);
   const activeIndex = state.get('activeItem');
@@ -47,7 +45,7 @@ const mapStateToProps = (state :object, ownProps) => {
   return ({
     item,
     getDetails,
-    setActiveItem
+    setActiveItem: reduxActions.setActiveItem
   });
 };
 

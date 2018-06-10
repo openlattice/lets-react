@@ -4,15 +4,18 @@
 
 import styled from 'styled-components';
 
+import { colors } from '../../core/Constants';
+
 export const ListItem = styled.div`
-    background: ${props => (props.active ? 'lightblue' : 'transparent')};
+    background: ${props => (props.active ? colors.SELECTED : colors.TRANSPARENT)};
     display: flex;
     flex-direction: row;
     font-size: .9rem;
     padding: .6rem;
-    border-top: 1px solid grey;
+    border-top: ${colors.BORDERS};
+    cursor: ${props => (props.active ? 'default' : 'pointer')};
     &:hover {
-      background: ${props => (props.active ? 'lightblue' : 'lightgrey')};
+      background: ${props => (props.active ? colors.SELECTED : colors.HOVER)};
     }
 `;
 
