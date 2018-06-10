@@ -10,9 +10,47 @@ export const actionType = {
 };
 
 export const colors = {
-  SELECTED: 'aliceblue',
+  SELECTED: 'linear-gradient(to left, rgba(186,95,158,.4) , rgba(59,149,212,.4))',
   TRANSPARENT: 'transparent',
-  HOVER: 'floralwhite',
+  HOVER: '#F1DFEB',
   BACKGROUND: '#fefefe',
-  BORDERS: '1px solid #c5d5e5'
+  BORDERS: '1px solid #3FA3F8',
+  SLECTED_TEXT: '#5537DA',
+  BUTTON_BACKGROUND: '#ED66B1',
+  BASE_TEXT: '#090825',
+  BAR: '#EEEEF8'
 };
+
+// gainsboro - lighter light grey
+// darksalmon - darker pink
+// floralwhite
+// darkseagreen
+// aliceblue
+// blanchedalmond - light salmon
+// powderblue
+// ghostwhite
+// honeydew
+// ivory
+// lavender
+// lavenderblush
+// lightgoldenrodyellow
+// #BA5F9E - logo red
+  // (186,95,158)
+// #F1DFEB - light version of logo red
+// #3B95D4 - logo blue
+  // (59,149,212)
+// #D7E9F6 - light version of logo blue
+
+// gradiant
+// linear-gradient(to right, red , yellow)
+
+// #ED66B1 - pink button
+// #FEF050 - yellow important
+// #3FA3F8 - blue outlines
+// #666A72 - grey font
+// #BBABA8 - off grey font
+// #DADADA - sub divider grey
+// #BD88F8 - light pink
+// #5537DA - purple
+// #EEEEF8 - box color pink grey
+

@@ -8,6 +8,7 @@ import { colors } from '../../core/Constants';
 
 export const ListItem = styled.div`
     background: ${props => (props.active ? colors.SELECTED : colors.TRANSPARENT)};
+    color: ${props => (props.active ? colors.BASE_TEXT : 'black')};
     display: flex;
     flex-direction: row;
     font-size: .9rem;

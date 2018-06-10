@@ -17,7 +17,7 @@ import { actionType, colors } from '../../core/Constants/index';
 
 const NavBarWarp = styled.div`
   align-items: center;
-  background-color: ${colors.BACKGROUND};
+  background: ${colors.SELECTED};
   border-bottom: ${colors.BORDERS};
   display: flex;
   flex: 1 0 auto;
@@ -27,16 +27,19 @@ const NavBarWarp = styled.div`
   position: relative;
   list-style-type: none;
   .active {
-      background: ${colors.SELECTED};
+      color: ${colors.SLECTED_TEXT};
+      font-weight: bold;
   }
   .passive {
       &:hover {
-          background: ${colors.HOVER};
       }
   }
   a {
       text-decoration: none;
-      color: darkblue;
+      color: ${colors.BASE_TEXT};
+      &:hover {
+          color: ${colors.SLECTED_TEXT};
+      }
   }
 `;
 
@@ -55,7 +58,16 @@ const TableDiv = styled.div`
 
 const BodyWrapper = styled.div`
     width: 100%
+    color: ${colors.BASE_TEXT}
 `;
+
+// const Buttons = styled.div`
+//     height: 70px;
+//     font-size: 18px;
+//     border-radius: 5px;
+//     align-items: center;
+//     text-align: center;
+// `;
 
 const Padding = styled.div`
     padding: 10px;
@@ -90,18 +102,18 @@ const MainBody = (props :Props) => {
     <BodyWrapper>
       <NavBarWarp>
         <Link to={Routes.PROPERTY}>
-          <Padding className={currentPage === 'property' ? 'active' : 'passive'}>
-            <li>PropertyTypes</li>
+          <Padding>
+            <div className={currentPage === 'property' ? 'active' : 'passive'}>PropertyTypes</div>
           </Padding>
         </Link>
         <Link to={Routes.ENTITY}>
-          <Padding className={currentPage === 'entity' ? 'active' : 'passive'}>
-            <li>EntityTypes</li>
+          <Padding>
+            <div className={currentPage === 'entity' ? 'active' : 'passive'}>EntityTypes</div>
           </Padding>
         </Link>
         <Link to={Routes.ASSOCIATION}>
-          <Padding className={currentPage === 'association' ? 'active' : 'passive'}>
-            <li>AssociationTypes</li>
+          <Padding>
+            <div className={currentPage === 'association' ? 'active' : 'passive'}>AssociationTypes</div>
           </Padding>
         </Link>
       </NavBarWarp>
