@@ -19,7 +19,11 @@ const TableHeader = styled.div`
     background: ${colors.BAR};
     border-top: 2px solid ${colors.SLECTED_TEXT};
     border-bottom: .5px solid ${colors.SLECTED_TEXT};
+    padding-left: 5%;
     display: flex;
+    h2 {
+      width: 50%;
+    }
 `;
 
 const Content = styled.div`
@@ -43,7 +47,7 @@ type Props = {
 const EDMcontainer = (props :Props) => (
   <StyledCard>
     <TableHeader>
-      <div style={{ width: '5%' }} /><h2 style={{ width: '50%' }}>Title</h2><h2 style={{ width: '30%' }}>Name</h2>
+      <h2>Title</h2><h2>FQN</h2>
     </TableHeader>
     <Content>
       <DataListTable
