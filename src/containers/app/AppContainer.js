@@ -5,16 +5,14 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { AuthActionFactory } from 'lattice-auth';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router';
-import { bindActionCreators } from 'redux';
+import { Redirect, Route, Switch, withRouter } from 'react-router';
 
+import MainBody from '../../containers/tables/MainBody';
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
 import * as Routes from '../../core/router/Routes';
-
-const { logout } = AuthActionFactory;
+import { colors } from '../../core/Constants/index';
 
 /*
  * styled components
@@ -38,8 +36,8 @@ const AppHeaderOuterWrapper = styled.header`
 
 const AppHeaderInnerWrapper = styled.div`
   align-items: center;
-  background-color: #fefefe;
-  border-bottom: 1px solid #c5d5e5;
+  background-color: ${colors.BACKGROUND};
+  border-bottom: ${colors.BORDERS};
   display: flex;
   flex: 1 0 auto;
   flex-direction: row;
@@ -69,15 +67,8 @@ const Logo = styled.img`
  */
 
 type Props = {
-  actions :{
-    login :() => void;
-    logout :() => void;
-  };
+  clickLogoutMock :() => void;
 };
-
-const HelloWorldComponent = () => (
-  <div>Hello, World!</div>
-);
 
 const AppContainer = (props :Props) => (
   <AppWrapper>
@@ -85,21 +76,20 @@ const AppContainer = (props :Props) => (
       <AppHeaderInnerWrapper>
         <Logo src={OpenLatticeLogo} height="50" />
         <Title>OpenLattice React App</Title>
-        <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+        <StyledActionButton onClick={props.clickLogoutMock}>
+          Logout
+        </StyledActionButton>
       </AppHeaderInnerWrapper>
     </AppHeaderOuterWrapper>
     <Switch>
-      <Route path={Routes.ROOT} component={HelloWorldComponent} />
+      <Route path={Routes.ROOT} component={MainBody} />
       <Redirect to={Routes.ROOT} />
     </Switch>
   </AppWrapper>
 );
 
-function mapDispatchToProps(dispatch :Function) :Object {
+const clickLogoutMock = () => {
+  alert('Why would you want to do that?');
+};
 
-  return {
-    actions: bindActionCreators({ logout }, dispatch)
-  };
-}
-
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default withRouter(connect(null, { clickLogoutMock })(AppContainer));

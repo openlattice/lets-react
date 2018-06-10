@@ -33,7 +33,7 @@ export default function initializeReduxStore(routerHistory :any) :Object {
   /* eslint-enable */
 
   const reduxStore = createStore(
-    reduxReducer(),
+    reduxReducer,
     Immutable.Map(),
     composeEnhancers(...reduxEnhancers)
   );
