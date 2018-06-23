@@ -76,16 +76,22 @@ type Props = {
 };
 
 const HelloWorldComponent = () => (
-  <div>Hello, World!</div>
+  <div>
+    Hello, World!
+  </div>
 );
 
-const AppContainer = (props :Props) => (
+const AppContainer = ({ actions } :Props) => (
   <AppWrapper>
     <AppHeaderOuterWrapper>
       <AppHeaderInnerWrapper>
         <Logo src={OpenLatticeLogo} height="50" />
-        <Title>OpenLattice React App</Title>
-        <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+        <Title>
+          OpenLattice React App
+        </Title>
+        <StyledActionButton onClick={actions.logout}>
+          Logout
+        </StyledActionButton>
       </AppHeaderInnerWrapper>
     </AppHeaderOuterWrapper>
     <Switch>
