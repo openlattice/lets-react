@@ -32,7 +32,7 @@
     "history": "^4.7.2",
     "immutable": "4.0.0-rc.9",
     "jwt-decode": "^2.2.0",
-    "lattice": "^0.34.0",
+    "lattice": "^0.35.0",
     "lattice-auth": "^0.6.0",
     "lattice-sagas": "^0.0.24",
     "lodash": "^4.17.4",
