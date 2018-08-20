@@ -25,5 +25,6 @@ module.exports = {
     '<rootDir>/config/jest/polyfill.rAF.js',
     '<rootDir>/config/jest/enzyme.config.js'
   ],
-  testEnvironment: '<rootDir>/config/jest/jsdom.config.js'
+  testEnvironment: '<rootDir>/config/jest/jsdom.config.js',
+  testURL: 'http://localhost',
 };
