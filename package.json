@@ -32,7 +32,7 @@
     "@fortawesome/react-fontawesome": "^0.1.0",
     "history": "^4.7.2",
     "immutable": "4.0.0-rc.9",
-    "lattice": "^0.37.0",
+    "lattice": "^0.38.0",
     "lattice-auth": "^0.7.0",
     "lattice-sagas": "^0.5.0",
     "lodash": "^4.17.10",
