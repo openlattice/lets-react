@@ -2,12 +2,11 @@
  * @flow
  */
 
-import log from 'loglevel';
-import moment from 'moment';
-
 import isEmpty from 'lodash/isEmpty';
 import isError from 'lodash/isError';
 import isString from 'lodash/isString';
+import log from 'loglevel';
+import moment from 'moment';
 
 // injected by Webpack.DefinePlugin
 declare var __ENV_DEV__ :boolean;
@@ -19,7 +18,7 @@ const LOG_LEVELS = {
   DEBUG: 'debug',
   INFO: 'info',
   WARN: 'warn',
-  ERROR: 'error'
+  ERROR: 'error',
 };
 
 const TIMESTAMP_FORMAT = 'YYYY-MM-DD HH:mm:ss';
@@ -39,20 +38,20 @@ function isNonEmptyString(value :any) {
   return isString(value) && !isEmpty(value);
 }
 
-function getMessagePrefix(loggerLevel, loggerName) {
+function getMessagePrefix(loggerLevel :string, loggerName :string) {
 
   return `[${moment().format(TIMESTAMP_FORMAT)} ${loggerLevel.toUpperCase()} ${__PACKAGE__}] ${loggerName}`;
 }
 
 export default class Logger {
 
-  name :string;
   logger :Object;
+  name :string;
 
   constructor(name :string) {
 
+    this.logger = log.getLogger(`${__PACKAGE__} : ${name}`);
     this.name = name;
-    this.logger = log.getLogger(name);
   }
 
   log(logLevel :string, message :any, ...args :any[]) {

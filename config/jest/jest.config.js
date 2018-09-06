@@ -5,12 +5,12 @@ module.exports = {
   collectCoverageFrom: [
     '**/src/**/*.js',
   ],
+  coverageDirectory: '<rootDir>/coverage',
   coveragePathIgnorePatterns: [
     '<rootDir>/build/',
     '<rootDir>/config/',
     '<rootDir>/flow-typed/',
   ],
-  coverageDirectory: '<rootDir>/coverage',
   globals: {
     __AUTH0_CLIENT_ID__: '__MISSING__',
     __AUTH0_DOMAIN__: '__MISSING__',
