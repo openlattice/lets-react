@@ -2,110 +2,116 @@
  * @flow
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 
 import styled from 'styled-components';
-import { AuthActionFactory } from 'lattice-auth';
+import { Map } from 'immutable';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router';
 import { bindActionCreators } from 'redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
-import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
-import StyledButton from '../../components/buttons/StyledButton';
+import AppHeaderContainer from './AppHeaderContainer';
+import Spinner from '../../components/spinner/Spinner';
 import * as Routes from '../../core/router/Routes';
+import { loadApp } from './AppActions';
+import { APP_NAME } from '../../utils/Constants';
+import {
+  APP_CONTAINER_MAX_WIDTH,
+  APP_CONTAINER_WIDTH,
+  APP_CONTENT_PADDING
+} from '../../core/style/Sizes';
 
-const { logout } = AuthActionFactory;
+// TODO: this should come from lattice-ui-kit, maybe after the next release. current version v0.1.1
+const APP_CONTENT_BG :string = '#f8f8fb';
 
-/*
- * styled components
- */
-
-const AppWrapper = styled.div`
+const AppContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-width: 800px;
-  position: relative;
+  margin: 0;
+  min-width: ${APP_CONTAINER_WIDTH}px;
+  padding: 0;
 `;
 
-const AppHeaderOuterWrapper = styled.header`
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: row;
-  min-width: 800px;
-  position: relative;
-`;
-
-const AppHeaderInnerWrapper = styled.div`
-  align-items: center;
-  background-color: #fefefe;
-  border-bottom: 1px solid #c5d5e5;
+const AppContentOuterWrapper = styled.main`
+  background-color: ${APP_CONTENT_BG};
   display: flex;
   flex: 1 0 auto;
-  flex-direction: row;
-  height: 100px;
   justify-content: center;
   position: relative;
 `;
 
-const Title = styled.h1`
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0;
+const AppContentInnerWrapper = styled.div`
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: ${APP_CONTAINER_MAX_WIDTH}px;
+  padding: ${APP_CONTENT_PADDING}px;
+  position: relative;
 `;
-
-const StyledActionButton = StyledButton.extend`
-  position: absolute;
-  right: 50px;
-`;
-
-const Logo = styled.img`
-  position: absolute;
-  left: 50px;
-`;
-
-/*
- * types
- */
 
 type Props = {
   actions :{
-    login :() => void;
-    logout :() => void;
+    loadApp :RequestSequence;
   };
+  isLoadingApp :boolean;
 };
 
-const HelloWorldComponent = () => (
-  <div>
-    Hello, World!
-  </div>
-);
+class AppContainer extends Component<Props> {
 
-const AppContainer = ({ actions } :Props) => (
-  <AppWrapper>
-    <AppHeaderOuterWrapper>
-      <AppHeaderInnerWrapper>
-        <Logo src={OpenLatticeLogo} height="50" />
-        <Title>
-          OpenLattice React App
-        </Title>
-        <StyledActionButton onClick={actions.logout}>
-          Logout
-        </StyledActionButton>
-      </AppHeaderInnerWrapper>
-    </AppHeaderOuterWrapper>
-    <Switch>
-      <Route path={Routes.ROOT} component={HelloWorldComponent} />
-      <Redirect to={Routes.ROOT} />
-    </Switch>
-  </AppWrapper>
-);
+  componentDidMount() {
+
+    const { actions } = this.props;
+    actions.loadApp(APP_NAME);
+  }
+
+  renderAppContent = () => {
+
+    const { isLoadingApp } = this.props;
+    if (isLoadingApp) {
+      return (
+        <Spinner />
+      );
+    }
+
+    return (
+      <Switch>
+        <Route exact strict path={Routes.HOME} />
+        <Route path="/tab1" render={() => null} />
+        <Route path="/tab2" render={() => null} />
+        <Redirect to={Routes.HOME} />
+      </Switch>
+    );
+  }
+
+  render() {
+
+    return (
+      <AppContainerWrapper>
+        <AppHeaderContainer />
+        <AppContentOuterWrapper>
+          <AppContentInnerWrapper>
+            { this.renderAppContent() }
+          </AppContentInnerWrapper>
+        </AppContentOuterWrapper>
+      </AppContainerWrapper>
+    );
+  }
+}
+
+function mapStateToProps(state :Map<*, *>) :Object {
+
+  return {
+    isLoadingApp: state.getIn(['app', 'isLoadingApp'], false),
+  };
+}
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
   return {
-    actions: bindActionCreators({ logout }, dispatch)
+    actions: bindActionCreators({ loadApp }, dispatch)
   };
 }
 
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
