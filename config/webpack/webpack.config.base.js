@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle, import/no-extraneous-dependencies, import/extensions */
+/* eslint-disable no-underscore-dangle, import/extensions */
 
 const path = require('path');
 const Webpack = require('webpack');

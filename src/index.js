@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import LatticeAuth from 'lattice-auth';
+import { Colors } from 'lattice-ui-kit';
 import { normalize } from 'polished';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
@@ -20,33 +21,36 @@ import { getLatticeConfigBaseUrl } from './utils/Utils';
 // injected by Webpack.DefinePlugin
 declare var __AUTH0_CLIENT_ID__ :string;
 declare var __AUTH0_DOMAIN__ :string;
-declare var __ENV_DEV__ :boolean;
 
-const {
-  AuthRoute,
-  AuthUtils
-} = LatticeAuth;
+const { AuthRoute, AuthUtils } = LatticeAuth;
+const { NEUTRALS, WHITE } = Colors;
 
 /* eslint-disable */
+// TODO: move into core/styles
 injectGlobal`${normalize()}`;
 
 injectGlobal`
+
   html,
   body {
-    background-color: #f9fcff;
-    color: #135;
+    background-color: ${WHITE};
+    color: ${NEUTRALS[1]};
     font-family: 'Open Sans', sans-serif;
     height: 100%;
     width: 100%;
   }
 
   * {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
-  *::before,
-  *::after {
-    box-sizing: border-box;
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   #app {
