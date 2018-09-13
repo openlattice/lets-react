@@ -30,7 +30,6 @@ const { NEUTRALS, WHITE } = Colors;
 injectGlobal`${normalize()}`;
 
 injectGlobal`
-
   html,
   body {
     background-color: ${WHITE};
@@ -41,16 +40,12 @@ injectGlobal`
   }
 
   * {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  *:before,
-  *:after {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   #app {
