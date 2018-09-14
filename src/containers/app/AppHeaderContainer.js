@@ -38,7 +38,7 @@ const AppHeaderOuterWrapper = styled.header`
 const AppHeaderInnerWrapper = styled.div`
   align-items: center;
   display: flex;
-  flex: 0 0 auto;
+  flex: 1 0 auto;
   justify-content: space-between;
   max-width: ${APP_CONTAINER_MAX_WIDTH}px;
   min-width: ${APP_CONTAINER_WIDTH}px;
