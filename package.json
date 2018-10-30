@@ -31,7 +31,7 @@
     "@fortawesome/pro-solid-svg-icons": "^5.3.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
     "history": "^4.7.2",
-    "immutable": "4.0.0-rc.9",
+    "immutable": "4.0.0-rc.12",
     "lattice": "^0.44.0",
     "lattice-auth": "^0.9.1",
     "lattice-sagas": "^0.10.0",
