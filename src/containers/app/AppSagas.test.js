@@ -50,6 +50,7 @@ describe('AppSagas', () => {
         put({
           id: workerSagaAction.id,
           type: loadApp.REQUEST,
+          value: {},
         })
       );
 
@@ -58,6 +59,7 @@ describe('AppSagas', () => {
         put({
           id: workerSagaAction.id,
           type: loadApp.SUCCESS,
+          value: {},
         })
       );
 
@@ -66,6 +68,7 @@ describe('AppSagas', () => {
         put({
           id: workerSagaAction.id,
           type: loadApp.FINALLY,
+          value: {},
         })
       );
 
@@ -86,6 +89,7 @@ describe('AppSagas', () => {
         put({
           id: workerSagaAction.id,
           type: loadApp.REQUEST,
+          value: {},
         })
       );
 
@@ -94,7 +98,7 @@ describe('AppSagas', () => {
         put({
           id: workerSagaAction.id,
           type: loadApp.FAILURE,
-          value: mockError
+          value: mockError,
         })
       );
 
@@ -103,6 +107,7 @@ describe('AppSagas', () => {
         put({
           id: workerSagaAction.id,
           type: loadApp.FINALLY,
+          value: {},
         })
       );
 
