@@ -33,7 +33,7 @@
     "history": "^4.7.2",
     "immutable": "4.0.0-rc.9",
     "lattice": "^0.44.0",
-    "lattice-auth": "^0.9.1",
+    "lattice-auth": "^0.10.0",
     "lattice-sagas": "^0.10.0",
     "lattice-ui-kit": "^0.1.0",
     "lodash": "^4.17.10",
