@@ -4,10 +4,10 @@
 
 import { newRequestSequence } from 'redux-reqseq';
 
-const LOAD_APP :'LOAD_APP' = 'LOAD_APP';
-const loadApp :RequestSequence = newRequestSequence(LOAD_APP);
+const INITIALIZE_APPLICATION :'INITIALIZE_APPLICATION' = 'INITIALIZE_APPLICATION';
+const initializeApplication :RequestSequence = newRequestSequence(INITIALIZE_APPLICATION);
 
 export {
-  LOAD_APP,
-  loadApp,
+  INITIALIZE_APPLICATION,
+  initializeApplication,
 };

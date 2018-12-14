@@ -2,50 +2,71 @@
  * @flow
  */
 
-/* eslint-disable no-use-before-define */
-
-import { put, takeEvery } from 'redux-saga/effects';
+import {
+  all,
+  call,
+  put,
+  takeEvery,
+} from 'redux-saga/effects';
 
 import Logger from '../../utils/Logger';
 import { ERR_ACTION_VALUE_NOT_DEFINED } from '../../utils/Errors';
 import {
-  LOAD_APP,
-  loadApp,
+  INITIALIZE_APPLICATION,
+  initializeApplication,
 } from './AppActions';
+import {
+  getEntitySetIds,
+  getEntityDataModelTypes,
+} from '../../core/edm/EDMActions';
+import {
+  getEntitySetIdsWorker,
+  getEntityDataModelTypesWorker,
+} from '../../core/edm/EDMSagas';
 
 const LOG = new Logger('AppSagas');
 
 /*
- * loadApp()
+ *
+ * AppActions.initializeApplication()
+ *
  */
 
-function* loadAppWatcher() :Generator<*, *, *> {
-
-  yield takeEvery(LOAD_APP, loadAppWorker);
-}
-
-function* loadAppWorker(action :SequenceAction) :Generator<*, *, *> {
+function* initializeApplicationWorker(action :SequenceAction) :Generator<*, *, *> {
 
   const { id, value } = action;
   if (value === null || value === undefined) {
-    yield put(loadApp.failure(id, ERR_ACTION_VALUE_NOT_DEFINED));
+    yield put(initializeApplication.failure(id, ERR_ACTION_VALUE_NOT_DEFINED));
     return;
   }
 
   try {
-    yield put(loadApp.request(action.id));
-    yield put(loadApp.success(action.id));
+    yield put(initializeApplication.request(action.id));
+
+    // we need to wait for these to complete before proceeding
+    yield all([
+      // TODO: we should have a saga that runs these on a schedule to refresh the data
+      call(getEntitySetIdsWorker, getEntitySetIds()),
+      call(getEntityDataModelTypesWorker, getEntityDataModelTypes()),
+    ]);
+
+    yield put(initializeApplication.success(action.id));
   }
   catch (error) {
-    LOG.error('caught exception in loadAppWorker()', error);
-    yield put(loadApp.failure(action.id, error));
+    LOG.error('caught exception in initializeApplicationWorker()', error);
+    yield put(initializeApplication.failure(action.id, error));
   }
   finally {
-    yield put(loadApp.finally(action.id));
+    yield put(initializeApplication.finally(action.id));
   }
 }
 
+function* initializeApplicationWatcher() :Generator<*, *, *> {
+
+  yield takeEvery(INITIALIZE_APPLICATION, initializeApplicationWorker);
+}
+
 export {
-  loadAppWatcher,
-  loadAppWorker,
+  initializeApplicationWatcher,
+  initializeApplicationWorker,
 };
