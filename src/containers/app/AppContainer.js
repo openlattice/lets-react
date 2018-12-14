@@ -114,4 +114,5 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
+// $FlowFixMe
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
