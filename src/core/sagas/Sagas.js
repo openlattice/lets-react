@@ -3,13 +3,13 @@
  */
 
 import { AuthSagas } from 'lattice-auth';
-import { fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 
 import * as AppSagas from '../../containers/app/AppSagas';
 
 export default function* sagas() :Generator<*, *, *> {
 
-  yield [
+  yield all([
     // "lattice-auth" sagas
     fork(AuthSagas.watchAuthAttempt),
     fork(AuthSagas.watchAuthSuccess),
@@ -19,5 +19,5 @@ export default function* sagas() :Generator<*, *, *> {
 
     // AppSagas
     fork(AppSagas.loadAppWatcher),
-  ];
+  ]);
 }

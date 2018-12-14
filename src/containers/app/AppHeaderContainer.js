@@ -23,12 +23,13 @@ import {
 } from '../../core/style/Sizes';
 
 const { logout } = AuthActionFactory;
-const { NEUTRALS } = Colors;
+const { NEUTRALS, WHITE } = Colors;
 
 // TODO: this should come from lattice-ui-kit, maybe after the next release. current version v0.1.1
 const APP_HEADER_BORDER :string = '#e6e6eb';
 
 const AppHeaderOuterWrapper = styled.header`
+  background-color: ${WHITE};
   border-bottom: 1px solid ${APP_HEADER_BORDER};
   display: flex;
   flex: 0 0 auto;
@@ -157,6 +158,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
+// $FlowFixMe
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(AppHeaderContainer)
 );

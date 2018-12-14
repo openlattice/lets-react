@@ -76,4 +76,5 @@ class AppNavigationContainer extends Component<Props> {
   }
 }
 
+// $FlowFixMe
 export default withRouter(AppNavigationContainer);

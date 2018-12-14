@@ -10,7 +10,8 @@ import { Colors } from 'lattice-ui-kit';
 import { normalize } from 'polished';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { injectGlobal } from 'styled-components';
+// $FlowFixMe
+import { createGlobalStyle } from 'styled-components';
 
 import AppContainer from './containers/app/AppContainer';
 import initializeReduxStore from './core/redux/ReduxStore';
@@ -23,17 +24,19 @@ declare var __AUTH0_CLIENT_ID__ :string;
 declare var __AUTH0_DOMAIN__ :string;
 
 const { AuthRoute, AuthUtils } = LatticeAuth;
-const { NEUTRALS, WHITE } = Colors;
+const { NEUTRALS } = Colors;
 
 /* eslint-disable */
 // TODO: move into core/styles
-injectGlobal`${normalize()}`;
+const NormalizeCSS = createGlobalStyle`
+  ${normalize()}
+`;
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html,
   body {
-    background-color: ${WHITE};
-    color: ${NEUTRALS[1]};
+    background-color: ${NEUTRALS[7]};
+    color: ${NEUTRALS[0]};
     font-family: 'Open Sans', sans-serif;
     height: 100%;
     width: 100%;
@@ -78,9 +81,13 @@ const APP_ROOT_NODE = document.getElementById('app');
 if (APP_ROOT_NODE) {
   ReactDOM.render(
     <Provider store={reduxStore}>
-      <ConnectedRouter history={routerHistory}>
-        <AuthRoute path={Routes.ROOT} component={AppContainer} />
-      </ConnectedRouter>
+      <>
+        <ConnectedRouter history={routerHistory}>
+          <AuthRoute path={Routes.ROOT} component={AppContainer} />
+        </ConnectedRouter>
+        <NormalizeCSS />
+        <GlobalStyle />
+      </>
     </Provider>,
     APP_ROOT_NODE
   );
