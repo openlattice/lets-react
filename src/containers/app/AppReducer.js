@@ -2,37 +2,37 @@
  * @flow
  */
 
-import { Map, fromJS } from 'immutable';
 import isNumber from 'lodash/isNumber';
+import { Map, fromJS } from 'immutable';
 
-import { loadApp } from './AppActions';
+import { initializeApplication } from './AppActions';
 
 const INITIAL_STATE :Map<*, *> = fromJS({
   actions: {
-    loadApp: Map(),
+    initializeApplication: Map(),
   },
   errors: {
-    loadApp: Map(),
+    initializeApplication: Map(),
   },
-  isLoadingApp: false,
+  isInitializingApplication: false,
 });
 
 export default function appReducer(state :Map<*, *> = INITIAL_STATE, action :Object) {
 
   switch (action.type) {
 
-    case loadApp.case(action.type): {
-      return loadApp.reducer(state, action, {
+    case initializeApplication.case(action.type): {
+      return initializeApplication.reducer(state, action, {
         REQUEST: () => {
           const seqAction :SequenceAction = (action :any);
           return state
-            .set('isLoadingApp', true)
-            .setIn(['actions', 'loadApp', seqAction.id], fromJS(seqAction));
+            .set('isInitializingApplication', true)
+            .setIn(['actions', 'initializeApplication', seqAction.id], fromJS(seqAction));
         },
         SUCCESS: () => {
 
           const seqAction :SequenceAction = (action :any);
-          if (!state.hasIn(['actions', 'loadApp', seqAction.id])) {
+          if (!state.hasIn(['actions', 'initializeApplication', seqAction.id])) {
             return state;
           }
 
@@ -61,13 +61,13 @@ export default function appReducer(state :Map<*, *> = INITIAL_STATE, action :Obj
           }
 
           // TODO: there's probably a significantly better way of handling errors
-          return state.setIn(['errors', 'loadApp'], fromJS(error));
+          return state.setIn(['errors', 'initializeApplication'], fromJS(error));
         },
         FINALLY: () => {
           const seqAction :SequenceAction = (action :any);
           return state
-            .set('isLoadingApp', false)
-            .deleteIn(['actions', 'loadApp', seqAction.id]);
+            .set('isInitializingApplication', false)
+            .deleteIn(['actions', 'initializeApplication', seqAction.id]);
         }
       });
     }

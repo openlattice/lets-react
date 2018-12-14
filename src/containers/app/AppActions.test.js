@@ -4,11 +4,11 @@ import * as AppActions from './AppActions';
 import { testShouldExportActionTypes, testShouldExportRequestSequences } from '../../utils/testing/TestUtils';
 
 const ACTION_TYPES = Set([
-  'LOAD_APP',
+  'INITIALIZE_APPLICATION',
 ]).sort();
 
 const REQSEQ_NAMES = Set([
-  'loadApp',
+  'initializeApplication',
 ]).sort();
 
 describe('AppActions', () => {

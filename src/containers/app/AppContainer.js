@@ -7,14 +7,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import AppHeaderContainer from './AppHeaderContainer';
 import Spinner from '../../components/spinner/Spinner';
+import * as AppActions from './AppActions';
 import * as Routes from '../../core/router/Routes';
-import { loadApp } from './AppActions';
-import { APP_NAME } from '../../utils/Constants';
 import {
   APP_CONTAINER_MAX_WIDTH,
   APP_CONTAINER_WIDTH,
@@ -52,24 +50,22 @@ const AppContentInnerWrapper = styled.div`
 `;
 
 type Props = {
-  actions :{
-    loadApp :RequestSequence;
-  };
-  isLoadingApp :boolean;
+  initializeApplication :RequestSequence;
+  isInitializingApplication :boolean;
 };
 
 class AppContainer extends Component<Props> {
 
   componentDidMount() {
 
-    const { actions } = this.props;
-    actions.loadApp(APP_NAME);
+    const { initializeApplication } = this.props;
+    initializeApplication();
   }
 
   renderAppContent = () => {
 
-    const { isLoadingApp } = this.props;
-    if (isLoadingApp) {
+    const { isInitializingApplication } = this.props;
+    if (isInitializingApplication) {
       return (
         <Spinner />
       );
@@ -100,19 +96,9 @@ class AppContainer extends Component<Props> {
   }
 }
 
-function mapStateToProps(state :Map<*, *>) :Object {
-
-  return {
-    isLoadingApp: state.getIn(['app', 'isLoadingApp'], false),
-  };
-}
-
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  return {
-    actions: bindActionCreators({ loadApp }, dispatch)
-  };
-}
+const mapStateToProps = (state :Map<*, *>) => ({
+  isInitializingApplication: state.getIn(['app', 'isInitializingApplication']),
+});
 
 // $FlowFixMe
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, { ...AppActions })(AppContainer);

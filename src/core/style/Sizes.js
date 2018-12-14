@@ -2,7 +2,7 @@
  * @flow
  */
 
-export const APP_CONTAINER_MAX_WIDTH :number = 1300;
+export const APP_CONTAINER_MAX_WIDTH :number = 2000;
 
 // 1020 = 960 for content + 2*30 for edges padding
 export const APP_CONTAINER_WIDTH :number = 1020;

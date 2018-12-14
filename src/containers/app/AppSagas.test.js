@@ -1,16 +1,22 @@
 import randomUUID from 'uuid/v4';
-import { put } from 'redux-saga/effects';
+import { all, call, put } from 'redux-saga/effects';
 
 import {
-  LOAD_APP,
-  loadApp,
+  INITIALIZE_APPLICATION,
+  initializeApplication,
 } from './AppActions';
-
 import {
-  loadAppWatcher,
-  loadAppWorker,
+  initializeApplicationWatcher,
+  initializeApplicationWorker,
 } from './AppSagas';
-
+import {
+  GET_EDM_TYPES,
+  GET_ENTITY_SET_IDS,
+} from '../../core/edm/EDMActions';
+import {
+  getEntitySetIdsWorker,
+  getEntityDataModelTypesWorker,
+} from '../../core/edm/EDMSagas';
 import {
   GENERATOR_TAG,
   testShouldBeGeneratorFunction,
@@ -21,35 +27,52 @@ describe('AppSagas', () => {
 
   /*
    *
-   * AppActions.loadApp
+   * AppActions.initializeApplication
    *
    */
 
-  describe('loadAppWatcher', () => {
-    testShouldBeGeneratorFunction(loadAppWatcher);
+  describe('initializeApplicationWatcher', () => {
+    testShouldBeGeneratorFunction(initializeApplicationWatcher);
     testWatcherSagaShouldTakeEvery(
-      loadAppWatcher,
-      loadAppWorker,
-      LOAD_APP
+      initializeApplicationWatcher,
+      initializeApplicationWorker,
+      INITIALIZE_APPLICATION
     );
   });
 
-  describe('loadAppWorker', () => {
+  describe('initializeApplicationWorker', () => {
 
-    testShouldBeGeneratorFunction(loadAppWorker);
+    testShouldBeGeneratorFunction(initializeApplicationWorker);
 
     test('success case', () => {
 
       const mockActionValue = randomUUID();
-      const workerSagaAction = loadApp(mockActionValue);
-      const iterator = loadAppWorker(workerSagaAction);
+      const workerSagaAction = initializeApplication(mockActionValue);
+      const iterator = initializeApplicationWorker(workerSagaAction);
       expect(Object.prototype.toString.call(iterator)).toEqual(GENERATOR_TAG);
 
       let step = iterator.next();
       expect(step.value).toEqual(
         put({
           id: workerSagaAction.id,
-          type: loadApp.REQUEST,
+          type: initializeApplication.REQUEST,
+          value: {},
+        })
+      );
+
+      step = iterator.next();
+      expect(step.value).toEqual(
+        all([
+          call(getEntitySetIdsWorker, { id: expect.any(String), type: GET_ENTITY_SET_IDS, value: {} }),
+          call(getEntityDataModelTypesWorker, { id: expect.any(String), type: GET_EDM_TYPES, value: {} }),
+        ])
+      );
+
+      step = iterator.next();
+      expect(step.value).toEqual(
+        put({
+          id: workerSagaAction.id,
+          type: initializeApplication.SUCCESS,
           value: {},
         })
       );
@@ -58,16 +81,7 @@ describe('AppSagas', () => {
       expect(step.value).toEqual(
         put({
           id: workerSagaAction.id,
-          type: loadApp.SUCCESS,
-          value: {},
-        })
-      );
-
-      step = iterator.next();
-      expect(step.value).toEqual(
-        put({
-          id: workerSagaAction.id,
-          type: loadApp.FINALLY,
+          type: initializeApplication.FINALLY,
           value: {},
         })
       );
@@ -80,15 +94,15 @@ describe('AppSagas', () => {
 
       const mockActionValue = randomUUID();
       const mockError = new Error(500);
-      const workerSagaAction = loadApp(mockActionValue);
-      const iterator = loadAppWorker(workerSagaAction);
+      const workerSagaAction = initializeApplication(mockActionValue);
+      const iterator = initializeApplicationWorker(workerSagaAction);
       expect(Object.prototype.toString.call(iterator)).toEqual(GENERATOR_TAG);
 
       let step = iterator.next();
       expect(step.value).toEqual(
         put({
           id: workerSagaAction.id,
-          type: loadApp.REQUEST,
+          type: initializeApplication.REQUEST,
           value: {},
         })
       );
@@ -97,7 +111,7 @@ describe('AppSagas', () => {
       expect(step.value).toEqual(
         put({
           id: workerSagaAction.id,
-          type: loadApp.FAILURE,
+          type: initializeApplication.FAILURE,
           value: mockError,
         })
       );
@@ -106,7 +120,7 @@ describe('AppSagas', () => {
       expect(step.value).toEqual(
         put({
           id: workerSagaAction.id,
-          type: loadApp.FINALLY,
+          type: initializeApplication.FINALLY,
           value: {},
         })
       );

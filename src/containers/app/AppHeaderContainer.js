@@ -147,7 +147,7 @@ class AppHeaderContainer extends Component<Props> {
 function mapStateToProps(state :Map<*, *>) :Object {
 
   return {
-    isLoadingApp: state.getIn(['app', 'isLoadingApp'], false),
+    isInitializingApplication: state.getIn(['app', 'isInitializingApplication'], false),
   };
 }
 
