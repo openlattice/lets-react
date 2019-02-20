@@ -5,8 +5,7 @@
 import React, { Component } from 'react';
 
 import styled from 'styled-components';
-import { Map } from 'immutable';
-import { AuthActionFactory } from 'lattice-auth';
+import { AuthActions } from 'lattice-auth';
 import { Button, Colors } from 'lattice-ui-kit';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,7 +21,6 @@ import {
   APP_CONTENT_PADDING,
 } from '../../core/style/Sizes';
 
-const { logout } = AuthActionFactory;
 const { NEUTRALS, WHITE } = Colors;
 
 // TODO: this should come from lattice-ui-kit, maybe after the next release. current version v0.1.1
@@ -77,6 +75,8 @@ const LogoTitleWrapperLink = styled(Link)`
   }
 `;
 
+// 2019-02-19 - Cannot call `styled.img.attrs` because undefined [1] is incompatible with string [2].
+// $FlowFixMe
 const AppLogoIcon = styled.img.attrs({
   alt: 'OpenLattice Logo Icon',
   src: OpenLatticeLogo,
@@ -144,21 +144,12 @@ class AppHeaderContainer extends Component<Props> {
   }
 }
 
-function mapStateToProps(state :Map<*, *>) :Object {
+const mapDispatchToProps = (dispatch :Function) :Object => ({
+  actions: bindActionCreators({
+    logout: AuthActions.logout,
+  }, dispatch)
+});
 
-  return {
-    isInitializingApplication: state.getIn(['app', 'isInitializingApplication'], false),
-  };
-}
-
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  return {
-    actions: bindActionCreators({ logout }, dispatch)
-  };
-}
-
-// $FlowFixMe
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(AppHeaderContainer)
+export default withRouter<*>(
+  connect(null, mapDispatchToProps)(AppHeaderContainer)
 );

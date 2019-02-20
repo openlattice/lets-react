@@ -20,12 +20,9 @@ describe('AppReducer', () => {
 
   test('INITIAL_STATE', () => {
     expect(INITIAL_STATE).toBeInstanceOf(Map);
-    expect(INITIAL_STATE.get('isInitializingApplication')).toEqual(false);
-    expect(INITIAL_STATE.get('actions').toJS()).toEqual({
-      initializeApplication: {},
-    });
-    expect(INITIAL_STATE.get('errors').toJS()).toEqual({
-      initializeApplication: {},
+    expect(INITIAL_STATE.toJS()).toEqual({
+      [INITIALIZE_APPLICATION]: { error: false },
+      isInitializingApplication: false,
     });
   });
 
@@ -34,67 +31,46 @@ describe('AppReducer', () => {
     test(initializeApplication.REQUEST, () => {
 
       const { id } = initializeApplication();
-      const state = reducer(INITIAL_STATE, initializeApplication.request(id, MOCK_APP_NAME));
+      const requestAction = initializeApplication.request(id, MOCK_APP_NAME);
+      const state = reducer(INITIAL_STATE, requestAction);
 
+      expect(state.getIn([INITIALIZE_APPLICATION, id])).toEqual(requestAction);
       expect(state.get('isInitializingApplication')).toEqual(true);
-      expect(state.getIn(['actions', 'initializeApplication', id]).toJS())
-        .toEqual({
-          id,
-          type: initializeApplication.REQUEST,
-          value: MOCK_APP_NAME,
-        });
-      expect(state.getIn(['errors', 'initializeApplication']).toJS()).toEqual({});
     });
 
     test(initializeApplication.SUCCESS, () => {
 
       const { id } = initializeApplication();
-      let state = reducer(INITIAL_STATE, initializeApplication.request(id, MOCK_APP_NAME));
+      const requestAction = initializeApplication.request(id, MOCK_APP_NAME);
+      let state = reducer(INITIAL_STATE, requestAction);
       state = reducer(state, initializeApplication.success(id));
 
+      expect(state.getIn([INITIALIZE_APPLICATION, id])).toEqual(requestAction);
       expect(state.get('isInitializingApplication')).toEqual(true);
-      expect(state.getIn(['actions', 'initializeApplication', id]).toJS())
-        .toEqual({
-          id,
-          type: initializeApplication.REQUEST,
-          value: MOCK_APP_NAME,
-        });
-      expect(state.getIn(['errors', 'initializeApplication']).toJS()).toEqual({});
     });
 
     test(initializeApplication.FAILURE, () => {
 
       const { id } = initializeApplication();
-      let state = reducer(INITIAL_STATE, initializeApplication.request(id, MOCK_APP_NAME));
+      const requestAction = initializeApplication.request(id, MOCK_APP_NAME);
+      let state = reducer(INITIAL_STATE, requestAction);
       state = reducer(state, initializeApplication.failure(id, MOCK_ERR_RESPONSE));
 
-      expect(state.get('isInitializingApplication')).toEqual(true);
-      expect(state.getIn(['actions', 'initializeApplication', id]).toJS())
-        .toEqual({
-          id,
-          type: initializeApplication.REQUEST,
-          value: MOCK_APP_NAME,
-        });
-      expect(state.getIn(['errors', 'initializeApplication']).toJS()).toEqual({
+      expect(state.getIn([INITIALIZE_APPLICATION, id])).toEqual(requestAction);
+      expect(state.getIn([INITIALIZE_APPLICATION, 'error']).toJS()).toEqual({
         status: MOCK_ERR_STATUS,
       });
+      expect(state.get('isInitializingApplication')).toEqual(true);
     });
 
     test(initializeApplication.FINALLY, () => {
 
       const { id } = initializeApplication();
       let state = reducer(INITIAL_STATE, initializeApplication.request(id, MOCK_APP_NAME));
-      expect(state.getIn(['actions', 'initializeApplication', id]).toJS())
-        .toEqual({
-          id,
-          type: initializeApplication.REQUEST,
-          value: MOCK_APP_NAME
-        });
-
       state = reducer(state, initializeApplication.finally(id));
+
+      expect(state.hasIn([INITIAL_STATE, id])).toEqual(false);
       expect(state.get('isInitializingApplication')).toEqual(false);
-      expect(state.hasIn(['actions', 'initializeApplication', id])).toEqual(false);
-      expect(state.getIn(['errors', 'initializeApplication']).toJS()).toEqual({});
     });
 
   });

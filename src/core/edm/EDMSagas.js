@@ -8,7 +8,7 @@ import {
   call,
   put,
   takeEvery,
-} from 'redux-saga/effects';
+} from '@redux-saga/core/effects';
 
 import Logger from '../../utils/Logger';
 import { EntitySetNames } from './constants';

@@ -2,8 +2,8 @@
  * @flow
  */
 
+import { all, fork } from '@redux-saga/core/effects';
 import { AuthSagas } from 'lattice-auth';
-import { all, fork } from 'redux-saga/effects';
 
 import * as AppSagas from '../../containers/app/AppSagas';
 import * as EDMSagas from '../edm/EDMSagas';
