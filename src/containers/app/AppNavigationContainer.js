@@ -22,6 +22,8 @@ const NavigationContentWrapper = styled.nav`
   margin-left: 30px;
 `;
 
+// 2019-02-19 - Cannot call `styled(...).attrs` because undefined [1] is incompatible with string [2].
+// $FlowFixMe
 const NavLinkWrapper = styled(NavLink).attrs({
   activeClassName: NAV_LINK_ACTIVE_CLASSNAME
 })`
@@ -76,5 +78,4 @@ class AppNavigationContainer extends Component<Props> {
   }
 }
 
-// $FlowFixMe
-export default withRouter(AppNavigationContainer);
+export default withRouter<*>(AppNavigationContainer);

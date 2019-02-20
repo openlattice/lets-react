@@ -1,5 +1,5 @@
 import randomUUID from 'uuid/v4';
-import { all, call, put } from 'redux-saga/effects';
+import { all, call, put } from '@redux-saga/core/effects';
 
 import {
   INITIALIZE_APPLICATION,

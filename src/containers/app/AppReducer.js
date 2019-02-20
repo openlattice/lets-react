@@ -5,15 +5,13 @@
 import isNumber from 'lodash/isNumber';
 import { Map, fromJS } from 'immutable';
 
-import { initializeApplication } from './AppActions';
+import {
+  INITIALIZE_APPLICATION,
+  initializeApplication,
+} from './AppActions';
 
 const INITIAL_STATE :Map<*, *> = fromJS({
-  actions: {
-    initializeApplication: Map(),
-  },
-  errors: {
-    initializeApplication: Map(),
-  },
+  [INITIALIZE_APPLICATION]: { error: false },
   isInitializingApplication: false,
 });
 
@@ -24,19 +22,21 @@ export default function appReducer(state :Map<*, *> = INITIAL_STATE, action :Obj
     case initializeApplication.case(action.type): {
       return initializeApplication.reducer(state, action, {
         REQUEST: () => {
-          const seqAction :SequenceAction = (action :any);
+          const seqAction :SequenceAction = action;
           return state
             .set('isInitializingApplication', true)
-            .setIn(['actions', 'initializeApplication', seqAction.id], fromJS(seqAction));
+            .setIn([INITIALIZE_APPLICATION, seqAction.id], seqAction);
         },
         SUCCESS: () => {
 
-          const seqAction :SequenceAction = (action :any);
-          if (!state.hasIn(['actions', 'initializeApplication', seqAction.id])) {
+          const seqAction :SequenceAction = action;
+          const storedSeqAction :SequenceAction = state.getIn([INITIALIZE_APPLICATION, seqAction.id]);
+
+          if (!storedSeqAction) {
             return state;
           }
 
-          const { value } = seqAction;
+          const { value } = storedSeqAction;
           if (value === null || value === undefined) {
             return state;
           }
@@ -46,7 +46,7 @@ export default function appReducer(state :Map<*, *> = INITIAL_STATE, action :Obj
         },
         FAILURE: () => {
 
-          const seqAction :SequenceAction = (action :any);
+          const seqAction :SequenceAction = action;
           const error = {};
 
           /*
@@ -61,13 +61,13 @@ export default function appReducer(state :Map<*, *> = INITIAL_STATE, action :Obj
           }
 
           // TODO: there's probably a significantly better way of handling errors
-          return state.setIn(['errors', 'initializeApplication'], fromJS(error));
+          return state.setIn([INITIALIZE_APPLICATION, 'error'], fromJS(error));
         },
         FINALLY: () => {
-          const seqAction :SequenceAction = (action :any);
+          const seqAction :SequenceAction = action;
           return state
             .set('isInitializingApplication', false)
-            .deleteIn(['actions', 'initializeApplication', seqAction.id]);
+            .deleteIn([INITIALIZE_APPLICATION, seqAction.id]);
         }
       });
     }

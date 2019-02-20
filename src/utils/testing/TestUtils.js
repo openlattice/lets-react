@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery } from '@redux-saga/core/effects';
 
 import { ERR_INVALID_ACTION, ERR_ACTION_VALUE_NOT_DEFINED } from '../Errors';
 import { INVALID_PARAMS, INVALID_PARAMS_NOT_DEFINED } from './Invalid';

@@ -7,7 +7,7 @@ import {
   call,
   put,
   takeEvery,
-} from 'redux-saga/effects';
+} from '@redux-saga/core/effects';
 
 import Logger from '../../utils/Logger';
 import { ERR_ACTION_VALUE_NOT_DEFINED } from '../../utils/Errors';
