@@ -35,7 +35,7 @@
     "date-fns": "~1.30.0",
     "history": "~4.9.0",
     "immutable": "4.0.0-rc.9",
-    "lattice": "0.55.0",
+    "lattice": "0.56.2",
     "lattice-auth": "0.12.2",
     "lattice-sagas": "0.16.0",
     "lattice-ui-kit": "0.2.1",
