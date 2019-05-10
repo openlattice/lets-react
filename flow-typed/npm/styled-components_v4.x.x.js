@@ -92,7 +92,7 @@ declare module 'styled-components' {
 
   // This is a bit hard to read. Not sure how to make it more readable. I think adding line-breaks makes it worse.
   declare type InjectedProps = { theme : Theme | void }
-  declare  export function withTheme<Props : {}, Component: React$ComponentType<Props>>(WrappedComponent: Component) : React$ComponentType<$Diff<React$ElementConfig<$Supertype<Component>>, InjectedProps>>;
+  declare  export function withTheme<Props : {}, Component: React$ComponentType<Props>>(WrappedComponent: Component) : React$ComponentType<$Diff<React$ElementConfig<any>, InjectedProps>>;
 
 
   // @HACK This is a cheat to hide that the underlying type is "just a string"
@@ -339,7 +339,7 @@ declare module 'styled-components/native' {
 
   // This is a bit hard to read. Not sure how to make it more readable. I think adding line-breaks makes it worse.
   declare type InjectedProps = { theme : Theme | void }
-  declare  export function withTheme<Props : {}, Component: React$ComponentType<Props>>(WrappedComponent: Component) : React$ComponentType<$Diff<React$ElementConfig<$Supertype<Component>>, InjectedProps>>;
+  declare  export function withTheme<Props : {}, Component: React$ComponentType<Props>>(WrappedComponent: Component) : React$ComponentType<$Diff<React$ElementConfig<any>, InjectedProps>>;
 
 
   // @HACK This is a cheat to hide that the underlying type is "just a string"
