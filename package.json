@@ -92,7 +92,7 @@
     "webpack": "~4.31.0",
     "webpack-cli": "~3.3.0",
     "webpack-dev-server": "~3.3.0",
-    "webpack-hot-middleware": "~2.24.0"
+    "webpack-hot-middleware": "~2.25.0"
   },
   "scripts": {
     "app": "webpack-dev-server --config config/webpack/webpack.config.app.js --env.development",
