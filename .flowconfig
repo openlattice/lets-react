@@ -12,10 +12,6 @@
 #   https://github.com/facebook/flow/blob/master/lib/streams.js
 #
 [ignore]
-./build/.*
 .*/node_modules/.*
-
-[libs]
-./config/flow
-./node_modules/lattice/config/flow/
-./node_modules/redux-reqseq/config/flow/
+<PROJECT_ROOT>/build/.*
+<PROJECT_ROOT>/config/.*

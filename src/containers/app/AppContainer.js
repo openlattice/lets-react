@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import type { RequestSequence } from 'redux-reqseq';
 
 import AppHeaderContainer from './AppHeaderContainer';
 import Spinner from '../../components/spinner/Spinner';
