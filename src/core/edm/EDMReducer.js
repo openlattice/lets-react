@@ -4,6 +4,7 @@
 
 import { Map, fromJS } from 'immutable';
 import { Models } from 'lattice';
+import type { SequenceAction } from 'redux-reqseq';
 
 import {
   getEntityDataModelTypes,
