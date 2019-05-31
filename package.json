@@ -34,7 +34,7 @@
     "connected-react-router": "~6.4.0",
     "date-fns": "~1.30.0",
     "history": "~4.9.0",
-    "immutable": "4.0.0-rc.12",
+    "immutable": "4.0.0-rc.9",
     "lattice": "0.60.0",
     "lattice-auth": "0.15.0",
     "lattice-sagas": "0.21.0",
@@ -53,7 +53,7 @@
     "styled-components": "~4.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "~7.4.4",
+    "@babel/cli": "~7.2.0",
     "@babel/core": "~7.4.0",
     "@babel/plugin-proposal-class-properties": "~7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "~7.4.0",
