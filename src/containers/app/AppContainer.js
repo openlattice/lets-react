@@ -6,100 +6,138 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components';
 import { Map } from 'immutable';
+import { AuthActions, AuthUtils } from 'lattice-auth';
+import {
+  AppContainerWrapper,
+  AppContentWrapper,
+  AppHeaderWrapper,
+  AppNavigationWrapper,
+} from 'lattice-ui-kit';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import type { RequestSequence } from 'redux-reqseq';
+import {
+  Redirect,
+  Route,
+  Switch,
+  withRouter,
+} from 'react-router';
+import { NavLink } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { RequestStates } from 'redux-reqseq';
+import type { RequestSequence, RequestState } from 'redux-reqseq';
 
-import AppHeaderContainer from './AppHeaderContainer';
+import OpenLatticeIcon from '../../assets/images/ol_icon.png';
 import Spinner from '../../components/spinner/Spinner';
 import * as AppActions from './AppActions';
 import * as Routes from '../../core/router/Routes';
-import {
-  APP_CONTAINER_MAX_WIDTH,
-  APP_CONTAINER_WIDTH,
-  APP_CONTENT_PADDING
-} from '../../core/style/Sizes';
+import { isNonEmptyString } from '../../utils/LangUtils';
 
-// TODO: this should come from lattice-ui-kit, maybe after the next release. current version v0.1.1
-const APP_CONTENT_BG :string = '#f8f8fb';
+const { INITIALIZE_APPLICATION } = AppActions;
 
-const AppContainerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 0;
-  min-width: ${APP_CONTAINER_WIDTH}px;
-  padding: 0;
-`;
-
-const AppContentOuterWrapper = styled.main`
-  background-color: ${APP_CONTENT_BG};
-  display: flex;
-  flex: 1 0 auto;
-  justify-content: center;
-  position: relative;
-`;
-
-const AppContentInnerWrapper = styled.div`
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  justify-content: flex-start;
-  max-width: ${APP_CONTAINER_MAX_WIDTH}px;
-  padding: ${APP_CONTENT_PADDING}px;
-  position: relative;
+const Error = styled.div`
+  text-align: center;
 `;
 
 type Props = {
-  initializeApplication :RequestSequence;
-  isInitializingApplication :boolean;
+  actions :{
+    initializeApplication :RequestSequence;
+    logout :() => void;
+  };
+  requestStates :{
+    INITIALIZE_APPLICATION :RequestState;
+  };
 };
 
 class AppContainer extends Component<Props> {
 
   componentDidMount() {
 
-    const { initializeApplication } = this.props;
-    initializeApplication();
+    const { actions } = this.props;
+    actions.initializeApplication();
+  }
+
+  logout = () => {
+
+    const { actions } = this.props;
+    actions.logout();
+
+    // TODO: tracking
+    // if (isFunction(gtag)) {
+    //   gtag('config', GOOGLE_TRACKING_ID, { user_id: undefined, send_page_view: false });
+    // }
   }
 
   renderAppContent = () => {
 
-    const { isInitializingApplication } = this.props;
-    if (isInitializingApplication) {
+    const { requestStates } = this.props;
+
+    if (requestStates[INITIALIZE_APPLICATION] === RequestStates.SUCCESS) {
       return (
-        <Spinner />
+        <Switch>
+          <Route exact strict path={Routes.HOME} />
+          <Route path="/tab1" render={() => (<AppContentWrapper>Tab 1</AppContentWrapper>)} />
+          <Route path="/tab2" render={() => (<AppContentWrapper>Tab 2</AppContentWrapper>)} />
+          <Redirect to={Routes.HOME} />
+        </Switch>
+      );
+    }
+
+    if (requestStates[INITIALIZE_APPLICATION] === RequestStates.FAILURE) {
+      return (
+        <AppContentWrapper>
+          <Error>
+            Sorry, something went wrong. Please try refreshing the page, or contact support.
+          </Error>
+        </AppContentWrapper>
       );
     }
 
     return (
-      <Switch>
-        <Route exact strict path={Routes.HOME} />
-        <Route path="/tab1" render={() => null} />
-        <Route path="/tab2" render={() => null} />
-        <Redirect to={Routes.HOME} />
-      </Switch>
+      <AppContentWrapper>
+        <Spinner size="2x" />
+      </AppContentWrapper>
     );
   }
 
   render() {
 
+    const userInfo = AuthUtils.getUserInfo();
+    let user = null;
+    if (isNonEmptyString(userInfo.name)) {
+      user = userInfo.name;
+    }
+    else if (isNonEmptyString(userInfo.email)) {
+      user = userInfo.email;
+    }
+
     return (
       <AppContainerWrapper>
-        <AppHeaderContainer />
-        <AppContentOuterWrapper>
-          <AppContentInnerWrapper>
-            { this.renderAppContent() }
-          </AppContentInnerWrapper>
-        </AppContentOuterWrapper>
+        <AppHeaderWrapper appIcon={OpenLatticeIcon} appTitle="OpenLattice React App" logout={this.logout} user={user}>
+          <AppNavigationWrapper>
+            <NavLink to={Routes.ROOT} />
+            <NavLink to={Routes.HOME}>Home</NavLink>
+            <NavLink to="/tab1">Tab 1</NavLink>
+            <NavLink to="/tab2">Tab 2</NavLink>
+          </AppNavigationWrapper>
+        </AppHeaderWrapper>
+        { this.renderAppContent() }
       </AppContainerWrapper>
     );
   }
 }
 
 const mapStateToProps = (state :Map<*, *>) => ({
-  isInitializingApplication: state.getIn(['app', 'isInitializingApplication']),
+  requestStates: {
+    [INITIALIZE_APPLICATION]: state.getIn(['app', INITIALIZE_APPLICATION, 'requestState']),
+  }
 });
 
-// $FlowFixMe
-export default connect(mapStateToProps, { ...AppActions })(AppContainer);
+const mapActionsToProps = (dispatch :Function) => ({
+  actions: bindActionCreators({
+    initializeApplication: AppActions.initializeApplication,
+    logout: AuthActions.logout,
+  }, dispatch)
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapActionsToProps)(AppContainer)
+);

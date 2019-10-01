@@ -11,17 +11,11 @@ import {
 import type { SequenceAction } from 'redux-reqseq';
 
 import Logger from '../../utils/Logger';
-import { ERR_ACTION_VALUE_NOT_DEFINED } from '../../utils/Errors';
+import { INITIALIZE_APPLICATION, initializeApplication } from './AppActions';
 import {
-  INITIALIZE_APPLICATION,
-  initializeApplication,
-} from './AppActions';
-import {
-  getEntitySetIds,
   getEntityDataModelTypes,
 } from '../../core/edm/EDMActions';
 import {
-  getEntitySetIdsWorker,
   getEntityDataModelTypesWorker,
 } from '../../core/edm/EDMSagas';
 
@@ -35,26 +29,17 @@ const LOG = new Logger('AppSagas');
 
 function* initializeApplicationWorker(action :SequenceAction) :Generator<*, *, *> {
 
-  const { id, value } = action;
-  if (value === null || value === undefined) {
-    yield put(initializeApplication.failure(id, ERR_ACTION_VALUE_NOT_DEFINED));
-    return;
-  }
-
   try {
     yield put(initializeApplication.request(action.id));
-
-    // we need to wait for these to complete before proceeding
-    yield all([
-      // TODO: we should have a saga that runs these on a schedule to refresh the data
-      call(getEntitySetIdsWorker, getEntitySetIds()),
+    const responses :Object[] = yield all([
       call(getEntityDataModelTypesWorker, getEntityDataModelTypes()),
+      // ...any other required requests
     ]);
-
+    if (responses[0].error) throw responses[0].error;
     yield put(initializeApplication.success(action.id));
   }
   catch (error) {
-    LOG.error('caught exception in initializeApplicationWorker()', error);
+    LOG.error(action.type, error);
     yield put(initializeApplication.failure(action.id, error));
   }
   finally {
