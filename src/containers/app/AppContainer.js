@@ -139,6 +139,7 @@ const mapActionsToProps = (dispatch :Function) => ({
   }, dispatch)
 });
 
+// $FlowFixMe
 export default withRouter(
   connect(mapStateToProps, mapActionsToProps)(AppContainer)
 );
