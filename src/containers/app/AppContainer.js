@@ -12,6 +12,7 @@ import {
   AppContentWrapper,
   AppHeaderWrapper,
   AppNavigationWrapper,
+  Spinner,
 } from 'lattice-ui-kit';
 import { connect } from 'react-redux';
 import {
@@ -26,7 +27,6 @@ import { RequestStates } from 'redux-reqseq';
 import type { RequestSequence, RequestState } from 'redux-reqseq';
 
 import OpenLatticeIcon from '../../assets/images/ol_icon.png';
-import Spinner from '../../components/spinner/Spinner';
 import * as AppActions from './AppActions';
 import * as Routes from '../../core/router/Routes';
 import { isNonEmptyString } from '../../utils/LangUtils';
@@ -120,6 +120,7 @@ class AppContainer extends Component<Props> {
           </AppNavigationWrapper>
         </AppHeaderWrapper>
         { this.renderAppContent() }
+        <Spinner size="2x" />
       </AppContainerWrapper>
     );
   }
