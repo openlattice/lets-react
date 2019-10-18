@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components';
 import { AuthActions } from 'lattice-auth';
-import { Button, Colors } from 'lattice-ui-kit';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
@@ -15,13 +14,14 @@ import { Link } from 'react-router-dom';
 import AppNavigationContainer from './AppNavigationContainer';
 import OpenLatticeLogo from '../../assets/images/logo_v2.png';
 import * as Routes from '../../core/router/Routes';
+import { Button } from '../../components';
+import { NEUTRALS, WHITE } from '../../core/style/Colors';
 import {
   APP_CONTAINER_MAX_WIDTH,
   APP_CONTAINER_WIDTH,
   APP_CONTENT_PADDING,
 } from '../../core/style/Sizes';
 
-const { NEUTRALS, WHITE } = Colors;
 
 // TODO: this should come from lattice-ui-kit, maybe after the next release. current version v0.1.1
 const APP_HEADER_BORDER :string = '#e6e6eb';

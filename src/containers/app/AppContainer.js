@@ -20,7 +20,6 @@ import {
   APP_CONTENT_PADDING
 } from '../../core/style/Sizes';
 
-// TODO: this should come from lattice-ui-kit, maybe after the next release. current version v0.1.1
 const APP_CONTENT_BG :string = '#f8f8fb';
 
 const AppContainerWrapper = styled.div`

@@ -5,13 +5,11 @@
 import React, { Component } from 'react';
 
 import styled from 'styled-components';
-import { Colors } from 'lattice-ui-kit';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 import * as Routes from '../../core/router/Routes';
-
-const { NEUTRALS, PURPLES } = Colors;
+import { NEUTRALS, PURPLES } from '../../core/style/Colors';
 
 const NAV_LINK_ACTIVE_CLASSNAME :string = 'nav-link-active';
 
