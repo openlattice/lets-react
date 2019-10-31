@@ -38,7 +38,7 @@
     "lattice": "0.67.0",
     "lattice-auth": "0.16.0",
     "lattice-sagas": "0.41.0",
-    "lattice-ui-kit": "0.17.0",
+    "lattice-ui-kit": "0.19.0",
     "lodash": "~4.17.10",
     "loglevel": "~1.6.0",
     "polished": "~3.4.0",
