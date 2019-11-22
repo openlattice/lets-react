@@ -37,7 +37,7 @@
     "immutable": "4.0.0-rc.9",
     "lattice": "0.68.0",
     "lattice-auth": "0.16.0",
-    "lattice-sagas": "0.45.0",
+    "lattice-sagas": "0.47.2",
     "lattice-ui-kit": "0.20.0",
     "lodash": "~4.17.10",
     "loglevel": "~1.6.0",
