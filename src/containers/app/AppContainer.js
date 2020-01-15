@@ -120,7 +120,6 @@ class AppContainer extends Component<Props> {
           </AppNavigationWrapper>
         </AppHeaderWrapper>
         { this.renderAppContent() }
-        <Spinner size="2x" />
       </AppContainerWrapper>
     );
   }

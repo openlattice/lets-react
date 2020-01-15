@@ -32,11 +32,18 @@ const NormalizeCSS = createGlobalStyle`
 `;
 
 const GlobalStyle = createGlobalStyle`
+  @supports (font-variation-settings: normal) {
+    html {
+      font-family: 'Inter var', sans-serif;
+    }
+  }
+
   html,
   body {
     background-color: ${NEUTRALS[7]};
     color: ${NEUTRALS[0]};
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
     height: 100%;
     width: 100%;
   }
