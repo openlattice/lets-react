@@ -41,6 +41,7 @@
     "lattice-ui-kit": "0.22.2",
     "lodash": "~4.17.10",
     "loglevel": "~1.6.0",
+    "luxon": "~1.21.0",
     "polished": "~3.4.0",
     "react": "~16.12.0",
     "react-dom": "~16.12.0",
