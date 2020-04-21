@@ -12,7 +12,11 @@ import {
   AppContentWrapper,
   AppHeaderWrapper,
   AppNavigationWrapper,
+  LatticeLuxonUtils,
+  MuiPickersUtilsProvider,
   Spinner,
+  ThemeProvider,
+  lightTheme,
 } from 'lattice-ui-kit';
 import { connect } from 'react-redux';
 import {
@@ -110,17 +114,25 @@ class AppContainer extends Component<Props> {
     }
 
     return (
-      <AppContainerWrapper>
-        <AppHeaderWrapper appIcon={OpenLatticeIcon} appTitle="OpenLattice React App" logout={this.logout} user={user}>
-          <AppNavigationWrapper>
-            <NavLink to={Routes.ROOT} />
-            <NavLink to={Routes.HOME}>Home</NavLink>
-            <NavLink to="/tab1">Tab 1</NavLink>
-            <NavLink to="/tab2">Tab 2</NavLink>
-          </AppNavigationWrapper>
-        </AppHeaderWrapper>
-        { this.renderAppContent() }
-      </AppContainerWrapper>
+      <ThemeProvider theme={lightTheme}>
+        <MuiPickersUtilsProvider utils={LatticeLuxonUtils}>
+          <AppContainerWrapper>
+            <AppHeaderWrapper
+                appIcon={OpenLatticeIcon}
+                appTitle="OpenLattice React App"
+                logout={this.logout}
+                user={user}>
+              <AppNavigationWrapper>
+                <NavLink to={Routes.ROOT} />
+                <NavLink to={Routes.HOME}>Home</NavLink>
+                <NavLink to="/tab1">Tab 1</NavLink>
+                <NavLink to="/tab2">Tab 2</NavLink>
+              </AppNavigationWrapper>
+            </AppHeaderWrapper>
+            { this.renderAppContent() }
+          </AppContainerWrapper>
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
     );
   }
 }
