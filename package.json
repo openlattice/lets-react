@@ -82,6 +82,7 @@
     "file-loader": "~5.0.0",
     "flow-bin": "~0.123.0",
     "html-webpack-plugin": "~4.2.0",
+    "import-sort-style-openlattice": "~0.1.0",
     "jest": "~24.9.0",
     "jest-styled-components": "~7.0.0",
     "npm-run-all": "~4.1.0",
