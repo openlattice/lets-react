@@ -10,6 +10,8 @@ import {
 } from '@redux-saga/core/effects';
 import { Models, Types } from 'lattice';
 import { DataApiActions, DataApiSagas } from 'lattice-sagas';
+import { Logger } from 'lattice-utils';
+import type { Saga } from '@redux-saga/core';
 import type { SequenceAction } from 'redux-reqseq';
 
 import {
@@ -18,8 +20,6 @@ import {
   submitDataGraph,
   submitPartialReplace,
 } from './DataActions';
-
-import Logger from '../../utils/Logger';
 
 const LOG = new Logger('DataSagas');
 const { DataGraphBuilder } = Models;
@@ -39,18 +39,14 @@ const {
  *
  */
 
-function* submitDataGraphWorker(action :SequenceAction) :Generator<*, *, *> {
+function* submitDataGraphWorker(action :SequenceAction) :Saga<*> {
 
   const sagaResponse :Object = {};
 
   try {
     yield put(submitDataGraph.request(action.id, action.value));
 
-    const dataGraph = (new DataGraphBuilder())
-      .setAssociations(action.value.associationEntityData)
-      .setEntities(action.value.entityData)
-      .build();
-
+    const dataGraph = (new DataGraphBuilder(action.value)).build();
     const response = yield call(createEntityAndAssociationDataWorker, createEntityAndAssociationData(dataGraph));
     if (response.error) throw response.error;
     yield put(submitDataGraph.success(action.id, response.data));
@@ -67,7 +63,7 @@ function* submitDataGraphWorker(action :SequenceAction) :Generator<*, *, *> {
   return sagaResponse;
 }
 
-function* submitDataGraphWatcher() :Generator<*, *, *> {
+function* submitDataGraphWatcher() :Saga<*> {
 
   yield takeEvery(SUBMIT_DATA_GRAPH, submitDataGraphWorker);
 }
@@ -78,7 +74,7 @@ function* submitDataGraphWatcher() :Generator<*, *, *> {
  *
  */
 
-function* submitPartialReplaceWorker(action :SequenceAction) :Generator<*, *, *> {
+function* submitPartialReplaceWorker(action :SequenceAction) :Saga<*> {
 
   const sagaResponse :Object = {};
 
@@ -127,7 +123,7 @@ function* submitPartialReplaceWorker(action :SequenceAction) :Generator<*, *, *>
   return sagaResponse;
 }
 
-function* submitPartialReplaceWatcher() :Generator<*, *, *> {
+function* submitPartialReplaceWatcher() :Saga<*> {
 
   yield takeEvery(SUBMIT_PARTIAL_REPLACE, submitPartialReplaceWorker);
 }

@@ -8,16 +8,14 @@ import {
   put,
   takeEvery,
 } from '@redux-saga/core/effects';
+import { Logger } from 'lattice-utils';
+import type { Saga } from '@redux-saga/core';
 import type { SequenceAction } from 'redux-reqseq';
 
-import Logger from '../../utils/Logger';
 import { INITIALIZE_APPLICATION, initializeApplication } from './AppActions';
-import {
-  getEntityDataModelTypes,
-} from '../../core/edm/EDMActions';
-import {
-  getEntityDataModelTypesWorker,
-} from '../../core/edm/EDMSagas';
+
+import { getEntityDataModelTypes } from '../../core/edm/EDMActions';
+import { getEntityDataModelTypesWorker } from '../../core/edm/EDMSagas';
 
 const LOG = new Logger('AppSagas');
 
@@ -27,7 +25,7 @@ const LOG = new Logger('AppSagas');
  *
  */
 
-function* initializeApplicationWorker(action :SequenceAction) :Generator<*, *, *> {
+function* initializeApplicationWorker(action :SequenceAction) :Saga<*> {
 
   try {
     yield put(initializeApplication.request(action.id));
@@ -47,7 +45,7 @@ function* initializeApplicationWorker(action :SequenceAction) :Generator<*, *, *
   }
 }
 
-function* initializeApplicationWatcher() :Generator<*, *, *> {
+function* initializeApplicationWatcher() :Saga<*> {
 
   yield takeEvery(INITIALIZE_APPLICATION, initializeApplicationWorker);
 }
