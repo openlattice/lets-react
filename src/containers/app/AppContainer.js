@@ -18,6 +18,7 @@ import {
   ThemeProvider,
   lightTheme,
 } from 'lattice-ui-kit';
+import { LangUtils } from 'lattice-utils';
 import { connect } from 'react-redux';
 import {
   Redirect,
@@ -30,12 +31,13 @@ import { bindActionCreators } from 'redux';
 import { RequestStates } from 'redux-reqseq';
 import type { RequestSequence, RequestState } from 'redux-reqseq';
 
-import OpenLatticeIcon from '../../assets/images/ol_icon.png';
 import * as AppActions from './AppActions';
+
+import OpenLatticeIcon from '../../assets/images/ol_icon.png';
 import * as Routes from '../../core/router/Routes';
-import { isNonEmptyString } from '../../utils/LangUtils';
 
 const { INITIALIZE_APPLICATION } = AppActions;
+const { isNonEmptyString } = LangUtils;
 
 const Error = styled.div`
   text-align: center;

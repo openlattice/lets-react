@@ -4,13 +4,13 @@
 
 import { Models } from 'lattice';
 
-const { FullyQualifiedName } = Models;
+const { FQN } = Models;
 
 const ASSOCIATION_ENTITY_TYPE_FQNS = {};
 const ENTITY_TYPE_FQNS = {};
 
 const PROPERTY_TYPE_FQNS = {
-  OL_ID_FQN: new FullyQualifiedName('ol.id'),
+  OL_ID_FQN: FQN.of('ol.id'),
 };
 
 export {

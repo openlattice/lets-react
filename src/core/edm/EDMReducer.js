@@ -4,14 +4,11 @@
 
 import { List, Map, fromJS } from 'immutable';
 import { Models } from 'lattice';
+import { Logger } from 'lattice-utils';
 import { RequestStates } from 'redux-reqseq';
-import type {
-  EntityTypeObject,
-  PropertyTypeObject,
-} from 'lattice';
+import type { EntityTypeObject, PropertyTypeObject } from 'lattice';
 import type { SequenceAction } from 'redux-reqseq';
 
-import Logger from '../../utils/Logger';
 import {
   GET_EDM_TYPES,
   getEntityDataModelTypes,
@@ -52,20 +49,8 @@ export default function edmReducer(state :Map<*, *> = INITIAL_STATE, action :Obj
 
           rawEntityTypes.forEach((et :EntityTypeObject, index :number) => {
             try {
-              const entityType = new EntityTypeBuilder()
-                .setBaseType(et.baseType)
-                .setCategory(et.category)
-                .setDescription(et.description)
-                .setId(et.id)
-                .setKey(et.key)
-                .setPropertyTags(et.propertyTags)
-                .setPropertyTypes(et.properties)
-                .setSchemas(et.schemas)
-                .setShards(et.shards)
-                .setTitle(et.title)
-                .setType(et.type)
-                .build();
-              entityTypes.push(entityType.toImmutable());
+              const entityType = (new EntityTypeBuilder(et)).build();
+              entityTypes.push(entityType);
               entityTypesIndexMap.set(entityType.id, index);
               entityTypesIndexMap.set(entityType.type, index);
             }
@@ -81,20 +66,8 @@ export default function edmReducer(state :Map<*, *> = INITIAL_STATE, action :Obj
 
           rawPropertyTypes.forEach((pt :PropertyTypeObject, index :number) => {
             try {
-              const propertyType = new PropertyTypeBuilder()
-                .setAnalyzer(pt.analyzer)
-                .setDataType(pt.datatype)
-                .setDescription(pt.description)
-                .setEnumValues(pt.enumValues)
-                .setId(pt.id)
-                .setIndexType(pt.indexType)
-                .setMultiValued(pt.multiValued)
-                .setPii(pt.pii)
-                .setSchemas(pt.schemas)
-                .setTitle(pt.title)
-                .setType(pt.type)
-                .build();
-              propertyTypes.push(propertyType.toImmutable());
+              const propertyType = (new PropertyTypeBuilder(pt)).build();
+              propertyTypes.push(propertyType);
               propertyTypesIndexMap.set(propertyType.id, index);
               propertyTypesIndexMap.set(propertyType.type, index);
             }
