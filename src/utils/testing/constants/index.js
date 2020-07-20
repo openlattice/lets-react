@@ -1,3 +1,6 @@
+const GENERATOR_TAG = '[object Generator]';
+const GENERATOR_FUNCTION_TAG = '[object GeneratorFunction]';
+
 /* eslint-disable no-array-constructor, no-new-object, no-new-wrappers, no-multi-spaces */
 const INVALID_PARAMS = [
   undefined,                      // 0
@@ -22,5 +25,7 @@ const INVALID_PARAMS = [
 /* eslint-enable */
 
 export {
+  GENERATOR_FUNCTION_TAG,
+  GENERATOR_TAG,
   INVALID_PARAMS,
 };

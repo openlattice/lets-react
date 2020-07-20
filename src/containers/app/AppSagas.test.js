@@ -10,17 +10,13 @@ import {
   initializeApplicationWorker,
 } from './AppSagas';
 
-import {
-  GET_EDM_TYPES,
-} from '../../core/edm/EDMActions';
-import {
-  getEntityDataModelTypesWorker,
-} from '../../core/edm/EDMSagas';
-import {
-  GENERATOR_TAG,
-  testShouldBeGeneratorFunction,
-  testWatcherSagaShouldTakeEvery,
-} from '../../utils/testing/TestUtils';
+import { EDMActions, EDMSagas } from '../../core/edm';
+import { TestUtils } from '../../utils/testing';
+import { GENERATOR_TAG } from '../../utils/testing/constants';
+
+const { GET_EDM_TYPES } = EDMActions;
+const { getEntityDataModelTypesWorker } = EDMSagas;
+const { testShouldBeGeneratorFunction, testWatcherSagaShouldTakeEvery } = TestUtils;
 
 describe('AppSagas', () => {
 
@@ -35,7 +31,7 @@ describe('AppSagas', () => {
     testWatcherSagaShouldTakeEvery(
       initializeApplicationWatcher,
       initializeApplicationWorker,
-      INITIALIZE_APPLICATION
+      INITIALIZE_APPLICATION,
     );
   });
 
