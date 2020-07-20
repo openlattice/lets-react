@@ -3,7 +3,6 @@ const path = require('path');
 const ASSETS = 'assets';
 const BUILD = 'build';
 const CSS = 'css';
-const IMAGES = 'images';
 const JS = 'js';
 const NODE = 'node_modules';
 const SOURCE = 'src';
@@ -19,10 +18,10 @@ module.exports = {
     BUILD_STATIC_JS: path.resolve(ROOT, `${BUILD}/${STATIC}/${JS}`),
     NODE: path.resolve(ROOT, NODE),
     SOURCE: path.resolve(ROOT, SOURCE),
-    SOURCE_ASSETS_IMAGES: path.resolve(ROOT, `${SOURCE}/${ASSETS}/${IMAGES}`),
+    SOURCE_ASSETS: path.resolve(ROOT, `${SOURCE}/${ASSETS}`),
   },
   REL: {
-    STATIC_ASSETS_IMAGES: path.join(STATIC, `${ASSETS}/${IMAGES}`),
+    STATIC_ASSETS: path.join(STATIC, ASSETS),
     STATIC_CSS: path.join(STATIC, CSS),
     STATIC_JS: path.join(STATIC, JS),
   }

@@ -14,10 +14,12 @@ import type { SequenceAction } from 'redux-reqseq';
 
 import { INITIALIZE_APPLICATION, initializeApplication } from './AppActions';
 
-import { getEntityDataModelTypes } from '../../core/edm/EDMActions';
-import { getEntityDataModelTypesWorker } from '../../core/edm/EDMSagas';
+import { EDMActions, EDMSagas } from '../../core/edm';
 
 const LOG = new Logger('AppSagas');
+
+const { getEntityDataModelTypes } = EDMActions;
+const { getEntityDataModelTypesWorker } = EDMSagas;
 
 /*
  *

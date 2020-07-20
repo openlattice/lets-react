@@ -1,21 +1,20 @@
 import { OrderedSet } from 'immutable';
 
-import * as AppActions from './AppActions';
+import * as ReduxActions from './ReduxActions';
 
 import { TestUtils } from '../../utils/testing';
 
 const { testShouldExportActionTypes, testShouldExportRequestSequences } = TestUtils;
 
 const ACTION_TYPES = OrderedSet([
-  'INITIALIZE_APPLICATION',
+  'RESET_REQUEST_STATE',
 ]).toJS();
 
 const REQSEQ_NAMES = OrderedSet([
-  'initializeApplication',
 ]).toJS();
 
-describe('AppActions', () => {
+describe('ReduxActions', () => {
 
-  testShouldExportActionTypes(AppActions, ACTION_TYPES);
-  testShouldExportRequestSequences(AppActions, ACTION_TYPES, REQSEQ_NAMES);
+  testShouldExportActionTypes(ReduxActions, ACTION_TYPES);
+  testShouldExportRequestSequences(ReduxActions, ACTION_TYPES, REQSEQ_NAMES);
 });

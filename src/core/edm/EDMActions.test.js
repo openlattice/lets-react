@@ -1,21 +1,21 @@
 import { OrderedSet } from 'immutable';
 
-import * as AppActions from './AppActions';
+import * as EDMActions from './EDMActions';
 
 import { TestUtils } from '../../utils/testing';
 
 const { testShouldExportActionTypes, testShouldExportRequestSequences } = TestUtils;
 
 const ACTION_TYPES = OrderedSet([
-  'INITIALIZE_APPLICATION',
+  'GET_EDM_TYPES',
 ]).toJS();
 
 const REQSEQ_NAMES = OrderedSet([
-  'initializeApplication',
+  'getEntityDataModelTypes',
 ]).toJS();
 
-describe('AppActions', () => {
+describe('EDMActions', () => {
 
-  testShouldExportActionTypes(AppActions, ACTION_TYPES);
-  testShouldExportRequestSequences(AppActions, ACTION_TYPES, REQSEQ_NAMES);
+  testShouldExportActionTypes(EDMActions, ACTION_TYPES);
+  testShouldExportRequestSequences(EDMActions, ACTION_TYPES, REQSEQ_NAMES);
 });

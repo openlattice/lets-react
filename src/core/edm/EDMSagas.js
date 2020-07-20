@@ -9,8 +9,9 @@ import {
   takeEvery,
 } from '@redux-saga/core/effects';
 import { EntityDataModelApiActions, EntityDataModelApiSagas } from 'lattice-sagas';
-import { LangUtils, Logger } from 'lattice-utils';
+import { Logger } from 'lattice-utils';
 import type { Saga } from '@redux-saga/core';
+import type { WorkerResponse } from 'lattice-sagas';
 import type { SequenceAction } from 'redux-reqseq';
 
 import {
@@ -22,8 +23,6 @@ const LOG = new Logger('EDMSagas');
 
 const { getAllEntityTypes, getAllPropertyTypes } = EntityDataModelApiActions;
 const { getAllEntityTypesWorker, getAllPropertyTypesWorker } = EntityDataModelApiSagas;
-
-const { isDefined } = LangUtils;
 
 /*
  *
@@ -38,17 +37,12 @@ function* getEntityDataModelTypesWorker(action :SequenceAction) :Saga<*> {
   try {
     yield put(getEntityDataModelTypes.request(action.id));
 
-    const responses :Object[] = yield all([
+    const responses :WorkerResponse[] = yield all([
       call(getAllEntityTypesWorker, getAllEntityTypes()),
       call(getAllPropertyTypesWorker, getAllPropertyTypes()),
     ]);
-
-    // all requests must succeed
-    const responseError = responses.reduce(
-      (error :any, r :Object) => (isDefined(error) ? error : r.error),
-      undefined,
-    );
-    if (responseError) throw responseError;
+    if (responses[0].error) throw responses[0].error;
+    if (responses[1].error) throw responses[1].error;
 
     yield put(getEntityDataModelTypes.success(action.id, {
       entityTypes: responses[0].data,

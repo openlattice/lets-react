@@ -48,7 +48,7 @@ module.exports = (env) => {
       loader: 'file-loader',
       options: {
         name: '[name].[hash:8].[ext]',
-        outputPath: `${APP_PATHS.REL.STATIC_ASSETS_IMAGES}/`,
+        outputPath: `${APP_PATHS.REL.STATIC_ASSETS}/`,
       }
     }]
   };

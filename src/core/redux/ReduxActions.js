@@ -3,9 +3,9 @@
  */
 
 const RESET_REQUEST_STATE :'RESET_REQUEST_STATE' = 'RESET_REQUEST_STATE';
-function resetRequestState(actionType :string) {
+function resetRequestState(path :string[]) {
   return {
-    actionType,
+    path,
     type: RESET_REQUEST_STATE,
   };
 }
