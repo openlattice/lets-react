@@ -2,7 +2,8 @@
  * @flow
  */
 
-export const ROOT :string = '/';
+const ROOT :'/' = '/';
 
-export const HOME :string = '/home';
-export const LOGIN :string = '/login';
+export {
+  ROOT,
+};

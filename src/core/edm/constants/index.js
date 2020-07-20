@@ -2,10 +2,8 @@
  * @flow
  */
 
-import * as EntitySetNames from './EntitySetNames';
-import * as FullyQualifiedNames from './FullyQualifiedNames';
+import PropertyTypes from './PropertyTypes';
 
 export {
-  EntitySetNames,
-  FullyQualifiedNames,
+  PropertyTypes,
 };

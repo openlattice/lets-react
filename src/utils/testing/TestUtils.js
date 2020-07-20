@@ -1,15 +1,6 @@
-import Immutable from 'immutable';
-import { takeEvery } from '@redux-saga/core/effects';
+import { OrderedMap } from 'immutable';
 
-import { ERR_INVALID_ACTION, ERR_ACTION_VALUE_NOT_DEFINED } from '../Errors';
-import { INVALID_PARAMS, INVALID_PARAMS_NOT_DEFINED } from './Invalid';
-
-export const GENERATOR_FUNCTION_TAG = '[object GeneratorFunction]';
-export const GENERATOR_TAG = '[object Generator]';
-export const OBJECT_TAG = '[object Object]';
-export const STRING_TAG = '[object String]';
-
-export function testShouldBeRequestSequenceFunction(functionToTest, baseType) {
+function testShouldBeRequestSequenceFunction(functionToTest, baseType) {
 
   test('should be a RequestSequence function', () => {
 
@@ -27,46 +18,12 @@ export function testShouldBeRequestSequenceFunction(functionToTest, baseType) {
   });
 }
 
-export function testShouldBeGeneratorFunction(functionToTest) {
-
-  test('should be a generator function', () => {
-    expect(Object.prototype.toString.call(functionToTest)).toEqual(GENERATOR_FUNCTION_TAG);
-  });
-}
-
-export function testWatcherSagaShouldTakeEvery(watcherSagaToTest, expectedWorkerSaga, expectedAction) {
-
-  test('should invoke takeEvery()', () => {
-    const iterator = watcherSagaToTest();
-    expect(Object.prototype.toString.call(iterator)).toEqual(GENERATOR_TAG);
-    expect(iterator.next().value).toEqual(takeEvery(expectedAction, expectedWorkerSaga));
-    expect(iterator.next().done).toEqual(true);
-  });
-}
-
-export function testShouldFailOnInvalidAction(workerSagaToTest, baseActionType, isValueRequired = true) {
-
-  INVALID_PARAMS.forEach((invalidParam) => {
-    const iterator = workerSagaToTest(invalidParam);
-    const step = iterator.next();
-    expect(step.value).toEqual({ error: ERR_INVALID_ACTION });
-  });
-
-  if (isValueRequired) {
-    INVALID_PARAMS_NOT_DEFINED.forEach((invalidParam) => {
-      const iterator = workerSagaToTest({ id: 'fakeId', type: baseActionType, value: invalidParam });
-      const step = iterator.next();
-      expect(step.value).toEqual({ error: ERR_ACTION_VALUE_NOT_DEFINED });
-    });
-  }
-}
-
-export function testShouldExportActionTypes(Actions, expectedActionTypes) {
+function testShouldExportActionTypes(Actions, expectedActionTypes) {
 
   describe('should export action types', () => {
 
     test('should export expected action types, sorted alphabetically', () => {
-      const exportedActionTypes = Immutable.OrderedMap(Actions).take(expectedActionTypes.length);
+      const exportedActionTypes = OrderedMap(Actions).filter((v, k) => expectedActionTypes.includes(k));
       expect(exportedActionTypes.keySeq().toJS()).toEqual(expectedActionTypes);
       expect(exportedActionTypes.valueSeq().toJS()).toEqual(expectedActionTypes);
     });
@@ -80,12 +37,12 @@ export function testShouldExportActionTypes(Actions, expectedActionTypes) {
   });
 }
 
-export function testShouldExportRequestSequences(Actions, expectedActionTypes, expectedReqSeqNames) {
+function testShouldExportRequestSequences(Actions, expectedActionTypes, expectedReqSeqNames) {
 
   describe('should export RequestSequences', () => {
 
     test('should export expected RequestSequences, sorted alphabetically', () => {
-      const expectedReqSeqs = Immutable.OrderedMap(Actions).takeLast(expectedReqSeqNames.length);
+      const expectedReqSeqs = OrderedMap(Actions).filter((v, k) => expectedReqSeqNames.includes(k));
       expect(expectedReqSeqs.keySeq().toJS()).toEqual(expectedReqSeqNames);
     });
 
@@ -97,3 +54,9 @@ export function testShouldExportRequestSequences(Actions, expectedActionTypes, e
     });
   });
 }
+
+export {
+  testShouldBeRequestSequenceFunction,
+  testShouldExportActionTypes,
+  testShouldExportRequestSequences,
+};

@@ -2,10 +2,8 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
-import styled from 'styled-components';
-import { Map } from 'immutable';
 import { AuthActions, AuthUtils } from 'lattice-auth';
 import {
   AppContainerWrapper,
@@ -15,144 +13,92 @@ import {
   LatticeLuxonUtils,
   MuiPickersUtilsProvider,
   Spinner,
+  StylesProvider,
   ThemeProvider,
   lightTheme,
 } from 'lattice-ui-kit';
-import { LangUtils } from 'lattice-utils';
-import { connect } from 'react-redux';
-import {
-  Redirect,
-  Route,
-  Switch,
-  withRouter,
-} from 'react-router';
+import { LangUtils, useRequestState } from 'lattice-utils';
+import { useDispatch } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { RequestStates } from 'redux-reqseq';
-import type { RequestSequence, RequestState } from 'redux-reqseq';
+import type { RequestState } from 'redux-reqseq';
 
-import * as AppActions from './AppActions';
+import { INITIALIZE_APPLICATION, initializeApplication } from './AppActions';
 
-import OpenLatticeIcon from '../../assets/images/ol_icon.png';
-import * as Routes from '../../core/router/Routes';
+import { OpenLatticeIconSVG } from '../../assets/svg/icons';
+import { BasicErrorComponent } from '../../components';
+import { REDUCERS } from '../../core/redux/constants';
+import { Routes } from '../../core/router';
 
-const { INITIALIZE_APPLICATION } = AppActions;
 const { isNonEmptyString } = LangUtils;
+const { APP } = REDUCERS;
 
-const Error = styled.div`
-  text-align: center;
-`;
+const AppContainer = () => {
 
-type Props = {
-  actions :{
-    initializeApplication :RequestSequence;
-    logout :() => void;
-  };
-  requestStates :{
-    INITIALIZE_APPLICATION :RequestState;
-  };
-};
+  const dispatch = useDispatch();
 
-class AppContainer extends Component<Props> {
+  const initAppRS :?RequestState = useRequestState([APP, INITIALIZE_APPLICATION]);
 
-  componentDidMount() {
+  useEffect(() => {
+    dispatch(initializeApplication());
+  }, [dispatch]);
 
-    const { actions } = this.props;
-    actions.initializeApplication();
+  const logout = useCallback(() => {
+    dispatch(AuthActions.logout());
+  }, [dispatch]);
+
+  const userInfo = AuthUtils.getUserInfo() || {};
+  let user :?string = null;
+  if (isNonEmptyString(userInfo.name)) {
+    user = userInfo.name;
+  }
+  else if (isNonEmptyString(userInfo.email)) {
+    user = userInfo.email;
   }
 
-  logout = () => {
-
-    const { actions } = this.props;
-    actions.logout();
-
-    // TODO: tracking
-    // if (isFunction(gtag)) {
-    //   gtag('config', GOOGLE_TRACKING_ID, { user_id: undefined, send_page_view: false });
-    // }
-  }
-
-  renderAppContent = () => {
-
-    const { requestStates } = this.props;
-
-    if (requestStates[INITIALIZE_APPLICATION] === RequestStates.SUCCESS) {
-      return (
-        <Switch>
-          <Route exact strict path={Routes.HOME} />
-          <Route path="/tab1" render={() => (<AppContentWrapper>Tab 1</AppContentWrapper>)} />
-          <Route path="/tab2" render={() => (<AppContentWrapper>Tab 2</AppContentWrapper>)} />
-          <Redirect to={Routes.HOME} />
-        </Switch>
-      );
-    }
-
-    if (requestStates[INITIALIZE_APPLICATION] === RequestStates.FAILURE) {
-      return (
-        <AppContentWrapper>
-          <Error>
-            Sorry, something went wrong. Please try refreshing the page, or contact support.
-          </Error>
-        </AppContentWrapper>
-      );
-    }
-
-    return (
-      <AppContentWrapper>
-        <Spinner size="2x" />
-      </AppContentWrapper>
-    );
-  }
-
-  render() {
-
-    const userInfo = AuthUtils.getUserInfo();
-    let user = null;
-    if (isNonEmptyString(userInfo.name)) {
-      user = userInfo.name;
-    }
-    else if (isNonEmptyString(userInfo.email)) {
-      user = userInfo.email;
-    }
-
-    return (
-      <ThemeProvider theme={lightTheme}>
-        <MuiPickersUtilsProvider utils={LatticeLuxonUtils}>
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <MuiPickersUtilsProvider utils={LatticeLuxonUtils}>
+        <StylesProvider injectFirst>
           <AppContainerWrapper>
-            <AppHeaderWrapper
-                appIcon={OpenLatticeIcon}
-                appTitle="OpenLattice React App"
-                logout={this.logout}
-                user={user}>
+            <AppHeaderWrapper appIcon={OpenLatticeIconSVG} appTitle="OpenLattice React App" logout={logout} user={user}>
               <AppNavigationWrapper>
                 <NavLink to={Routes.ROOT} />
-                <NavLink to={Routes.HOME}>Home</NavLink>
                 <NavLink to="/tab1">Tab 1</NavLink>
                 <NavLink to="/tab2">Tab 2</NavLink>
               </AppNavigationWrapper>
             </AppHeaderWrapper>
-            { this.renderAppContent() }
+            {
+              initAppRS === RequestStates.PENDING && (
+                <AppContentWrapper>
+                  <Spinner size="2x" />
+                </AppContentWrapper>
+              )
+            }
+            {
+              initAppRS === RequestStates.FAILURE && (
+                <AppContentWrapper>
+                  <BasicErrorComponent>
+                    Sorry, the application failed to initialize. Please try refreshing the page, or contact support.
+                  </BasicErrorComponent>
+                </AppContentWrapper>
+              )
+            }
+            {
+              initAppRS === RequestStates.SUCCESS && (
+                <Switch>
+                  <Route path="/tab1" render={() => (<AppContentWrapper>Tab 1</AppContentWrapper>)} />
+                  <Route path="/tab2" render={() => (<AppContentWrapper>Tab 2</AppContentWrapper>)} />
+                  <Redirect to="/tab1" />
+                </Switch>
+              )
+            }
           </AppContainerWrapper>
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
-    );
-  }
-}
+        </StylesProvider>
+      </MuiPickersUtilsProvider>
+    </ThemeProvider>
+  );
+};
 
-const mapStateToProps = (state :Map<*, *>) => ({
-  requestStates: {
-    [INITIALIZE_APPLICATION]: state.getIn(['app', INITIALIZE_APPLICATION, 'requestState']),
-  }
-});
-
-const mapActionsToProps = (dispatch :Function) => ({
-  actions: bindActionCreators({
-    initializeApplication: AppActions.initializeApplication,
-    logout: AuthActions.logout,
-  }, dispatch)
-});
-
-// $FlowFixMe
-export default withRouter(
-  connect(mapStateToProps, mapActionsToProps)(AppContainer)
-);
+export default AppContainer;
