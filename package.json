@@ -41,7 +41,7 @@
     "lattice-ui-kit": "~0.34.0",
     "lattice-utils": "~0.3.0",
     "lodash": "~4.17.10",
-    "loglevel": "~1.6.0",
+    "loglevel": "~1.7.0",
     "luxon": "~1.25.0",
     "polished": "~3.6.0",
     "react": "~16.13.0",
@@ -52,7 +52,7 @@
     "redux": "~4.0.0",
     "redux-immutable": "4.0.0",
     "redux-reqseq": "0.5.0",
-    "styled-components": "~5.1.0"
+    "styled-components": "~5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "~7.11.6",
