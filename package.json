@@ -43,7 +43,7 @@
     "lodash": "~4.17.10",
     "loglevel": "~1.7.0",
     "luxon": "~1.25.0",
-    "polished": "~4.0.3",
+    "polished": "~4.1.0",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
     "react-redux": "~7.2.0",
