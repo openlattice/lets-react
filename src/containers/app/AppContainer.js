@@ -14,6 +14,7 @@ import {
   MuiPickersUtilsProvider,
   Spinner,
   StylesProvider,
+  // $FlowIgnore
   ThemeProvider,
   lightTheme,
 } from 'lattice-ui-kit';
