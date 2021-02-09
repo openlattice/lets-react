@@ -1,7 +1,9 @@
-import { Map } from 'immutable';
+import { fromJS } from 'immutable';
 import { RequestStates } from 'redux-reqseq';
 
 import reducer from './initializeApplicationReducer';
+
+import { RS_INITIAL_STATE } from '../../../core/redux/constants';
 import { INITIALIZE_APPLICATION, initializeApplication } from '../actions';
 
 const MOCK_APP_NAME = 'TestApp';
@@ -12,18 +14,11 @@ const MOCK_ERR_RESPONSE = {
   },
 };
 
+const INITIAL_STATE = fromJS({
+  [INITIALIZE_APPLICATION]: RS_INITIAL_STATE,
+});
+
 describe('AppReducer', () => {
-
-  const INITIAL_STATE = reducer(undefined, { type: '__TEST__' });
-
-  test('INITIAL_STATE', () => {
-    expect(INITIAL_STATE).toBeInstanceOf(Map);
-    expect(INITIAL_STATE.toJS()).toEqual({
-      [INITIALIZE_APPLICATION]: {
-        requestState: RequestStates.STANDBY,
-      },
-    });
-  });
 
   describe(INITIALIZE_APPLICATION, () => {
 
