@@ -25,15 +25,14 @@ import { NavLink } from 'react-router-dom';
 import { RequestStates } from 'redux-reqseq';
 import type { RequestState } from 'redux-reqseq';
 
-import { INITIALIZE_APPLICATION, initializeApplication } from './AppActions';
+import { INITIALIZE_APPLICATION, initializeApplication } from './actions';
 
 import { OpenLatticeIconSVG } from '../../assets/svg/icons';
 import { BasicErrorComponent } from '../../components';
-import { REDUCERS } from '../../core/redux/constants';
+import { APP } from '../../core/redux/constants';
 import { Routes } from '../../core/router';
 
 const { isNonEmptyString } = LangUtils;
-const { APP } = REDUCERS;
 
 const AppContainer = () => {
 

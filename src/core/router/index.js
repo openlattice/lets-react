@@ -3,7 +3,7 @@
  */
 
 import * as Routes from './Routes';
-import * as RoutingActions from './RoutingActions';
+import * as RoutingActions from './actions';
 import * as RoutingSagas from './RoutingSagas';
 
 export {

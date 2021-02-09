@@ -1,10 +1,7 @@
 import { OrderedSet } from 'immutable';
 
-import * as ReduxActions from './ReduxActions';
-
-import { TestUtils } from '../../utils/testing';
-
-const { testShouldExportActionTypes, testShouldExportRequestSequences } = TestUtils;
+import * as ReduxActions from '.';
+import { testShouldExportActionTypes, testShouldExportRequestSequences } from '../../../utils/testing/TestUtils';
 
 const ACTION_TYPES = OrderedSet([
   'RESET_REQUEST_STATE',

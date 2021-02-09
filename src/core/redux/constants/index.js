@@ -2,32 +2,25 @@
  * @flow
  */
 
-const APP :'app' = 'app';
-const DATA :'data' = 'data';
-const EDM :'edm' = 'edm';
-const SEARCH :'search' = 'search';
+import { ReduxConstants } from 'lattice-utils';
+import { RequestStates } from 'redux-reqseq';
 
-const REDUCERS = {
+export const {
   APP,
-  DATA,
+  AUTH,
   EDM,
-  SEARCH,
-};
-
-export {
-  REDUCERS,
-};
-
-const ERROR :'error' = 'error';
-const HITS :'hits' = 'hits';
-const PAGE :'page' = 'page';
-const QUERY :'query' = 'query';
-const TOTAL_HITS :'totalHits' = 'totalHits';
-
-export {
+  ENTITY_SETS,
+  ENTITY_SETS_INDEX_MAP,
+  ENTITY_TYPES,
+  ENTITY_TYPES_INDEX_MAP,
   ERROR,
-  HITS,
-  PAGE,
-  QUERY,
-  TOTAL_HITS,
+  PROPERTY_TYPES,
+  PROPERTY_TYPES_INDEX_MAP,
+  REQUEST_STATE,
+} = ReduxConstants;
+
+// TODO: does this belong here?
+export const RS_INITIAL_STATE = {
+  [ERROR]: false,
+  [REQUEST_STATE]: RequestStates.STANDBY,
 };

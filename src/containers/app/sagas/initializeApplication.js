@@ -12,20 +12,12 @@ import { Logger } from 'lattice-utils';
 import type { Saga } from '@redux-saga/core';
 import type { SequenceAction } from 'redux-reqseq';
 
-import { INITIALIZE_APPLICATION, initializeApplication } from './AppActions';
+import { INITIALIZE_APPLICATION, initializeApplication } from '../actions';
 
-import { EDMActions, EDMSagas } from '../../core/edm';
+import { getEntityDataModelTypes } from '../../../core/edm/actions';
+import { getEntityDataModelTypesWorker } from '../../../core/edm/sagas';
 
 const LOG = new Logger('AppSagas');
-
-const { getEntityDataModelTypes } = EDMActions;
-const { getEntityDataModelTypesWorker } = EDMSagas;
-
-/*
- *
- * AppActions.initializeApplication()
- *
- */
 
 function* initializeApplicationWorker(action :SequenceAction) :Saga<*> {
 

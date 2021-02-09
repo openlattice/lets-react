@@ -1,30 +1,15 @@
 import { all, call, put } from '@redux-saga/core/effects';
 import { v4 as uuid } from 'uuid';
 
-import {
-  INITIALIZE_APPLICATION,
-  initializeApplication,
-} from './AppActions';
-import {
-  initializeApplicationWatcher,
-  initializeApplicationWorker,
-} from './AppSagas';
+import { initializeApplicationWatcher, initializeApplicationWorker } from './initializeApplication';
 
-import { EDMActions, EDMSagas } from '../../core/edm';
-import { TestUtils } from '../../utils/testing';
-import { GENERATOR_TAG } from '../../utils/testing/constants';
-
-const { GET_EDM_TYPES } = EDMActions;
-const { getEntityDataModelTypesWorker } = EDMSagas;
-const { testShouldBeGeneratorFunction, testWatcherSagaShouldTakeEvery } = TestUtils;
+import { GET_EDM_TYPES } from '../../../core/edm/actions';
+import { getEntityDataModelTypesWorker } from '../../../core/edm/sagas';
+import { testShouldBeGeneratorFunction, testWatcherSagaShouldTakeEvery } from '../../../utils/testing/TestUtils';
+import { GENERATOR_TAG } from '../../../utils/testing/constants';
+import { INITIALIZE_APPLICATION, initializeApplication } from '../actions';
 
 describe('AppSagas', () => {
-
-  /*
-   *
-   * AppActions.initializeApplication
-   *
-   */
 
   describe('initializeApplicationWatcher', () => {
     testShouldBeGeneratorFunction(initializeApplicationWatcher);
