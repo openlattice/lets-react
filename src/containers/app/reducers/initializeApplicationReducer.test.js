@@ -1,11 +1,8 @@
 import { Map } from 'immutable';
 import { RequestStates } from 'redux-reqseq';
 
-import reducer from './AppReducer';
-import {
-  INITIALIZE_APPLICATION,
-  initializeApplication,
-} from './AppActions';
+import reducer from './initializeApplicationReducer';
+import { INITIALIZE_APPLICATION, initializeApplication } from '../actions';
 
 const MOCK_APP_NAME = 'TestApp';
 const MOCK_ERR_STATUS = 500;

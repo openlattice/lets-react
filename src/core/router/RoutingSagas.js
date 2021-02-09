@@ -10,8 +10,8 @@ import {
   GO_TO_ROOT,
   GO_TO_ROUTE,
   routingFailure,
-} from './RoutingActions';
-import type { RoutingAction } from './RoutingActions';
+} from './actions';
+import type { RoutingAction } from './actions';
 
 const LOG = new Logger('RoutingSagas');
 

@@ -2,12 +2,11 @@
  * @flow
  */
 
-import AppReducer from './AppReducer';
-import * as AppActions from './AppActions';
-import * as AppSagas from './AppSagas';
+import * as AppSagas from './sagas';
+
+export { default as AppContainer } from './AppContainer';
+export { default as AppReducer } from './reducers';
 
 export {
-  AppActions,
-  AppReducer,
   AppSagas,
 };

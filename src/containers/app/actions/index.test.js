@@ -1,10 +1,7 @@
 import { OrderedSet } from 'immutable';
 
-import * as AppActions from './AppActions';
-
-import { TestUtils } from '../../utils/testing';
-
-const { testShouldExportActionTypes, testShouldExportRequestSequences } = TestUtils;
+import * as AppActions from '.';
+import { testShouldExportActionTypes, testShouldExportRequestSequences } from '../../../utils/testing/TestUtils';
 
 const ACTION_TYPES = OrderedSet([
   'INITIALIZE_APPLICATION',

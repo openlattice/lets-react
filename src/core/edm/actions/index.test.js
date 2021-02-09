@@ -1,10 +1,7 @@
 import { OrderedSet } from 'immutable';
 
-import * as EDMActions from './EDMActions';
-
-import { TestUtils } from '../../utils/testing';
-
-const { testShouldExportActionTypes, testShouldExportRequestSequences } = TestUtils;
+import * as EDMActions from '.';
+import { testShouldExportActionTypes, testShouldExportRequestSequences } from '../../../utils/testing/TestUtils';
 
 const ACTION_TYPES = OrderedSet([
   'GET_EDM_TYPES',

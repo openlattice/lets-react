@@ -2,7 +2,7 @@
  * @flow
  */
 
-import * as Routes from './Routes';
+import * as Routes from '../Routes';
 
 declare type RoutingAction = {
   type :string;
