@@ -24,7 +24,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/polyfill": "~7.12.1",
-    "@babel/runtime": "~7.12.13",
+    "@babel/runtime": "~7.13.8",
     "@fortawesome/fontawesome-svg-core": "~1.2.34",
     "@fortawesome/pro-duotone-svg-icons": "~5.15.2",
     "@fortawesome/pro-light-svg-icons": "~5.15.2",
