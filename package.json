@@ -35,7 +35,7 @@
     "connected-react-router": "~6.8.0",
     "history": "~4.10.0",
     "immutable": "4.0.0-rc.10",
-    "lattice": "~0.89.0",
+    "lattice": "~0.93.4",
     "lattice-auth": "~0.22.0",
     "lattice-sagas": "~0.63.0",
     "lattice-ui-kit": "~0.42.0",
